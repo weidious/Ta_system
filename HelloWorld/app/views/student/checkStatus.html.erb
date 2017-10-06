@@ -1,1 +1,17 @@
-<p>Hello, status!</p>
+<div class="search">
+
+<%= form_tag("/submit_application", method: "get") do %>
+      <table class="table table-bordered">
+        <tr>
+          <th><%= label_tag(:name, "Name:") %></th>
+          <td><%= text_field_tag(:name) %></td>
+        </tr>
+        <tr>
+          <th><%= label_tag(:semester, "Application for Semester:") %></th>
+          <td><%= select_tag(:semester, options_for_select(["Fall", "Spring"])) %></td>
+        </tr>
+      </table>
+      <%= submit_tag("Search") %>
+  <% end %>
+   
+</div>

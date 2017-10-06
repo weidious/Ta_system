@@ -1,5 +1,5 @@
 <div class="table-responsive">
-  <%= form_for @application, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <%= form_for :student, url: students_path do |f| %>
       <table class="table table-bordered">
         <tr>
           <th><%= f.label :name %></th>
@@ -7,24 +7,11 @@
         </tr>
         <tr>
           <th><%= f.label :semester %></th>
-          <td><%= f.select :semester, options_for_select(["a", "b"]) %></td>
+          <td><%= f.select :semester, options_for_select(["Fall", "Spring"]) %></td>
         </tr>
       </table>
       <%= f.submit "Create" %>
   <% end %>
 
 
-  <%= form_tag("/submit_application", method: "get") do %>
-      <table class="table table-bordered">
-        <tr>
-          <th><%= label_tag(:name, "Name:") %></th>
-          <td><%= text_field_tag(:name) %></td>
-        </tr>
-        <tr>
-          <th><%= label_tag(:semester, "Application for Semester:") %></th>
-          <td><%= select_tag(:semester, options_for_select(["a", "b"])) %></td>
-        </tr>
-      </table>
-      <%= submit_tag("Search") %>
-  <% end %>
 </div>
