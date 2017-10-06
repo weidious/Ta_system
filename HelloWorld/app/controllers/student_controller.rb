@@ -1,5 +1,6 @@
 class StudentController < ApplicationController
   def index
+
   end
 
   def new
@@ -10,6 +11,10 @@ class StudentController < ApplicationController
   end
 
   def apply
+
+  end
+  
+  def create
 
   end
 end
