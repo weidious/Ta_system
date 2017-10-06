@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get 'student/index'
-  get 'student/apply'
-  get 'student/checkStatus'
+
+  get 'students/apply'
+  get 'students/checkStatus'
 
   resources :students
 
-  root 'student#index'
+  root 'students#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
