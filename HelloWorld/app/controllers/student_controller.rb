@@ -5,4 +5,11 @@ class StudentController < ApplicationController
   def new
     # @application = Appl.new;
   end
+
+  def checkStatus
+  end
+
+  def apply
+
+  end
 end
