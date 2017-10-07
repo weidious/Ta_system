@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
   end
 
   def checkStatus
-
+    @students = Student.all
   end
 
   def apply
