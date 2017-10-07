@@ -11,7 +11,25 @@
           <td><%= select_tag(:semester, options_for_select(["Fall", "Spring"])) %></td>
         </tr>
       </table>
+
       <%= submit_tag("Search") %>
+
   <% end %>
-   
+  
+
+</div>
+<div class = "table">
+<table>
+  <tr>
+    <th>All student</th>
+  </tr>
+ 
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= student.name %></td>
+      <td><%= student.semester %></td>
+      <td><%= link_to 'Show', student_path(student) %></td>
+    </tr>
+  <% end %>
+</table>
 </div>
