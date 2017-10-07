@@ -1,1 +1,15 @@
 <p>Hello, Rails!</p>
+
+<table>
+  <tr>
+    <th>All student</th>
+  </tr>
+ 
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= student.name %></td>
+      <td><%= student.semester %></td>
+      <td><%= link_to 'Show', student_path(student) %></td>
+    </tr>
+  <% end %>
+</table>
