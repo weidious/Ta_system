@@ -1,6 +1,8 @@
 class StudentsController < ApplicationController
 
   def index
+    # you can get UIN from params
+    session[:UIN] = params[:UIN]
     @students = Student.all
   end
 

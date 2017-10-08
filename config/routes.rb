@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'students/apply'
   get 'students/checkStatus'
+  post 'welcome/login'
 
 
   resources :students
