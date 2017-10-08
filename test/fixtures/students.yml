@@ -1,9 +1,55 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  semester: MyString
+  uin: 1
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  level: MyString
+  integer: MyString
+  email: MyString
+  phone: MyString
+  string: MyString
+  assigned: MyString
+  boolean: MyString
+  advisor_email: MyString
+  string: MyString
+  can_ta: MyString
+  boolean: MyString
+  can_grader: MyString
+  boolean: MyString
+  can_sgrader: MyString
+  boolean: MyString
+  perferences: MyString
+  string: MyString
+  date_enrolled: MyString
+  date: MyString
+  last_modified: MyString
+  timestamp: MyString
 
 two:
-  name: MyString
-  semester: MyString
+  uin: 1
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  level: MyString
+  integer: MyString
+  email: MyString
+  phone: MyString
+  string: MyString
+  assigned: MyString
+  boolean: MyString
+  advisor_email: MyString
+  string: MyString
+  can_ta: MyString
+  boolean: MyString
+  can_grader: MyString
+  boolean: MyString
+  can_sgrader: MyString
+  boolean: MyString
+  perferences: MyString
+  string: MyString
+  date_enrolled: MyString
+  date: MyString
+  last_modified: MyString
+  timestamp: MyString
