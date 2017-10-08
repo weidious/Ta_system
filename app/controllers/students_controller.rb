@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
 
   def index
     # you can get UIN from params
-    session[:UIN] = params[:UIN]
+    session[:student_uin] = params[:UIN]
     @students = Student.all
   end
 
@@ -23,8 +23,16 @@ class StudentsController < ApplicationController
   end
 
   def create
+    if session[:student_uin]
+      # fetch info -> vie
+    end
     #render plain: params[:student].inspect
     @student = Student.new(student_params)
+    
+    @student.can_ta = true
+    #...
+    @student.last_modified = Time.now
+        
     @student.save
     redirect_to @student
   end
@@ -43,6 +51,17 @@ class StudentsController < ApplicationController
   end
 private
     def student_params
-      params.require(:student).permit(:name, :semester)
+      params.require(:student).permit(
+        :level,
+        :date_enrolled,
+        :uin,
+        :first_name, 
+        :middle_name, 
+        :last_name,
+        :email, 
+        :advisor_email,
+        :phone,
+        :perferences)
+        
     end
 end
