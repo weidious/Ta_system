@@ -15,6 +15,10 @@ class StudentsController < ApplicationController
   def apply
 
   end
+  
+  def edit
+    @student = Student.find(params[:id])
+  end
 
   def create
     #render plain: params[:student].inspect
@@ -22,6 +26,16 @@ class StudentsController < ApplicationController
     @student.save
     redirect_to @student
   end
+  
+  def update
+    @student = Student.find(params[:id])
+    if @student.update(student_params)
+      redirect_to @student
+    else
+      render 'edit'
+    end
+  end
+  
   def show
     @student=Student.find(params[:id])
   end

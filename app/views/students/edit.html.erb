@@ -1,0 +1,17 @@
+<div class="table-responsive">
+  <%= form_for(@student) do |f| %>
+      <table class="table table-bordered">
+        <tr>
+          <th><%= f.label :name %></th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :semester %></th>
+          <td><%= f.select :semester, options_for_select(["Fall", "Spring"]) %></td>
+        </tr>
+      </table>
+      <%= f.submit%>
+  <% end %>
+<%= link_to 'Back', students_path %>
+
+</div>
