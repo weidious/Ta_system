@@ -13,13 +13,13 @@
   
   <div class="form-group">
        <%= f.label :uin %>
-       <%= f.number_field :uin %>
+       <%= f.number_field :uin, :value => session[:student_uin], :readonly => true %>
   </div>
   
 <div class="form-inline">
     <div class="form-group">
        <%= f.label :first_name %>
-       <%= f.text_field :first_name %>
+       <%= f.text_field :first_name  %>
     </div>
     <div class="form-group">
        <%= f.label :middle_name %>

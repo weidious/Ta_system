@@ -11,41 +11,41 @@
       
       <div class="form-group">
            <%= f.label :uin %>
-           <%= f.number_field :uin %>
+           <%= f.number_field :uin, :readonly => true %>
       </div>
       
     <div class="form-inline">
         <div class="form-group">
            <%= f.label :first_name %>
-           <%= f.text_field :first_name %>
+           <%= f.text_field :first_name, :readonly => true %>
         </div>
         <div class="form-group">
            <%= f.label :middle_name %>
-            <%= f.text_field :middle_name %>
+            <%= f.text_field :middle_name, :readonly => true %>
         </div>
         <div class="form-group">
            <%= f.label :last_name %>
-            <%= f.text_field :last_name %>
+            <%= f.text_field :last_name, :readonly => true %>
         </div>
     </div>
 
       <div class="form-group">
            <%= f.label :email %>
-            <%= f.text_field :email %>
+            <%= f.text_field :email, :readonly => true %>
       </div>
       
       <div class="form-group">
            <%= f.label :phone %>
-            <%= f.text_field :phone %>
+            <%= f.text_field :phone, :readonly => true %>
       </div>
       
       <div class="form-group">
            <%= f.label :advisor_email %>
-            <%= f.text_field :advisor_email %>
+            <%= f.text_field :advisor_email, :readonly => true %>
       </div>
       
       <div class="form-group">
            <%= f.label :perferences %>
-            <%= f.text_area  :perferences %>
+            <%= f.text_area  :perferences, :readonly => true %>
       </div>
   <% end %>
