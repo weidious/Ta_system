@@ -2,7 +2,9 @@ class StudentsController < ApplicationController
 
   def index
     # you can get UIN from params
-    session[:student_uin] = params[:UIN]
+    if (params.has_key?(:UIN))
+      session[:student_uin] = params[:UIN]
+    end
     @students = Student.all
   end
 
@@ -16,6 +18,16 @@ class StudentsController < ApplicationController
 
   def apply
 
+  end
+  
+  def basic_info
+    #@students = Student.all
+    @student = Student.find_by_uin(session[:student_uin])
+    if(@student)
+
+    else
+      redirect_to new_student_path
+    end
   end
   
   def edit
