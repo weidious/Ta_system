@@ -1,0 +1,56 @@
+<!--html:{class: "form-inline"},-->
+<%= form_for :student, url: students_path do |f|  %>
+
+  <div class="form-group">
+    <%= f.label :level %>
+    <%= f.select :level, options_for_select(["Master Non-Thesis", "Thesis Master", "PhD"]) %>
+  </div>
+
+  <div class="form-group">
+       <%= f.label :date_enrolled %>
+        <%= date_select :student, :date_enrolled %>
+  </div>
+  
+  <div class="form-group">
+       <%= f.label :uin %>
+       <%= f.number_field :uin %>
+  </div>
+  
+<div class="form-inline">
+    <div class="form-group">
+       <%= f.label :first_name %>
+       <%= f.text_field :first_name %>
+    </div>
+    <div class="form-group">
+       <%= f.label :middle_name %>
+        <%= f.text_field :middle_name %>
+    </div>
+    <div class="form-group">
+       <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+    </div>
+</div>
+
+  <div class="form-group">
+       <%= f.label :email %>
+        <%= f.text_field :email %>
+  </div>
+  
+  <div class="form-group">
+       <%= f.label :phone %>
+        <%= f.text_field :phone %>
+  </div>
+  
+  <div class="form-group">
+       <%= f.label :advisor_email %>
+        <%= f.text_field :advisor_email %>
+  </div>
+  
+  <div class="form-group">
+       <%= f.label :perferences %>
+        <%= f.text_area  :perferences %>
+  </div>
+
+
+    <%= f.submit "Create" %>
+<% end %>
