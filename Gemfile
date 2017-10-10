@@ -69,3 +69,5 @@ gem 'coffee-script-source', '1.8.0'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
 gem 'jquery-rails'
+
+gem 'simplecov', :require => false, :group => :test
