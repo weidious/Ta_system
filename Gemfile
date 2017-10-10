@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# 3rd part gem to check validation of email addressgit
+gem 'validates_email_format_of'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -43,7 +45,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'cucumber-rails', :require => false
   gem 'rspec-rails'
-  gem 'validates_email_format_of'
+  #gem 'validates_email_format_of'
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
 end
