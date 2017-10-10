@@ -44,8 +44,13 @@ class StudentsController < ApplicationController
     @student.can_ta = true
     #...
     @student.last_modified = Time.now
-        
-    @student.save
+    
+    #@student.save
+    if(@student.valid? and @student.save)
+        flash[:notice] = "Basic information created successfully."
+    else
+        flash[:notice] = @student.errors.messages
+    end
     redirect_to @student
   end
   

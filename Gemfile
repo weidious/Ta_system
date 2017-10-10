@@ -42,6 +42,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'cucumber-rails', :require => false
+  gem 'rspec-rails'
+  gem 'validates_email_format_of'
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
 end

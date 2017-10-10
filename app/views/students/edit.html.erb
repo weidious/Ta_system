@@ -10,13 +10,13 @@
             <%#= date_select :student, :date_enrolled %>
       </div>
       
-      <div class="form-group">
+      <div class="form-group required">
            <%= f.label :uin %>
            <%= f.number_field :uin, :readonly => true %>
       </div>
       
     <div class="form-inline">
-        <div class="form-group">
+        <div class="form-group required">
            <%= f.label :first_name %>
            <%= f.text_field :first_name %>
         </div>
@@ -24,13 +24,13 @@
            <%= f.label :middle_name %>
             <%= f.text_field :middle_name %>
         </div>
-        <div class="form-group">
+        <div class="form-group required">
            <%= f.label :last_name %>
             <%= f.text_field :last_name %>
         </div>
     </div>
 
-      <div class="form-group">
+      <div class="form-group required">
            <%= f.label :email %>
             <%= f.text_field :email %>
       </div>
