@@ -33,18 +33,16 @@ ta_candidate_1:integer ta_candidate_2:integer ta_candidate_3:integer ta_candidat
 grader_candidate_1:integer grader_candidate_2:integer grader_candidate_3:integer grader_candidate_4:integer grader_candidate_5:integer \
 sgrader_candidate_1:integer sgrader_candidate_2:integer sgrader_candidate_3:integer sgrader_candidate_4:integer sgrader_candidate_5:integer
 
-rails generate model application\
-course_id: integer, student_id: integer\
-app_type: integer, priority: integer, positive: boolean, accept_adjust: boolean,\
-taken_before: boolean, grade: string\
-created_at: timestamp
+rails generate model application \
+course_id:integer student_id:integer \
+app_type:integer priority:integer positive:boolean accept_adjust:boolean \
+taken_before:boolean grade:string \
+created_at:timestamp
 
-rails generate model offer\
-course_id: integer, student_id: integer, app_type: integer,\
-student_accepted: boolean, instructor_accepted: boolean,\
-created_at: timestamp
-
-
+rails generate model offer \
+course_id:integer student_id:integer app_type:integer \
+student_accepted:boolean instructor_accepted:boolean \
+created_at:timestamp
 
 
 # rails generate controller instructor
