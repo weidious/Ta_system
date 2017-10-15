@@ -10,9 +10,10 @@
       <td><%= course.num %></td>
       <td><%= course.title %></td>
       <td><%= course.id_primary_inst %></td>
-      <td><%= link_to 'Show', course_path(course) %></td>
-      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'View&Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'Destroy', course_path(course), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
     </tr>
   <% end %>
 </table>
+<%= link_to 'New course', new_course_path %>
 </div>
