@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Course, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  #pending "add some examples to (or delete) #{__FILE__}"
 
-  
   before :each do
       @course = Course.new(subject:"CSCE", num:606, section:600, title:"Software Engineering", id_primary_inst:123456789)
   end
