@@ -1,0 +1,17 @@
+<div class = "table">
+<table>
+  <tr>
+    <th>All courses</th>
+  </tr>
+ 
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= course.subject %></td>
+      <td><%= course.num %></td>
+      <td><%= course.id_primary_inst %></td>
+      <td><%= link_to 'Show', course_path(course) %></td>
+      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+    </tr>
+  <% end %>
+</table>
+</div>

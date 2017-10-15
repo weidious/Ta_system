@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009013354) do
+ActiveRecord::Schema.define(version: 20171015193928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string "subject"
+    t.integer "num"
+    t.integer "section"
+    t.string "title"
+    t.integer "id_primary_inst"
+    t.integer "num_ta"
+    t.integer "num_grader"
+    t.integer "num_sgrader"
+    t.text "requirement_ta"
+    t.text "requirement_grader"
+    t.text "requirement_sgrader"
+    t.integer "ta_candidate_1"
+    t.integer "ta_candidate_2"
+    t.integer "ta_candidate_3"
+    t.integer "ta_candidate_4"
+    t.integer "ta_candidate_5"
+    t.integer "grader_candidate_1"
+    t.integer "grader_candidate_2"
+    t.integer "grader_candidate_3"
+    t.integer "grader_candidate_4"
+    t.integer "grader_candidate_5"
+    t.integer "sgrader_candidate_1"
+    t.integer "sgrader_candidate_2"
+    t.integer "sgrader_candidate_3"
+    t.integer "sgrader_candidate_4"
+    t.integer "sgrader_candidate_5"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "instructors", force: :cascade do |t|
     t.integer "uin"
