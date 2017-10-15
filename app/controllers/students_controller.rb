@@ -1,3 +1,4 @@
+require 'date'
 class StudentsController < ApplicationController
 
   def index
@@ -16,15 +17,13 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
-  def apply
-
-  end
-  
   def basic_info
     #@students = Student.all
     @student = Student.find_by_uin(session[:student_uin])
     if(@student)
-
+      @the_date = eval(@student.date_enrolled)
+      @level = @student.level
+      @student.date_enrolled = nil
     else
       redirect_to new_student_path
     end
@@ -40,24 +39,25 @@ class StudentsController < ApplicationController
     end
     #render plain: params[:student].inspect
     @student = Student.new(student_params)
-    
+    @student.uin = session[:student_uin]
     @student.can_ta = true
     #...
     @student.last_modified = Time.now
-    
+
     #@student.save
     if(@student.valid? and @student.save)
         flash[:notice] = "Basic information created successfully."
     else
         flash[:notice] = @student.errors.messages
     end
-    redirect_to @student
+    flash.keep
+    redirect_to students_basic_info_path
   end
   
   def update
     @student = Student.find(params[:id])
     if @student.update(student_params)
-      redirect_to @student
+      redirect_to students_basic_info_path
     else
       render 'edit'
     end

@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   get 'students/basic_info'
-  get 'students/apply'
   get 'students/checkStatus'
+
   post 'welcome/login'
 
 
