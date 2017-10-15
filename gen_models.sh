@@ -24,14 +24,27 @@ perferences: string \
 date_enrolled: date \
 last_modified: timestamp
 
-rails generate model Course \
+rails generate model course \
 subject:string num:integer section:integer title:string \
-id_primary_inst:integer \
+instructor_id:integer \
 num_ta:integer num_grader:integer num_sgrader:integer \
 requirement_ta:text requirement_grader:text requirement_sgrader:text \
 ta_candidate_1:integer ta_candidate_2:integer ta_candidate_3:integer ta_candidate_4:integer ta_candidate_5:integer \
 grader_candidate_1:integer grader_candidate_2:integer grader_candidate_3:integer grader_candidate_4:integer grader_candidate_5:integer \
 sgrader_candidate_1:integer sgrader_candidate_2:integer sgrader_candidate_3:integer sgrader_candidate_4:integer sgrader_candidate_5:integer
+
+rails generate model application\
+course_id: integer, student_id: integer\
+app_type: integer, priority: integer, positive: boolean, accept_adjust: boolean,\
+taken_before: boolean, grade: string\
+created_at: timestamp
+
+rails generate model offer\
+course_id: integer, student_id: integer, app_type: integer,\
+student_accepted: boolean, instructor_accepted: boolean,\
+created_at: timestamp
+
+
 
 
 # rails generate controller instructor
