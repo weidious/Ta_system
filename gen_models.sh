@@ -1,6 +1,15 @@
 #!/bin/bash
 rails generate model instructor uin:integer first_name:string middle_name:string last_name:string email:string
 
+#when delete and re-generate model:
+#  rails destroy model student
+#  rake db:drop student
+#
+#  rails generate model student
+#  rake db:create
+#   rake db:migrate
+#  rake db:seed 
+
 rails generate model student \
 uin:integer first_name:string middle_name:string last_name:string \
 level: integer \
