@@ -1,4 +1,4 @@
-class Application < ApplicationRecord
+class Apply < ApplicationRecord
     belongs_to:student
     belongs_to:course
 end
