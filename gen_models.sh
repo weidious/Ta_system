@@ -34,13 +34,13 @@ grader_candidate_1:integer grader_candidate_2:integer grader_candidate_3:integer
 sgrader_candidate_1:integer sgrader_candidate_2:integer sgrader_candidate_3:integer sgrader_candidate_4:integer sgrader_candidate_5:integer
 
 rails generate model Apply \
-courseId:integer studentId:integer \
+course:references student:references \
 appType:integer priority:integer positive:boolean acceptAdjust:boolean \
 takenBefore:boolean grade:string \
 createdAt:timestamp
 
-rails generate model offer \
-course_id:integer student_id:integer app_type:integer \
+rails generate model Offer \
+course:references student:references app_type:integer \
 student_accepted:boolean instructor_accepted:boolean \
 created_at:timestamp
 

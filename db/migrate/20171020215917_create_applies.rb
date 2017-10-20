@@ -1,8 +1,8 @@
 class CreateApplies < ActiveRecord::Migration[5.1]
   def change
     create_table :applies do |t|
-      t.integer :courseId
-      t.integer :studentId
+      t.references :course, foreign_key: true
+      t.references :student, foreign_key: true
       t.integer :appType
       t.integer :priority
       t.boolean :positive
