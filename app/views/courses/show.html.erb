@@ -1,27 +1,2 @@
-<%= form_for(@course) do |f| %>
-      <div class="form-group">
-           <%= f.label :subject %>
-           <%= f.text_field :subject %>
-      </div>
-
-      <div class="form-group">
-           <%= f.label :num %>
-            <%= f.number_field :num %>
-      </div>
-      
-      <div class="form-group">
-           <%= f.label :section %>
-            <%= f.number_field :section %>
-      </div>
-      
-      <div class="form-group">
-           <%= f.label :title %>
-            <%= f.text_field :title %>
-      </div>
-      
-      <div class="form-group">
-           <%= f.label :id_primary_inst %>
-            <%= f.number_field  :id_primary_inst %>
-      </div>
-      <%= link_to 'Back', courses_path %>
-  <% end %>
+<%= render 'form' %>
+<%= link_to 'Back', courses_path %>
