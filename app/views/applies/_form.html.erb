@@ -1,0 +1,45 @@
+<%= form_for(@apply) do |f| %>
+    <% if @apply.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@apply.errors.count, "error") %> prohibited this course from being saved:
+          </h2>
+          <ul>
+            <% @apply.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <table>
+      <tr>
+        <td><%= f.label :courseId %></td>
+        <td class="required"><%= f.text_field :courseId %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :appType %></td>
+        <td class="required"><%= f.select :appType, options_for_select(["TA", "Grader", "Senior-Grader"]) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :priority %></td>
+        <td class="required"><%= f.text_field :priority %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :positive %></td>
+        <td class="required"><%= f.select :positive, options_for_select(["Yes", "No"]) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :acceptAdjust %></td>
+        <td class="required"><%= f.select :acceptAdjust, options_for_select(["Yes", "No"]) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :takenBefore %></td>
+        <td class="required"><%= f.select :takenBefore, options_for_select(["Yes", "No"]) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :grade %></td>
+        <td class="required"><%= f.text_field :grade %></td>
+      </tr>
+    </table>
+    <%= f.submit "Create" %>
+<% end %>

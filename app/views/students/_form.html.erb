@@ -1,0 +1,40 @@
+<%= form_for :student, url: students_path do |f|  %>
+    <table>
+      <tr>
+        <td><%= f.label :level %></td>
+        <td class="required"><%= f.select :level, options_for_select(["Master Non-Thesis", "Thesis Master", "PhD"]) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :date_enrolled %></td>
+        <td class="required"><%= date_select :student, :date_enrolled,order: [:year, :month, :day]%></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :first_name %></td>
+        <td class="required"><%= f.text_field :first_name %></td>
+        <td><%= f.label :middle_name %></td>
+        <td> <%= f.text_field :middle_name %></td>
+        <td> <%= f.label :last_name %></td>
+        <td class="required"> <%= f.text_field :last_name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :email %></td>
+        <td class="required"><%= f.text_field :email %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :phone %></td>
+        <td class="required"><%= f.text_field :phone %></td>
+      </tr>
+
+      <tr>
+        <td> <%= f.label :advisor_email %></td>
+        <td class="required"> <%= f.text_field :advisor_email %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :perferences %></td>
+        <td> <%= f.text_area  :perferences %></td>
+      </tr>
+    </table>
+    <%= f.submit "Create" %>
+<% end %>
