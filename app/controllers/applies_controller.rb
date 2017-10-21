@@ -1,9 +1,6 @@
 class AppliesController < ApplicationController
   def index
-    if (params.has_key?(:UIN))
-      session[:student_uin] = params[:UIN]
-    end
-    @apply = Apply.all
+    @applies = Apply.all
   end
 
   def new_apply

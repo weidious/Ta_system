@@ -40,6 +40,7 @@
           <a class="nav-link"><%= link_to "Check Application Status", :controller => 'students', :action => 'checkStatus' %></a>
         </li>
       </ul>
+      
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
           <p>===========================================================</p>
@@ -60,10 +61,22 @@
           <p>Applies pages</p>
         </li>
         <li class="nav-item">
-          <a class="nav-link"><%= link_to "Home", :controller => 'applies', :action => 'index' %></a>
+          <a class="nav-link"><%= link_to "Applies", :controller => 'applies', :action => 'index' %></a>
         </li>
         <li class="nav-item">
           <a class="nav-link"><%= link_to "New Apply", :controller => 'applies', :action => 'new' %></a>
+        </li>
+      </ul>
+      
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <p>===========================================================</p>
+        </li>
+        <li class="nav-item">
+          <p>Instructors pages</p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"><%= link_to "Instructors", :controller => 'instructors', :action => 'index' %></a>
         </li>
       </ul>
 
