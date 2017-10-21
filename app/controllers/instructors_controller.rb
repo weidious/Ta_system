@@ -7,7 +7,6 @@ class InstructorsController < ApplicationController
   def delete
   end
 
-  
   def create
     # render plain: params[:instructor].inspect
     @new_inst = Instructor.new(instructor_params)
