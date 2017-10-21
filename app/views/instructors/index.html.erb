@@ -2,6 +2,7 @@
 <h1>Instructor#index</h1>
 <p>Find me in app/views/instructor/index.html.erb</p>
 
+
 <%= form_for :instructor do |f| %>
   <p>
     <%= f.label :first_namer %>:
@@ -37,7 +38,7 @@
       <th>Action</th>
     </tr>
   </thead>
- 
+
 <% for @inst in @inst_ls %>
 <tr>
   <td><%= @inst.first_name %></td>
