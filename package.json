@@ -1,5 +1,7 @@
 {
   "name": "HelloWorld",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "crawler": "^1.1.1"
+  }
 }

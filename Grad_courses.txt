@@ -1,0 +1,70 @@
+CSCE 601 Programming with C and Java
+CSCE 602 Object-Oriented Programming, Development and Software Engineering
+CSCE 603 Database Systems and Applications
+CSCE 604 Programming Languages
+CSCE 605 Compiler Design
+CSCE 606 Software Engineering
+CSCE 608 Database Systems
+CSCE 610 Hypertext/Hypermedia Systems
+CSCE 611 Operating Systems and Applications
+CSCE 612 Applied Networks and Distributed Processing
+CSCE 613 Operating Systems
+CSCE 614 Computer Architecture
+CSCE 616 Introduction to Hardware Design Verification
+CSCE 617 Co-Design of Embedded Systems (CODES)
+CSCE 619 Networks and Distributed Computing
+CSCE 620/VIZA 670 Computational Geometry
+CSCE 621 Language, Library, and Program Design Using C++
+CSCE 622 Generic Programming
+CSCE 624 Sketch Recognition
+CSCE 625 Artificial Intelligence
+CSCE 626 Parallel Algorithm Design and Analysis
+CSCE 627 Theory of Computability
+CSCE 628/BICH 628 Computational Biology
+CSCE 629 Analysis of Algorithms
+CSCE 630 Speech Processing
+CSCE 631 Intelligent Agents
+CSCE 633 Machine Learning
+CSCE 634 Intelligent User Interfaces
+CSCE 635 AI Robotics
+CSCE 636 Neural Networks
+CSCE 637 Complexity Theory
+CSCE 638 Natural Language Processing: Foundations and Techniques
+CSCE 639/MEEN 676 Fuzzy Logic and Intelligent Systems
+CSCE 640 Quantum Algorithms
+CSCE 641/VIZA 672 Computer Graphics
+CSCE 643 Seminar in Intelligent Systems and Robotics
+CSCE 644 Cortical Networks
+CSCE 645/VIZA 675 Geometric Modeling
+CSCE 646/VIZA 654 The Digital Image
+CSCE 647/VIZA 656 Image Synthesis
+CSCE 648/VIZA 657 Computer Aided Sculpting
+CSCE 649/VIZA 659 Physically-Based Modeling
+CSCE 652 Software Reverse Engineering
+CSCE 653 Computer Methods in Applied Sciences
+CSCE 654 Supercomputing
+CSCE 655 Human-Centered Computing
+CSCE 656 Computers and New Media
+CSCE 657/PETE 657 High Performance Computing for Earth Science and Petroleum Engineering
+CSCE 658 Randomized Algorithms.
+CSCE 659/ECEN 659 Parallel/Distributed Numerical Algorithms and Applications
+CSCE 660/MATH 660 Computational Linear Algebra
+CSCE 661 Integrated Systems Design Automation
+CSCE 662 Distributed Processing Systems
+CSCE 663 Real-Time Systems
+CSCE 664 Wireless and Mobile Systems
+CSCE 665 Advanced Networking and Security
+CSCE 666 Pattern Analysis
+CSCE 667 Seminar in Human-Centered Computing
+CSCE 668 Distributed Algorithms and Systems
+CSCE 669 Computational Optimization
+CSCE 670 Information Storage and Retrieval
+CSCE 671 Computer-Human Interaction
+CSCE 672 Computer Supported Collaborative Work
+CSCE 675 Digital Libraries
+CSCE 680/ECEN 680 Testing and Diagnosis of Digital Systems
+CSCE 681 Seminar
+CSCE 684 Professional Internship
+CSCE 685 Directed Studies
+CSCE 689 Special Topics in...
+CSCE 691 Research
