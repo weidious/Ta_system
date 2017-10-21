@@ -1,3 +1,3 @@
 class Instructor < ApplicationRecord
-    has_one :course
+    has_many :course
 end
