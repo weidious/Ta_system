@@ -5,7 +5,7 @@ class CreateCourses < ActiveRecord::Migration[5.1]
       t.integer :num
       t.integer :section
       t.string :title
-      t.integer :id_primary_inst
+      t.references :instructor, foreign_key: true
       t.integer :num_ta
       t.integer :num_grader
       t.integer :num_sgrader
