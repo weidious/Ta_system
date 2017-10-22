@@ -8,7 +8,7 @@
 
 list_inst = []
 (1..5).each {|i|
-    inst = Instructor.create(first_name:"fn #{i}", last_name:"lname#{i}", email:"email#{i}@tamu.edu")
+    inst = Instructor.create(first_name:"fn #{i}", last_name:"lname#{i}", email:"email#{i}@tamu.edu", uin:rand(100000000..9999999999))
     list_inst << inst
 }
 # File.open(File.dirname(__FILE__) + "/Under_courses.txt", "r") do |f|
