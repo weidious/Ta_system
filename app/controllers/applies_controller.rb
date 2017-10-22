@@ -1,6 +1,16 @@
 class AppliesController < ApplicationController
+  
   def index
     @applies = Apply.all
+    @applies.each { |app|
+      if app.appType == 1
+      then app['app_type'] = 'TA'
+      elsif app.appType == 2
+        then app['app_type'] = 'Grader'
+      else app['app_type'] = 'Senior Grader'
+      end
+    }
+    
   end
 
   def new_apply
