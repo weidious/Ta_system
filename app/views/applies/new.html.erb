@@ -1,28 +1,40 @@
 
 
-
 <%= form_for :apply do |f| %>
-  <p>
-    <%= f.label :first_namer %>:
-    <%= f.text_field :first_name %>
-    
-    <%= f.label :middle_name %>
-    <%= f.text_field :middle_name %>
-    
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-    
-  </p>
-  <p>
-    <%= f.label :uin %>:
-    <%= f.number_field :uin, in: 100000000..9999999999 %>
-    
-    <%= f.label :email %>:
-    <%= f.email_field :email %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+
+    <table>
+      <tr>
+        <td><%= f.label :course_id %></td>
+        <td class="required"><%= f.text_field :course_id %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :appType %></td>
+        <td class="required"><%= f.select :appType, options_for_select(["TA", "Grader", "Senior-Grader"]) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :priority %></td>
+        <td class="required"><%= f.text_field :priority %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :positive %></td>
+        <td class="required"><%= f.select :positive, options_for_select(["Yes", "No"]) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :acceptAdjust %></td>
+        <td class="required"><%= f.select :acceptAdjust, options_for_select(["Yes", "No"]) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :takenBefore %></td>
+        <td class="required"><%= f.select :takenBefore, options_for_select(["Yes", "No"]) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :grade %></td>
+        <td class="required"><%= f.text_field :grade %></td>
+      </tr>
+    </table>
+    <%= f.submit%>
 <% end %>
+
+      
 
 <%= link_to 'Back', applies_path %>
