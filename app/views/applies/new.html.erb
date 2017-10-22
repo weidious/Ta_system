@@ -1,2 +1,28 @@
-<%= render 'form' %>
+
+
+
+<%= form_for :apply do |f| %>
+  <p>
+    <%= f.label :first_namer %>:
+    <%= f.text_field :first_name %>
+    
+    <%= f.label :middle_name %>
+    <%= f.text_field :middle_name %>
+    
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    
+  </p>
+  <p>
+    <%= f.label :uin %>:
+    <%= f.number_field :uin, in: 100000000..9999999999 %>
+    
+    <%= f.label :email %>:
+    <%= f.email_field :email %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
 <%= link_to 'Back', applies_path %>
