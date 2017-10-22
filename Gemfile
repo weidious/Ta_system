@@ -71,3 +71,6 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'jquery-rails'
 
 gem 'simplecov', :require => false, :group => :test
+
+# Added email format validation check. --ZY
+gem 'validates_email_format_of'

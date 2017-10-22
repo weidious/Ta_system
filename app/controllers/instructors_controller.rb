@@ -1,27 +1,61 @@
 class InstructorsController < ApplicationController
   
-  def show
-      puts(">>>>>>>>>>>>show>>>>>>>>>>>>\r\n")
+  def index
+    #if params[:format] then
+    #puts(params.to_s)
+    #    @to_remove_uin = params[:format]
+    #    Instructor.where(uin: @to_remove_uin).destroy_all
+    #end
+    #  @inst_ls = Instructor.all
+    @instructors = Instructor.all
   end
   
-  def delete
+  def show
+      #puts(">>>>>>>>>>>>show>>>>>>>>>>>>\r\n")
+      @instructor = Instructor.find(params[:id])
+  end
+  
+  def new
+    @instructor = Instructor.new
+  end
+  
+  def edit
+    @instructor = Instructor.find(params[:id])
+  end
+  
+  def destroy
+    @instructor = Instructor.find(params[:id])
+    @instructor.destroy
+    redirect_to instructors_path
   end
 
   def create
     # render plain: params[:instructor].inspect
-    @new_inst = Instructor.new(instructor_params)
-    @new_inst.save
-    redirect_to "/instructors"
+    #@new_inst = Instructor.new(instructor_params)
+    #@new_inst.save
+    #redirect_to "/instructors"
+    @instructor = Instructor.new(instructor_params)
+    if @instructor.save
+      flash[:notice] = "Instructor was successfully saved."
+      redirect_to instructors_path
+    else
+      flash[:error] =  @instructor.errors.messages
+      render 'new'
+    end
   end
   
-  def index
-    if params[:format] then
-    puts(params.to_s)
-        @to_remove_uin = params[:format]
-        Instructor.where(uin: @to_remove_uin).destroy_all
+  def update
+    @instructor = Instructor.find(params[:id])
+   
+    if @instructor.update(instructor_params)
+        flash[:notice] = "Instructor was successfully updated."
+        redirect_to instructors_path
+    else
+        flash[:error] =  @instructor.errors.messages
+        render 'edit'
     end
-      @inst_ls = Instructor.all
   end
+
   
 private
   def instructor_params

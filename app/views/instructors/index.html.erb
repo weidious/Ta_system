@@ -2,31 +2,6 @@
 <h1>Instructor#index</h1>
 <p>Find me in app/views/instructor/index.html.erb</p>
 
-
-<%= form_for :instructor do |f| %>
-  <p>
-    <%= f.label :first_namer %>:
-    <%= f.text_field :first_name %>
-    
-    <%= f.label :middle_name %>
-    <%= f.text_field :middle_name %>
-    
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-    
-  </p>
-  <p>
-    <%= f.label :uin %>:
-    <%= f.number_field :uin, in: 100000000..999999999 %>
-    
-    <%= f.label :email %>:
-    <%= f.email_field :email %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -39,18 +14,16 @@
     </tr>
   </thead>
 
-<% for @inst in @inst_ls %>
+<% @instructors.each do |instructor| %>
 <tr>
-  <td><%= @inst.first_name %></td>
-  <td><%= @inst.middle_name %></td>
-  <td><%= @inst.last_name %></td>
-  <td><%= @inst.email %></td>
-  <td><%= @inst.uin %></td>
-    <td>
-          <button type="button" class="btn">
-          <%= link_to 'Delete', instructors_path(@inst.uin) %>
-          </button>
-    </td>
+  <td><%= instructor.first_name %></td>
+  <td><%= instructor.middle_name %></td>
+  <td><%= instructor.last_name %></td>
+  <td><%= instructor.email %></td>
+  <td><%= instructor.uin %></td>
+  <td><%= link_to 'View&Edit', edit_instructor_path(instructor) %></td>
+  <td><%= link_to 'Delete', instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
 </tr>
 <% end %>
 </table>
+<%= link_to 'New instructor', new_instructor_path %>
