@@ -11,7 +11,14 @@ list_inst = []
     inst = Instructor.create(first_name:"fn #{i}", last_name:"lname#{i}", email:"email#{i}@tamu.edu")
     list_inst << inst
 }
+# File.open(File.dirname(__FILE__) + "/Under_courses.txt", "r") do |f|
+#   f.each_line do |line|
+#   	list = line.split()
+#   	courses = Course.create(subject: list[0], num: list[1], section: 600, title: list[2..list.length()].join(" "),
+#     instructor_id: list_inst.sample.id)
 
+#   end
+# end
 courses = Course.create(subject: "CSCE", num: 606, section: 600, title: "Software Engineering",
     instructor_id: list_inst.sample.id)
 
