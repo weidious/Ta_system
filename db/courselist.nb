@@ -1,0 +1,136 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4450,        127]
+NotebookOptionsPosition[      3986,        108]
+NotebookOutlinePosition[      4329,        123]
+CellTagsIndexPosition[      4286,        120]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.7177839836973524`*^9, 3.7177839915180035`*^9}, 
+   3.7177861005762844`*^9}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"courselist", "=", 
+    RowBox[{"StringSplit", "[", 
+     RowBox[{
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"ReadList", "[", 
+         RowBox[{"\"\<courses.txt\>\"", ",", " ", "String"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{"StringStartsQ", "[", 
+          RowBox[{"#", ",", "\"\<CSCE\>\""}], "]"}], "&"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\< \>\"", ",", " ", "\"\</\>\""}], "}"}], ",", "3"}], 
+     "]"}]}], ";"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.7177847360808334`*^9, 3.7177847446264915`*^9}, {
+   3.717784856751834*^9, 3.71778487708037*^9}, {3.7177849224017925`*^9, 
+   3.7177849833078094`*^9}, {3.71778502238087*^9, 3.7177850248068857`*^9}, {
+   3.7177852354286976`*^9, 3.717785241788742*^9}, {3.717785455571987*^9, 
+   3.7177854648782606`*^9}, 3.717785779365714*^9, {3.717786403060289*^9, 
+   3.71778640632471*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"undercourses", "=", 
+   RowBox[{"StringSplit", "[", 
+    RowBox[{
+     RowBox[{"ReadList", "[", 
+      RowBox[{"\"\<Under_courses.txt\>\"", ",", " ", "String"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\< \>\"", ",", " ", "\"\</\>\""}], "}"}], ",", "3"}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.717786247264981*^9, 3.717786279943606*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"gradcourses", "=", 
+   RowBox[{"StringSplit", "[", 
+    RowBox[{
+     RowBox[{"ReadList", "[", 
+      RowBox[{"\"\<Grad_courses.txt\>\"", ",", " ", "String"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\< \>\"", ",", " ", "\"\</\>\""}], "}"}], ",", "3"}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.717786286917055*^9, 3.717786295153309*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"courselist", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{"undercourses", ",", "gradcourses"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7177863513036976`*^9, 3.717786370345828*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"seedsrb", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"\"\<Course.create(subject: \\\"\>\"", "<>", 
+      RowBox[{"crs", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+      "<>", "\"\<\\\", num: \>\"", "<>", 
+      RowBox[{"crs", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+      "<>", "\"\<, section: 600, title: \\\"\>\"", "<>", 
+      RowBox[{"crs", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+      "<>", "\"\<\\\",\n    instructor_id: list_inst.sample.id)\>\""}], ",", 
+     RowBox[{"{", 
+      RowBox[{"crs", ",", "courselist"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.71778509745588*^9, 3.7177851455514336`*^9}, {
+  3.7177855012489047`*^9, 3.717785589427043*^9}, {3.7177856508292484`*^9, 
+  3.717785699526497*^9}, {3.717785756534876*^9, 3.717785757863885*^9}, {
+  3.7177858631639614`*^9, 3.717785866614584*^9}, {3.717786432876292*^9, 
+  3.7177864393083363`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<seed.txt\>\"", ",", "seedsrb"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.7177858682535944`*^9, 3.717785878830864*^9}, 
+   3.7177863971942496`*^9, {3.7177864413307505`*^9, 3.7177864427377596`*^9}}]
+},
+WindowSize->{759, 835},
+WindowMargins->{{Automatic, 156}, {46, Automatic}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 29, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 221, 5, 31, "Input"],
+Cell[782, 27, 932, 21, 72, "Input"],
+Cell[1717, 50, 396, 10, 31, "Input"],
+Cell[2116, 62, 394, 10, 31, "Input"],
+Cell[2513, 74, 222, 5, 31, "Input"],
+Cell[2738, 81, 973, 18, 72, "Input"],
+Cell[3714, 101, 268, 5, 31, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
