@@ -23,8 +23,9 @@ class AppliesController < ApplicationController
 
   def new
     @apply = Apply.new
+    @courses = Course.all
+    
   end
-
 
   def edit
     @apply = Apply.find(params[:id])
