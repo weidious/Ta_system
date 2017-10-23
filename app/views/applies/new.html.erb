@@ -5,8 +5,18 @@
     <table>
       <tr>
         <td><%= f.label :course_id %></td>
-        <td class="required"><%= f.text_field :course_id %></td>
+        <td class="required">
+
+<%= f.select(:course_id) do %>
+  <% @courses.each do |cs| -%>
+    <%= content_tag(:option, cs.subject + cs.num.to_s + '-' + cs.section.to_s + '  ' + cs.title , value: cs.id) %>
+  <% end %>
+<% end %>
+
+
+        </td>
       </tr>
+      
       <tr>
         <td><%= f.label :appType %></td>
         <td class="required"><%= f.select :appType, options_for_select(["TA", "Grader", "Senior-Grader"]) %></td>
