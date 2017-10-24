@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
 
     def index
+        #flash.keep
         @courses = Course.all.order(:num)
     end
     
@@ -21,14 +22,16 @@ class CoursesController < ApplicationController
     
     def create
         @course = Course.new(course_params)
+        flash.keep
         if @course.save
           flash[:notice] = "Course was successfully saved."
           redirect_to courses_path
+          #redirect_to courses_path, notice: 'Course was successfully saved.'
         else
-          flash[:error] =  @course.errors.messages
-          render 'new'
+          flash[:error] =  'Failed to save. ' #@course.errors.messages
+          render 'new'#, error: 'Course was not successfully saved.'
         end
-        #flash.keep
+        flash.keep
         #redirect_to courses_path
     end
 
@@ -47,7 +50,9 @@ class CoursesController < ApplicationController
 
     def destroy
       @course = Course.find(params[:id])
-      @course.destroy
+      if @course.destroy
+        flash[:notice] = "Course was successfully deleted."
+      end
      
       redirect_to courses_path
     end
