@@ -1,17 +1,25 @@
 <div class = "table">
-<table>
-  <tr>
+  <p>
     <th>All courses</th>
-  </tr>
+  </p>
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>No.</th>
+      <th>Title</th>
+      <th>Instructor</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
  
   <% @courses.each do |course| %>
     <tr>
       <td><%= course.subject %></td>
       <td><%= course.num %></td>
-      <td><%= course.title %></td>
-      <td><%= course.instructor.first_name %></td>
-      <td><%= course.instructor.middle_name %></td>
-      <td><%= course.instructor.last_name %></td>
+      <td width="300"><%= course.title %></td>
+      <td><%= course.instructor.last_name + ", " + course.instructor.first_name %></td>
       <td><%= link_to 'View&Edit', edit_course_path(course) %></td>
       <td><%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
     </tr>
