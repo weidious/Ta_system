@@ -5,9 +5,20 @@
   </tr>
  
   <% @students.each do |student| %>
+  <tr>
+    <th>Name</th>
+    <th>UIN</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Date Enrolled</th>
+    <th>Details</th>
+    <th>Edit</th>
+  </tr>
     <tr>
-      <td><%= student.first_name %></td>
+      <td><%= student.first_name + " " + (student.middle_name || " ") + " " + student.last_name %></td>
       <td><%= student.uin %></td>
+      <td><%= student.email %></td>
+      <td><%= student.phone %></td>
       <td><%= student.date_enrolled %></td>
       <td><%= link_to 'Show', student_path(student) %></td>
       <td><%= link_to 'Edit', edit_student_path(student) %></td>
