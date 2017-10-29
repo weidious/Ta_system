@@ -8,8 +8,16 @@
 
 list_inst = []
 (1..5).each {|i|
-    inst = Instructor.create(first_name:"fn #{i}", last_name:"lname#{i}", email:"email#{i}@tamu.edu", uin:rand(100000000..999999999))
+    inst = Instructor.create(first_name:"fn #{i}", last_name:"ln#{i}", email:"inst#{i}@tamu.edu", uin:rand(100000000..999999999))
     list_inst << inst
+}
+
+list_student = []
+(1..10).each {|i|
+    stu = Student.create(uin:rand(100000000..999999999), first_name:"fn#{i}", last_name:"ln#{i}",
+    email:"stu#{i}@tamu.edu", level:rand(1..3), assigned:false, phone:(9790000000 + rand(0..9999999)),
+    advisor_email:list_inst.sample.email, can_ta:true, can_grader:true, can_sgrader:true)
+    list_student << stu
 }
 
 Instructor.create(first_name:"Tanzir", middle_name:"", last_name:"Ahmed", email:"tanzir@tamu.edu", uin:rand(123450000..123459999))
@@ -313,8 +321,19 @@ Course.create(subject: "CSCE", num: 669, section: 600, title: "Computational Opt
     instructor_id: list_inst.sample.id)
 Course.create(subject: "CSCE", num: 670, section: 600, title: "Information Storage and Retrieval",
     instructor_id: list_inst.sample.id)
-Course.create(subject: "CSCE", num: 671, section: 600, title: "Computer-Human Interaction",
-    instructor_id: list_inst.sample.id)
+
+@couse1 = Course.create(subject: "CSCE", num: 671, section: 600, title: "Computer-Human Interaction",
+    instructor_id: list_inst.sample.id, 
+    ta_candidate_1: list_student.sample.id,
+    ta_candidate_2: list_student.sample.id,
+    ta_candidate_3: list_student.sample.id,
+    grader_candidate_1: list_student.sample.id,
+    grader_candidate_2: list_student.sample.id,
+    grader_candidate_3: list_student.sample.id,
+    sgrader_candidate_1: list_student.sample.id)
+    
+    puts(@couse1.id)
+
 Course.create(subject: "CSCE", num: 672, section: 600, title: "Computer Supported Collaborative Work",
     instructor_id: list_inst.sample.id)
 Course.create(subject: "CSCE", num: 675, section: 600, title: "Digital Libraries",
@@ -331,3 +350,4 @@ Course.create(subject: "CSCE", num: 689, section: 600, title: "Special Topics in
     instructor_id: list_inst.sample.id)
 Course.create(subject: "CSCE", num: 691, section: 600, title: "Research",
     instructor_id: list_inst.sample.id)
+    
