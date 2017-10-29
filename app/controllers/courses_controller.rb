@@ -12,11 +12,13 @@ class CoursesController < ApplicationController
     
     def new
         @course = Course.new
+        @instructors = Instructor.all
     end
     
     
     def edit
         @course = Course.find(params[:id])
+        @instructors = Instructor.all
     end
     
     

@@ -34,8 +34,17 @@
       
       <div class="form-group">
            <%= f.label :instructor_id %>
-            <%= f.number_field  :instructor_id %>
+
+      <%= f.select(:instructor_id) do %>
+          <% @instructors.each do |inst| -%>
+                <%= content_tag(:option, inst.first_name + " " + (inst.middle_name || "") + " " + inst.last_name, 
+                                value: inst.id) %>
+          <% end %>
+      <% end %>
+
       </div>
+
+
       <div>
         <%= f.submit %>
       </div>
