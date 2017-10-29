@@ -9,15 +9,19 @@
     <th>Type</th>
     <th>Accept Adjust</th>
     <th>Created At</th>
+    <th></th>
+    <th></th>
   </tr>
   
-  <% @applies.each do |app| %>
-  
-      <td><%= app.course.subject %> <%= app.course.num %>-<%= app.course.section %> <%= app.course.title %> 
-      </td>
-      <td> <%= app.app_type %></td>
-      <td><%= app.acceptAdjust %></td>
-      <td><%= app.createdAt %></td>
+  <% @applies.each do |apply| %>
+    <tr>
+      <td><%= apply.course.subject %> <%= apply.course.num %>-<%= apply.course.section %> <%= apply.course.title %> </td>
+      <td> <%= apply.appType %></td>
+      <td><%= apply.acceptAdjust %></td>
+      <td><%= apply.createdAt %></td>
+      <td><%= link_to 'View&Edit', edit_apply_path(apply) %></td>
+      <td><%= link_to 'Delete', apply_path(apply), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
+    </tr>
   <% end %>
 
 </table>

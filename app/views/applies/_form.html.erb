@@ -1,11 +1,11 @@
-<%= form_for(@applies) do |f| %>
-    <% if @applies.errors.any? %>
+<%= form_for(@apply) do |f| %>
+    <% if @apply.errors.any? %>
         <div id="error_explanation">
           <h2>
-            <%= pluralize(@applies.errors.count, "error") %> prohibited this course from being saved:
+            <%= pluralize(@apply.errors.count, "error") %> prohibited this course from being saved:
           </h2>
           <ul>
-            <% @applies.errors.full_messages.each do |msg| %>
+            <% @apply.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
             <% end %>
           </ul>
@@ -13,29 +13,41 @@
     <% end %>
     <table>
       <tr>
-        <td><%= f.label :courseId %></td>
-        <td class="required"><%= f.text_field :courseId %></td>
+        <td><%= f.label :course_id %></td>
+        <td class="required">
+          <%= f.select(:course_id) do %>
+            <% @courses.each do |cs| -%>
+              <%= content_tag(:option, cs.subject + cs.num.to_s + '-' + cs.section.to_s + '  ' + cs.title , value: cs.id) %>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
+      
       <tr>
         <td><%= f.label :appType %></td>
-        <td class="required"><%= f.select :appType, options_for_select(["TA", "Grader", "Senior-Grader"]) %></td>
+        <td class="required"><%= f.select :appType, options_for_select([["TA", 1], ["Grader", 2], ["Senior Grader", 3]], :appType) %></td>
       </tr>
+      
       <tr>
         <td><%= f.label :priority %></td>
         <td class="required"><%= f.text_field :priority %></td>
       </tr>
+      
       <tr>
         <td><%= f.label :positive %></td>
         <td class="required"><%= f.select :positive, options_for_select(["Yes", "No"]) %></td>
       </tr>
+      
       <tr>
         <td><%= f.label :acceptAdjust %></td>
         <td class="required"><%= f.select :acceptAdjust, options_for_select(["Yes", "No"]) %></td>
       </tr>
+      
       <tr>
         <td><%= f.label :takenBefore %></td>
         <td class="required"><%= f.select :takenBefore, options_for_select(["Yes", "No"]) %></td>
       </tr>
+      
       <tr>
         <td><%= f.label :grade %></td>
         <td class="required"><%= f.text_field :grade %></td>

@@ -2,20 +2,21 @@ class AppliesController < ApplicationController
   
   def index
     @applies = Apply.all
-    @applies.each { |app|
-      if app.appType == 1
-      then app['app_type'] = 'TA'
-      elsif app.appType == 2
-        then app['app_type'] = 'Grader'
-      else app['app_type'] = 'Senior Grader'
-      end
-    }
+    
+    # @applies.each { |app|
+    #   if app.appType == 1
+    #   then app['app_type'] = 'TA'
+    #   elsif app.appType == 2
+    #     then app['app_type'] = 'Grader'
+    #   else app['app_type'] = 'Senior Grader'
+    #   end
+    # }
     
   end
 
-  def new_apply
-      redirect_to new_apply_path
-  end
+  #def new_apply
+  #    redirect_to new_apply_path
+  #end
 
   def show
     @apply = Apply.find(params[:id])
@@ -29,6 +30,7 @@ class AppliesController < ApplicationController
 
   def edit
     @apply = Apply.find(params[:id])
+    @courses = Course.all
   end
 
   def create
@@ -37,13 +39,13 @@ class AppliesController < ApplicationController
     end
     #render plain: params[:student].inspect
     @apply = Apply.new(apply_params)
-    @apply.student =
+    #@apply.student =
     if @apply.save
       flash[:notice] = "Apply was successfully saved."
       redirect_to applies_path
     else
       flash[:error] =  @apply.errors.messages
-      render 'new'
+      #render 'new'
     end
   end
 
@@ -70,6 +72,6 @@ class AppliesController < ApplicationController
   private
   def apply_params
     # params.require(:apply).permit(:courseId, :studentId, :appType, :priority, :positive, :acceptAdjust, :takenBefore, :grade, :created_at, :updated_at)
-    params.require(:apply).permit(:courseId, :appType, :priority, :positive, :acceptAdjust, :takenBefore, :grade, :created_at, :updated_at)
+    params.require(:apply).permit(:course_id, :appType, :priority, :positive, :acceptAdjust, :takenBefore, :grade, :created_at, :updated_at)
   end
 end
