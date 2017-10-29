@@ -2,7 +2,7 @@
   <p>
     <th>All courses</th>
   </p>
-<table>
+<table class="table table-hover table-bordered">
   <thead>
     <tr>
       <th>Sub</th>
@@ -19,7 +19,13 @@
       <td><%= course.subject %></td>
       <td><%= course.num %></td>
       <td width="300"><%= course.title %></td>
-      <td><%= course.instructor.last_name + ", " + course.instructor.first_name %></td>
+      
+      <% if course.instructor %>
+          <td><%= course.instructor.last_name + ", " + course.instructor.first_name %></td>
+      <% else %>
+          <td class="btn-warning">Not Assigned</td>
+      <% end %>
+
       <td><%= link_to 'View&Edit', edit_course_path(course) %></td>
       <td><%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
     </tr>
