@@ -25,60 +25,61 @@
 <div class="container-fluid">
   <div class="row">
     <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar" id="side-nav-bar">
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <p>Student pages</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"><%= link_to "Home", :controller => 'students', :action => 'index' %></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"><%= link_to "Basic Info", :controller => 'students', :action => 'basic_info' %></a>
-        </li>
-        <li class="nav-item">
-          <!--<a class="nav-link" href="student#checkStatus">Check Application Status</a>-->
-          <a class="nav-link"><%= link_to "Check Application Status", :controller => 'students', :action => 'checkStatus' %></a>
-        </li>
-      </ul>
-      
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <p>===========================================================</p>
-        </li>
-        <li class="nav-item">
-          <p>Course pages</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"><%= link_to "Courses", :controller => 'courses', :action => 'index' %></a>
-        </li>
-      </ul>
+      <%= yield :nav_content %>
+      <!--<ul class="nav nav-pills flex-column">-->
+        <!--<li class="nav-item">-->
+          <!--<p>Student pages</p>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link"><%#= link_to "Home", :controller => 'students', :action => 'index' %></a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link"><%#= link_to "Basic Info", :controller => 'students', :action => 'basic_info' %></a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--&lt;!&ndash;<a class="nav-link" href="student#checkStatus">Check Application Status</a>&ndash;&gt;-->
+          <!--<a class="nav-link"><%#= link_to "Check Application Status", :controller => 'students', :action => 'checkStatus' %></a>-->
+        <!--</li>-->
+      <!--</ul>-->
+      <!---->
+      <!--<ul class="nav nav-pills flex-column">-->
+        <!--<li class="nav-item">-->
+          <!--<p>===========================================================</p>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<p>Course pages</p>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link"><%#= link_to "Courses", :controller => 'courses', :action => 'index' %></a>-->
+        <!--</li>-->
+      <!--</ul>-->
 
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <p>===========================================================</p>
-        </li>
-        <li class="nav-item">
-          <p>Applies pages</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"><%= link_to "Applies", :controller => 'applies', :action => 'index' %></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"><%= link_to "New Apply", :controller => 'applies', :action => 'new' %></a>
-        </li>
-      </ul>
-      
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <p>===========================================================</p>
-        </li>
-        <li class="nav-item">
-          <p>Instructors pages</p>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"><%= link_to "Instructors", :controller => 'instructors', :action => 'index' %></a>
-        </li>
-      </ul>
+      <!--<ul class="nav nav-pills flex-column">-->
+        <!--<li class="nav-item">-->
+          <!--<p>===========================================================</p>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<p>Applies pages</p>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link"><%#= link_to "Applies", :controller => 'applies', :action => 'index' %></a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link"><%#= link_to "New Apply", :controller => 'applies', :action => 'new' %></a>-->
+        <!--</li>-->
+      <!--</ul>-->
+      <!---->
+      <!--<ul class="nav nav-pills flex-column">-->
+        <!--<li class="nav-item">-->
+          <!--<p>===========================================================</p>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<p>Instructors pages</p>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link"><%#= link_to "Instructors", :controller => 'instructors', :action => 'index' %></a>-->
+        <!--</li>-->
+      <!--</ul>-->
 
     </nav>
 

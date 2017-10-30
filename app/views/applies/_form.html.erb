@@ -25,7 +25,7 @@
       
       <tr>
         <td><%= f.label :appType %></td>
-        <td class="required"><%= f.select :appType, options_for_select([["TA", 1], ["Grader", 2], ["Senior Grader", 3]], :appType) %></td>
+        <td class="required"><%= f.select :appType, options_for_select([["TA", 1], ["Grader", 2], ["Senior Grader", 3]], @apply.appType) %></td>
       </tr>
       
       <tr>

@@ -1,3 +1,4 @@
+require 'time'
 class AppliesController < ApplicationController
   
   def index
@@ -39,6 +40,8 @@ class AppliesController < ApplicationController
     end
     #render plain: params[:student].inspect
     @apply = Apply.new(apply_params)
+    @apply.created_at= Time.now
+    @apply.updated_at= Time.now
     #@apply.student =
     if @apply.save
       flash[:notice] = "Apply was successfully saved."
@@ -51,7 +54,7 @@ class AppliesController < ApplicationController
 
   def update
     @apply = Apply.find(params[:id])
-
+    @apply.updated_at= Time.now
     if @apply.update(apply_params)
       flash[:notice] = "Course was successfully updated."
       #redirect_to @course
