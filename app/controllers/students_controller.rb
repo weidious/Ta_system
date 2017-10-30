@@ -11,9 +11,6 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
-    @student.date_enrolled = Date.today
-    @datenroll = Date.today
-    #@student.date_enrolled = DateTime.new(2001,2,3)
   end
 
   def checkStatus
@@ -21,12 +18,8 @@ class StudentsController < ApplicationController
   end
 
   def basic_info
-    #@students = Student.all
     @student = Student.find_by_uin(session[:student_uin])
     if(@student)
-      #@the_date = eval(@student.date_enrolled)
-      #@level = @student.level
-      #@student.date_enrolled = nil
       redirect_to edit_student_path(@student)
     else
       redirect_to new_student_path
@@ -47,15 +40,13 @@ class StudentsController < ApplicationController
     @student.can_ta = true
     #...
     @student.last_modified = Time.now
-
-    #@student.save
     if @student.save
         flash[:notice] = "Basic information created successfully."
+        redirect_to students_basic_info_path
     else
         flash[:error] = @student.errors.messages
+        render 'new'
     end
-    flash.keep
-    redirect_to students_basic_info_path
   end
   
   def update
@@ -64,7 +55,7 @@ class StudentsController < ApplicationController
       flash[:notice] = "Basic information was successfully updated."
       redirect_to students_basic_info_path
     else
-      flash[:error] =  @instructor.errors.messages
+      flash[:error] =  @student.errors.messages
       render 'edit'
     end
   end
@@ -72,6 +63,7 @@ class StudentsController < ApplicationController
   def show
     @student=Student.find(params[:id])
   end
+  
 private
     def student_params
       params.require(:student).permit(
