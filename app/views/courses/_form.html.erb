@@ -44,11 +44,30 @@
 
       </div>
 
-
-
-
-
       <div>
         <%= f.submit %>
       </div>
   <% end %>
+  
+  
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>TA Candidates</th>
+  </tr>
+  <% @ta_candidates.each do |student| %>
+  <tr>
+    <th>Name</th>
+    <th>UIN</th>
+    <th>Date Enrolled</th>
+    <!--<th>Grade</th>-->
+    <th>Details</th>
+  </tr>
+    <tr>
+      <td><%= student.first_name + " " + (student.middle_name || " ") + " " + student.last_name %></td>
+      <td><%= student.uin %></td>
+      <td><%= student.date_enrolled %></td>
+
+      <td><%= link_to 'Show', student_path(student) %></td>
+    </tr>
+  <% end %>
+</table>

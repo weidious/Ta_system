@@ -322,17 +322,7 @@ Course.create(subject: "CSCE", num: 669, section: 600, title: "Computational Opt
 Course.create(subject: "CSCE", num: 670, section: 600, title: "Information Storage and Retrieval",
     instructor_id: list_inst.sample.id)
 
-@couse1 = Course.create(subject: "CSCE", num: 671, section: 600, title: "Computer-Human Interaction",
-    instructor_id: list_inst.sample.id, 
-    ta_candidate_1: list_student.sample.id,
-    ta_candidate_2: list_student.sample.id,
-    ta_candidate_3: list_student.sample.id,
-    grader_candidate_1: list_student.sample.id,
-    grader_candidate_2: list_student.sample.id,
-    grader_candidate_3: list_student.sample.id,
-    sgrader_candidate_1: list_student.sample.id)
-    
-    puts(@couse1.id)
+Course.create(subject: "CSCE", num: 671, section: 600, title: "Computer-Human Interaction")
 
 Course.create(subject: "CSCE", num: 672, section: 600, title: "Computer Supported Collaborative Work",
     instructor_id: list_inst.sample.id)
@@ -351,3 +341,47 @@ Course.create(subject: "CSCE", num: 689, section: 600, title: "Special Topics in
 Course.create(subject: "CSCE", num: 691, section: 600, title: "Research",
     instructor_id: list_inst.sample.id)
     
+@all_courses = Course.all
+
+@list_ta_apply = []
+(1..5).each { |i|
+    app = Apply.create(course:@all_courses.sample, student:list_student.sample, appType:1, priority:i,
+    acceptAdjust:true, takenBefore:true, grade:"A")
+    @list_ta_apply.push(app)
+}
+
+@list_grader_apply = []
+(1..3).each { |i|
+    app = Apply.create(course:@all_courses.sample, student:list_student.sample, appType:2, priority:i,
+    acceptAdjust:true, takenBefore:false)
+    @list_grader_apply.push(app)
+}
+
+@list_sgrader_apply = []
+(1..3).each { |i|
+    app = Apply.create(course:@all_courses.sample, student:list_student.sample, appType:3, priority:i,
+    acceptAdjust:false, takenBefore:true, grade:"B")
+    @list_sgrader_apply.push(app)
+}
+
+@course_with_candidates = @all_courses.sample
+
+@course_with_candidates.ta_candidate_1 = @list_ta_apply.sample.student.id
+@course_with_candidates.ta_candidate_2 = @list_ta_apply.sample.student.id
+@course_with_candidates.ta_candidate_3 = @list_ta_apply.sample.student.id
+
+@course_with_candidates.grader_candidate_1 = @list_grader_apply.sample.student.id
+@course_with_candidates.grader_candidate_2 = @list_grader_apply.sample.student.id
+
+@course_with_candidates.sgrader_candidate_1 = @list_sgrader_apply.sample.student.id
+
+
+@course_with_candidates.save!
+
+puts("DEBUG>>> course_with_candidates ")
+for attribute in @course_with_candidates.attributes.keys
+    puts(attribute.to_s + " => " + @course_with_candidates.attributes[attribute].to_s)
+end
+
+
+
