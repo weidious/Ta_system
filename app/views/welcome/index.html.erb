@@ -1,15 +1,18 @@
 <h1>Welcome</h1>
 <div class="table-responsive">
-  <%= form_for :student, url: welcome_login_path do |f| %>
+  <%= form_tag(controller: "welcome", action: "login", method: "post") do %>
       <table class="table table-bordered">
         <tr>
-          <th><%= f.label :UIN %></th>
-          <td><%= f.text_field :UIN %></td>
+          <th><%= label_tag(:uin, "UIN:") %></th>
+          <td><%= text_field_tag(:uin) %></td>
+        </tr>
+        <tr>
+          <th><%= label_tag(:q, "User Type:") %></th>
+          <td class="required"><%= select_tag(:usertype, options_for_select([ ["Student, 1"], ["Admin", 2], ["Instructor", 3] ], "Student")) %></td>
         </tr>
       </table>
       <p>UIN must be 9 digits. Or everything will be disabled after login.</p>
-      <%= f.submit "Log In" %>
+      <%= submit_tag("Log In") %>
   <% end %>
-
 
 </div>

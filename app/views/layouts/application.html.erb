@@ -86,7 +86,7 @@
     <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
       <p class="notice"><%= flash[:notice] %></p>
       <p class="alert"><%= flash[:error] %></p>
-      <%= yield %>
+      <%= yield :body %>
     </main>
   </div>
 </div>

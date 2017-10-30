@@ -1,3 +1,5 @@
+<%= render "layouts/adminmenu" %>
+<% content_for :body do %>
 <div class = "table">
   <p>
     <th>All courses</th>
@@ -33,3 +35,4 @@
 </table>
 <%= link_to 'New course', new_course_path %>
 </div>
+<% end %>
