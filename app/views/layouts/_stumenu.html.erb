@@ -1,0 +1,21 @@
+<% content_for :nav_content do %>
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link"><%= link_to "Home", :controller => 'students', :action => 'index' %></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><%= link_to "Basic Info", :controller => 'students', :action => 'basic_info' %></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><%= link_to "Check Application Status", :controller => 'students', :action => 'checkStatus' %></a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link"><%= link_to "Applies", :controller => 'applies', :action => 'index' %></a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link"><%= link_to "New Apply", :controller => 'applies', :action => 'new' %></a>
+      </li>
+    </ul>
+<% end %>
+
+
