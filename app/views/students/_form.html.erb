@@ -21,7 +21,8 @@
       </tr>
       <tr>
         <td><%= f.label :date_enrolled %></td>
-        <td class="required"><%= date_select :date_enrolled, default: {year: eval(@student.date_enrolled)[1], month: eval(@student.date_enrolled)[2], day: eval(@student.date_enrolled)[3]} %></td>
+        <!--<td class="required"><%#= date_select :student, :date_enrolled, default: {year: eval(@student.date_enrolled)[1], month: eval(@student.date_enrolled)[2], day: eval(@student.date_enrolled)[3]} %></td>-->
+        <td class="required"><%= f.date_field :date_enrolled, value: @student.date_enrolled %></td>
       </tr>
 
       <tr>

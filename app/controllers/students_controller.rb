@@ -10,7 +10,10 @@ class StudentsController < ApplicationController
   end
 
   def new
-
+    @student = Student.new
+    @student.date_enrolled = Date.today
+    @datenroll = Date.today
+    #@student.date_enrolled = DateTime.new(2001,2,3)
   end
 
   def checkStatus
@@ -46,10 +49,10 @@ class StudentsController < ApplicationController
     @student.last_modified = Time.now
 
     #@student.save
-    if(@student.valid? and @student.save)
+    if @student.save
         flash[:notice] = "Basic information created successfully."
     else
-        flash[:notice] = @student.errors.messages
+        flash[:error] = @student.errors.messages
     end
     flash.keep
     redirect_to students_basic_info_path
@@ -58,8 +61,10 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
     if @student.update(student_params)
+      flash[:notice] = "Basic information was successfully updated."
       redirect_to students_basic_info_path
     else
+      flash[:error] =  @instructor.errors.messages
       render 'edit'
     end
   end
