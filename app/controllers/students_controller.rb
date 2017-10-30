@@ -21,9 +21,10 @@ class StudentsController < ApplicationController
     #@students = Student.all
     @student = Student.find_by_uin(session[:student_uin])
     if(@student)
-      @the_date = eval(@student.date_enrolled)
-      @level = @student.level
-      @student.date_enrolled = nil
+      #@the_date = eval(@student.date_enrolled)
+      #@level = @student.level
+      #@student.date_enrolled = nil
+      redirect_to edit_student_path(@student)
     else
       redirect_to new_student_path
     end
