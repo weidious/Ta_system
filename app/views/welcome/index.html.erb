@@ -8,7 +8,7 @@
         </tr>
         <tr>
           <th><%= label_tag(:q, "User Type:") %></th>
-          <td class="required"><%= select_tag(:usertype, options_for_select([ ["Student, 1"], ["Admin", 2], ["Instructor", 3] ], "Student")) %></td>
+          <td class="required"><%= select_tag(:usertype, options_for_select([ "Student", "Admin", "Instructor" ], "Student")) %></td>
         </tr>
       </table>
       <p>UIN must be 9 digits. Or everything will be disabled after login.</p>
