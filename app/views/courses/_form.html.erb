@@ -40,7 +40,7 @@
     
       <tr>
          <td><%= f.label :instructor_id %></td>
-          <td class="required"><%= f.select :instructor_id, instructors_for_select %></td>
+          <td class="required"><%= f.select :instructor_id, instructors_for_select, include_blank: true %></td>
       </tr>
     </table>
     
