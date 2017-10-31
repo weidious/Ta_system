@@ -24,8 +24,6 @@ class AppliesController < ApplicationController
     #render plain: params[:student].inspect
     @apply = Apply.new(apply_params)
     @apply.student_id = Student.find_by_uin!(session[:student_uin]).id
-    #@apply.created_at= Time.now
-    #@apply.updated_at= Time.now
     if @apply.save
       flash[:notice] = "Apply was successfully saved."
       redirect_to applies_path
@@ -37,7 +35,6 @@ class AppliesController < ApplicationController
 
   def update
     @apply = Apply.find(params[:id])
-    @apply.updated_at= Time.now
     if @apply.update(apply_params)
       flash[:notice] = "Course was successfully updated."
       redirect_to applies_path
