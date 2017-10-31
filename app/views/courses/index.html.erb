@@ -22,7 +22,7 @@
         <td width="300"><%= course.title %></td>
         
         <% if course.instructor %>
-            <td><%= course.instructor.last_name + ", " + course.instructor.first_name %></td>
+            <td><%= course.instructor.fullname %></td>
         <% else %>
             <td class="btn-warning">Not Assigned</td>
         <% end %>
