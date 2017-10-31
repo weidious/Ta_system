@@ -20,15 +20,16 @@
               <%#= content_tag(:option, cs.subject + cs.num.to_s + '-' + cs.section.to_s + '  ' + cs.title , value: cs.id) %>
             <%# end %>
           <%# end %>
-          <%#= f.select :course_id, courses_for_select %><%# see in app/helpers/courses_helper.rb %>
-          <%= f.collection_select :course_id, @courses, :id, :caption %>
+          <%= f.select :course_id, courses_for_select %><%# see in app/helpers/courses_helper.rb %>
+          <%#= f.collection_select :course_id, @courses, :id, :caption %>
         </td>
       </tr>
       
       <tr>
         <td><%= f.label :appType %></td>
-        <!--<td class="required"><%#= f.select :appType, options_for_select([["TA", 1], ["Senor Grader", 2], ["Grader", 3]], @apply.appType) %></td>-->
-        <td class="required"><%= f.select :appType, appTypes_for_select(@apply.appType) %></td><%# see in app/helpers/applies_helper.rb %>
+        <td class="required"><%= f.select :appType, appTypes_for_select %></td>
+        <%# => appTypes_for_select = [["TA", 1], ["Senor Grader", 2], ["Grader", 3]] %>
+        <%# => see in app/helpers/applies_helper.rb %>
       </tr>
       
       <tr>

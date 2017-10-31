@@ -11,12 +11,10 @@ class AppliesController < ApplicationController
 
   def new
     @apply = Apply.new
-    @courses = Course.all
   end
 
   def edit
     @apply = Apply.find(params[:id])
-    @courses = Course.all
   end
 
   def create
@@ -25,6 +23,7 @@ class AppliesController < ApplicationController
     end
     #render plain: params[:student].inspect
     @apply = Apply.new(apply_params)
+    @apply.student_id = Student.find_by_uin!(session[:student_uin]).id
     @apply.created_at= Time.now
     @apply.updated_at= Time.now
     if @apply.save
