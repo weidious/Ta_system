@@ -1,7 +1,7 @@
 <%= render "layouts/stumenu" %>
 <% content_for :body do %>
-<h1>Applies#index</h1>
-<p>Find me in app/views/applies/index.html.erb</p>
+<!--<h1>Applies#index</h1>-->
+<!--<p>Find me in app/views/applies/index.html.erb</p>-->
 <h3> All Applications </h3>
 
 <table class="table table-hover table-bordered">
@@ -10,16 +10,19 @@
     <th>Type</th>
     <th>Accept Adjust</th>
     <th>Created At</th>
+    <th>Last modified</th>
     <th></th>
     <th></th>
   </tr>
   
   <% @applies.each do |apply| %>
     <tr>
-      <td><%= apply.course.subject %> <%= apply.course.num %>-<%= apply.course.section %> <%= apply.course.title %> </td>
-      <td> <%= apply.appType %></td>
+      <!--<td><%#= apply.course.subject %> <%#= apply.course.num %>-<%#= apply.course.section %> <%#= apply.course.title %> </td>-->
+      <td><%= apply.course.caption %></td>
+      <td><%= apply.appTypeCaption %></td>
       <td><%= apply.acceptAdjust %></td>
       <td><%= apply.created_at %></td>
+      <td><%= apply.updated_at %></td>
       <td><%= link_to 'View&Edit', edit_apply_path(apply) %></td>
       <td><%= link_to 'Delete', apply_path(apply), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
     </tr>
