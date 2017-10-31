@@ -1,73 +1,76 @@
 <%= form_for(@course) do |f| %>
-      <% if @course.errors.any? %>
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:
-          </h2>
-          <ul>
-            <% @course.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      
-      <div class="form-group">
-           <%= f.label :subject %>
-           <%= f.text_field :subject %>
-      </div>
-
-      <div class="form-group">
-           <%= f.label :num %>
-            <%= f.number_field :num %>
-      </div>
-      
-      <div class="form-group">
-           <%= f.label :section %>
-            <%= f.number_field :section %>
-      </div>
-      
-      <div class="form-group">
-           <%= f.label :title %>
-            <%= f.text_field :title %>
-      </div>
-      
-      <div class="form-group">
-           <%= f.label :instructor_id %>
-
-      <%= f.select(:instructor_id) do %>
-          <% @instructors.each do |inst| -%>
-                <%= content_tag(:option, inst.first_name + " " + (inst.middle_name || "") + " " + inst.last_name, 
-                                value: inst.id) %>
+    <% if @course.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:
+        </h2>
+        <ul>
+          <% @course.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
           <% end %>
-      <% end %>
-
+        </ul>
       </div>
+    <% end %>
+    
+    <!--<div class="form-group">-->
+    <!--     <%#= f.label :subject %>-->
+    <!--     <%#= f.text_field :subject %>-->
+    <!--</div>-->
+    
+    <table>
+      <tr>
+         <td><%= f.label :subject %></td>
+         <td class="required"><%= f.text_field :subject %></td>
+      </tr>
 
-      <div>
-        <%= f.submit %>
-      </div>
-  <% end %>
-  
-  
-<table class="table table-bordered table-hover">
-  <tr>
-    <th>TA Candidates</th>
-  </tr>
-  <% @ta_candidates.each do |student| %>
-  <tr>
-    <th>Name</th>
-    <th>UIN</th>
-    <th>Date Enrolled</th>
-    <!--<th>Grade</th>-->
-    <th>Details</th>
-  </tr>
-    <tr>
-      <td><%= student.first_name + " " + (student.middle_name || " ") + " " + student.last_name %></td>
-      <td><%= student.uin %></td>
-      <td><%= student.date_enrolled %></td>
-
-      <td><%= link_to 'Show', student_path(student) %></td>
-    </tr>
-  <% end %>
-</table>
+      <tr>
+         <td><%= f.label :num %></td>
+          <td class="required"><%= f.number_field :num %></td>
+      </tr>
+    
+      <tr>
+         <td><%= f.label :section %></td>
+          <td class="required"><%= f.number_field :section %></td>
+      </tr>
+    
+      <tr>
+         <td><%= f.label :title %></td>
+          <td class="required"><%= f.text_field :title %></td>
+      </tr>
+    
+      <tr>
+         <td><%= f.label :instructor_id %></td>
+          <td class="required"><%= f.select :instructor_id, instructors_for_select %></td>
+      </tr>
+    </table>
+    
+    <table>
+      <tr>
+         <td><%= f.label :ta_candidate_1, 'Prefered TAs' %></td>
+          <td><%= f.select :ta_candidate_1, students_for_select, include_blank: true %></td>
+          <td><%= f.select :ta_candidate_2, students_for_select, include_blank: true %></td>
+          <td><%= f.select :ta_candidate_3, students_for_select, include_blank: true %></td>
+          <td><%= f.select :ta_candidate_4, students_for_select, include_blank: true %></td>
+          <td><%= f.select :ta_candidate_5, students_for_select, include_blank: true %></td>
+      </tr>
+      
+      <tr>
+         <td><%= f.label :sgrader_candidate_1 %></td>
+          <td><%= f.select :sgrader_candidate_1, students_for_select, include_blank: true %></td>
+          <td><%= f.select :sgrader_candidate_2, students_for_select, include_blank: true %></td>
+          <td><%= f.select :sgrader_candidate_3, students_for_select, include_blank: true %></td>
+          <td><%= f.select :sgrader_candidate_4, students_for_select, include_blank: true %></td>
+          <td><%= f.select :sgrader_candidate_5, students_for_select, include_blank: true %></td>
+      </tr>
+      
+      <tr>
+         <td><%= f.label :grader_candidate_1 %></td>
+          <td><%= f.select :grader_candidate_1, students_for_select, include_blank: true %></td>
+          <td><%= f.select :grader_candidate_2, students_for_select, include_blank: true %></td>
+          <td><%= f.select :grader_candidate_3, students_for_select, include_blank: true %></td>
+          <td><%= f.select :grader_candidate_4, students_for_select, include_blank: true %></td>
+          <td><%= f.select :grader_candidate_5, students_for_select, include_blank: true %></td>
+      </tr>
+    </table>
+    <%= f.submit %>
+<% end %>

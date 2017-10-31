@@ -1,38 +1,36 @@
 <%= render "layouts/adminmenu" %>
 <% content_for :body do %>
 <div class = "table">
-  <p>
-    <th>All courses</th>
-  </p>
-<table class="table table-hover table-bordered">
-  <thead>
-    <tr>
-      <th>Sub</th>
-      <th>No.</th>
-      <th>Title</th>
-      <th>Instructor</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
- 
-  <% @courses.each do |course| %>
-    <tr>
-      <td><%= course.subject %></td>
-      <td><%= course.num %></td>
-      <td width="300"><%= course.title %></td>
-      
-      <% if course.instructor %>
-          <td><%= course.instructor.last_name + ", " + course.instructor.first_name %></td>
-      <% else %>
-          <td class="btn-warning">Not Assigned</td>
-      <% end %>
-
-      <td><%= link_to 'View&Edit', edit_course_path(course) %></td>
-      <td><%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
-    </tr>
-  <% end %>
-</table>
-<%= link_to 'New course', new_course_path %>
+  <h1>All courses</h1>
+  <%= link_to 'Add a new course', new_course_path %>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>No.</th>
+        <th>Title</th>
+        <th>Instructor</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+   
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.subject %></td>
+        <td><%= course.num %></td>
+        <td width="300"><%= course.title %></td>
+        
+        <% if course.instructor %>
+            <td><%= course.instructor.last_name + ", " + course.instructor.first_name %></td>
+        <% else %>
+            <td class="btn-warning">Not Assigned</td>
+        <% end %>
+  
+        <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 <% end %>

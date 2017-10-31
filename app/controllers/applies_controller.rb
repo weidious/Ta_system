@@ -2,7 +2,7 @@ require 'time'
 class AppliesController < ApplicationController
   
   def index
-    @applies = Apply.all
+    @applies = Apply.all.order(:created_at)
   end
 
   def show

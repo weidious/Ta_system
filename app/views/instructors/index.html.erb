@@ -1,31 +1,32 @@
 <%= render "layouts/adminmenu" %>
 <% content_for :body do %>
-<h1>Instructor#index</h1>
-<p>Find me in app/views/instructor/index.html.erb</p>
-
-<table class="table table-bordered">
-  <thead>
+  <h1>All instructors</h1>
+  <!--<p>Find me in app/views/instructor/index.html.erb</p>-->
+  
+  <%= link_to 'New instructor', new_instructor_path %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>UIN</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  
+  <% @instructors.each do |instructor| %>
     <tr>
-      <th>First Name</th>
-      <th>Middle Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>UIN</th>
-      <th>Action</th>
+      <td><%= instructor.first_name %></td>
+      <td width=80><%= instructor.middle_name %></td>
+      <td><%= instructor.last_name %></td>
+      <td><%= instructor.email %></td>
+      <td><%= instructor.uin %></td>
+      <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+      <td><%= link_to 'Delete', instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
     </tr>
-  </thead>
+    <% end %>
+  </table>
 
-<% @instructors.each do |instructor| %>
-<tr>
-  <td><%= instructor.first_name %></td>
-  <td width=80><%= instructor.middle_name %></td>
-  <td><%= instructor.last_name %></td>
-  <td><%= instructor.email %></td>
-  <td><%= instructor.uin %></td>
-  <td><%= link_to 'View&Edit', edit_instructor_path(instructor) %></td>
-  <td><%= link_to 'Delete', instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
-</tr>
-<% end %>
-</table>
-<%= link_to 'New instructor', new_instructor_path %>
 <% end %>

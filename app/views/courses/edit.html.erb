@@ -1,5 +1,48 @@
 <%= render "layouts/adminmenu" %>
 <% content_for :body do %>
 <%= render 'form' %>
+<table class="table table-bordered table-hover">
+  <tr>
+    <th colspan="4">Students applied for this course</th>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <th>UIN</th>
+    <th>Date Enrolled</th>
+    <!--<th>Grade</th>-->
+    <th>Details</th>
+  </tr>
+  <% @candidates.each do |student| %>
+    <tr>
+      <td><%= student.fullname %></td>
+      <td><%= student.uin %></td>
+      <td><%= student.date_enrolled %></td>
+
+      <td><%= link_to 'Show', student_path(student) %></td>
+    </tr>
+  <% end %>
+</table>  
+
+<table class="table table-bordered table-hover">
+  <tr>
+    <th colspan="4">All students</th>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <th>UIN</th>
+    <th>Date Enrolled</th>
+    <!--<th>Grade</th>-->
+    <th>Details</th>
+  </tr>
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= student.fullname %></td>
+      <td><%= student.uin %></td>
+      <td><%= student.date_enrolled %></td>
+
+      <td><%= link_to 'Show', student_path(student) %></td>
+    </tr>
+  <% end %>
+</table>
 <%= link_to 'Back', courses_path %>
 <% end %>
