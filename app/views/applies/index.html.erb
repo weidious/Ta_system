@@ -20,7 +20,7 @@
       <!--<td><%#= apply.course.subject %> <%#= apply.course.num %>-<%#= apply.course.section %> <%#= apply.course.title %> </td>-->
       <td><%= apply.course.caption %></td>
       <td><%= apply.appTypeCaption %></td>
-      <td><%= apply.acceptAdjust %></td>
+      <td><%= booleanCaption(apply.acceptAdjust) %></td>
       <td><%= apply.created_at %></td>
       <td><%= apply.updated_at %></td>
       <td><%= link_to 'View&Edit', edit_apply_path(apply) %></td>
