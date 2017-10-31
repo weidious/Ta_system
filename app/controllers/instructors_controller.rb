@@ -8,6 +8,9 @@ class InstructorsController < ApplicationController
     #end
     #  @inst_ls = Instructor.all
     @instructors = Instructor.all
+    if session[:user_type] == "Instructor"
+        @instructors = Instructor.where(uin: session[:instructor_uin])
+    end
   end
   
   def show

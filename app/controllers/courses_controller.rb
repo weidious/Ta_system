@@ -2,6 +2,13 @@ class CoursesController < ApplicationController
 
     def index
         @courses = Course.all.order(:num)
+        if session[:user_type] == "Instructor"
+          if @instructor = Instructor.where(uin: session[:instructor_uin]).first
+            @courses = Course.where(instructor_id: @instructor.id).order(:num)
+          else
+            @courses = []
+          end
+        end
     end
     
     
