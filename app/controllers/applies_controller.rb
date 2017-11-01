@@ -1,7 +1,17 @@
 require 'time'
 class AppliesController < ApplicationController
   
+  def checkStudent
+    if Student.exists?(uin: session[:student_uin])
+      Student.find_by_uin(session[:student_uin])
+    else
+      flash[:error] =  "You haven't input your personal information yet."
+      redirect_to controller: 'students', action: 'basic_info'
+    end
+  end
+  
   def index
+    checkStudent
     @applies = Apply.all.order(:created_at)
   end
 
@@ -10,6 +20,7 @@ class AppliesController < ApplicationController
   end
 
   def new
+    checkStudent
     @apply = Apply.new
   end
 
@@ -18,12 +29,8 @@ class AppliesController < ApplicationController
   end
 
   def create
-    if session[:student_uin]
-      # fetch info -> vie
-    end
-    #render plain: params[:student].inspect
-    @apply = Apply.new(apply_params)
-    @apply.student_id = Student.find_by_uin!(session[:student_uin]).id
+    @student = checkStudent
+    @apply = @student.applies.new(apply_params)
     if @apply.save
       flash[:notice] = "Apply was successfully saved."
       redirect_to applies_path
