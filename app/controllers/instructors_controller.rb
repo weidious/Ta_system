@@ -1,20 +1,13 @@
 class InstructorsController < ApplicationController
   
   def index
-    #if params[:format] then
-    #puts(params.to_s)
-    #    @to_remove_uin = params[:format]
-    #    Instructor.where(uin: @to_remove_uin).destroy_all
-    #end
-    #  @inst_ls = Instructor.all
-    @instructors = Instructor.all
+    @instructors = Instructor.all.order(:id)
     if session[:user_type] == "Instructor"
         @instructors = Instructor.where(uin: session[:instructor_uin])
     end
   end
   
   def show
-      #puts(">>>>>>>>>>>>show>>>>>>>>>>>>\r\n")
       @instructor = Instructor.find(params[:id])
   end
   
@@ -34,9 +27,6 @@ class InstructorsController < ApplicationController
 
   def create
     # render plain: params[:instructor].inspect
-    #@new_inst = Instructor.new(instructor_params)
-    #@new_inst.save
-    #redirect_to "/instructors"
     @instructor = Instructor.new(instructor_params)
     if @instructor.save
       flash[:notice] = "Instructor was successfully saved."

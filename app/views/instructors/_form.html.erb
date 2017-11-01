@@ -1,43 +1,42 @@
 <%= form_for(@instructor) do |f| %>
-      <% if @instructor.errors.any? %>
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@instructor.errors.count, "error") %> prohibited this course from being saved:
-          </h2>
-          <ul>
-            <% @instructor.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      
-      <div class="form-group">
-           <%= f.label :first_name %>
-           <%= f.text_field :first_name %>
+    <% if @instructor.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@instructor.errors.count, "error") %> prohibited this course from being saved:
+        </h2>
+        <ul>
+          <% @instructor.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
       </div>
+    <% end %>
       
-      <div class="form-group">
-           <%= f.label :middle_name %>
-           <%= f.text_field :middle_name %>
-      </div>
+    <table>
+      <tr>
+        <td><%= f.label :first_name %></td>
+        <td class="required"><%= f.text_field :first_name %></td>
+      </tr>
       
-      <div class="form-group">
-           <%= f.label :last_name %>
-           <%= f.text_field :last_name %>
-      </div>
+      <tr>
+        <td><%= f.label :middle_name %></td>
+        <td><%= f.text_field :middle_name %></td>
+      </tr>
       
-      <div class="form-group">
-           <%= f.label :email %>
-           <%= f.text_field :email %>
-      </div>
+      <tr>
+        <td><%= f.label :last_name %></td>
+        <td class="required"><%= f.text_field :last_name %></td>
+      </tr>
+      
+      <tr>
+        <td><%= f.label :email %></td>
+        <td class="required"><%= f.text_field :email %></td>
+      </tr>
 
-      <div class="form-group">
-           <%= f.label :uin %>
-            <%= f.number_field :uin, in: 100000000..999999999 %>
-      </div>
-
-      <div>
-        <%= f.submit %>
-      </div>
-  <% end %>
+      <tr>
+        <td><%= f.label :uin %></td>
+        <td class="required"><%= f.number_field :uin, in: 100000000..999999999 %></td>
+      </tr>
+    </table>
+    <%= f.submit %>
+<% end %>

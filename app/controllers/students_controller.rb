@@ -2,10 +2,6 @@ require 'date'
 class StudentsController < ApplicationController
 
   def index
-    # you can get UIN from params
-    if (params.has_key?(:UIN))
-      session[:student_uin] = params[:UIN]
-    end
     @students = Student.all
   end
 
@@ -67,7 +63,6 @@ private
       params.require(:student).permit(
         :level,
         :date_enrolled,
-        :uin,
         :first_name, 
         :middle_name, 
         :last_name,
