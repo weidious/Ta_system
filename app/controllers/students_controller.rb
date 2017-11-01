@@ -38,8 +38,6 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
     @student.uin = session[:student_uin]
     @student.can_ta = true
-    #...
-    @student.last_modified = Time.now
     if @student.save
         flash[:notice] = "Basic information created successfully."
         redirect_to students_basic_info_path

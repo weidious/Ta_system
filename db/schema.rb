@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020225401) do
+ActiveRecord::Schema.define(version: 20171101000640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20171020225401) do
     t.boolean "acceptAdjust"
     t.boolean "takenBefore"
     t.string "grade"
-    t.datetime "createdAt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_applies_on_course_id"
@@ -90,22 +89,16 @@ ActiveRecord::Schema.define(version: 20171020225401) do
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
-    t.string "level"
-    t.string "integer"
+    t.integer "level"
     t.string "email"
     t.string "phone"
-    t.string "string"
-    t.string "assigned"
-    t.string "boolean"
+    t.boolean "assigned"
     t.string "advisor_email"
-    t.string "can_ta"
-    t.string "can_grader"
-    t.string "can_sgrader"
+    t.boolean "can_ta"
+    t.boolean "can_grader"
+    t.boolean "can_sgrader"
     t.string "perferences"
-    t.string "date_enrolled"
-    t.string "date"
-    t.string "last_modified"
-    t.string "timestamp"
+    t.date "date_enrolled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
