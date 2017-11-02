@@ -11,8 +11,20 @@ class AppliesController < ApplicationController
   end
   
   def index
-    checkStudent
-    @applies = Apply.all.order(:created_at)
+    case session[:user_type]
+    when "Student"
+      @student = checkStudent
+      @applies = @student.applies.order(:created_at)
+    when "Instructor"
+      @instructor = Instructor.find_by_uin(session[:instructor_uin])
+      if @instructor
+        @applies = @instructor.applies
+      else
+        @applies = []
+      end
+    when "Admin"
+      @applies = Apply.all
+    end
   end
 
   def show

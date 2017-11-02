@@ -16,8 +16,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto"></ul>
-      <!--<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Sign In</button>-->
+      <p>You logged in as <%= session[:user_type] %></p>
       <%= link_to 'Logout', welcome_index_path %>
+      <!--<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Sign In</button>-->
     </div>
   </nav>
 

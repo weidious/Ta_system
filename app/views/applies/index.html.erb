@@ -6,6 +6,7 @@
 <table class="table table-hover table-bordered">
   <tr>
     <th>Course</th>
+    <th>Student</th>
     <th>Type</th>
     <th>Accept Adjust</th>
     <th>Created At</th>
@@ -18,6 +19,7 @@
     <tr>
       <!--<td><%#= apply.course.subject %> <%#= apply.course.num %>-<%#= apply.course.section %> <%#= apply.course.title %> </td>-->
       <td><%= apply.course.caption %></td>
+      <td><%= apply.student.fullname %></td>
       <td><%= apply.appTypeCaption %></td>
       <td><%= booleanCaption(apply.acceptAdjust) %></td>
       <td><%= apply.created_at %></td>

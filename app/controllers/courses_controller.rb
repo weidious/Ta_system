@@ -1,13 +1,15 @@
 class CoursesController < ApplicationController
 
     def index
-        @courses = Course.all.order(:num)
         if session[:user_type] == "Instructor"
-          if @instructor = Instructor.where(uin: session[:instructor_uin]).first
-            @courses = Course.where(instructor_id: @instructor.id).order(:num)
+          @instructor = Instructor.find_by_uin(session[:instructor_uin])
+          if @instructor
+            @courses = @instructor.courses.order(:num)
           else
             @courses = []
           end
+        else
+          @courses = Course.all.order(:num)
         end
     end
     
@@ -36,7 +38,8 @@ class CoursesController < ApplicationController
       # @grader_candidate = []
       # @sgrader_candidates = []
         
-        @candidates = (Apply.where(course_id: @course.id).collect {|apply| apply.student }).uniq
+        #@candidates = (Apply.where(course_id: @course.id).collect {|apply| apply.student }).uniq
+        @candidates = @course.students.uniq
         @students = Student.all
         
         
