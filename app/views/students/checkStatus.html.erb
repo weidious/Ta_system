@@ -1,12 +1,11 @@
 <% content_for :body do %>
-<div class = "table">
-<table>
+<!--<div class = "table">-->
+<table class="table table-bordered">
   <tr>
-    <th>All student</th>
+    <th colspan = 7>All student</th>
   </tr>
  
-  <% @students.each do |student| %>
-  <tr>
+ <tr>
     <th>Name</th>
     <th>UIN</th>
     <th>Email</th>
@@ -15,6 +14,7 @@
     <th>Details</th>
     <th>Edit</th>
   </tr>
+  <% @students.each do |student| %>
     <tr>
       <td><%= student.fullname %></td>
       <td><%= student.uin %></td>
@@ -26,5 +26,5 @@
     </tr>
   <% end %>
 </table>
-</div>
+<!--</div>-->
 <% end %>

@@ -2,9 +2,7 @@ require 'time'
 class AppliesController < ApplicationController
   
   def checkStudent
-    if Student.exists?(uin: session[:student_uin])
-      Student.find_by_uin(session[:student_uin])
-    else
+    if !Student.exists?(uin: session[:student_uin])
       flash[:error] =  "You haven't input your personal information yet."
       redirect_to controller: 'students', action: 'basic_info'
     end
@@ -13,7 +11,8 @@ class AppliesController < ApplicationController
   def index
     case session[:user_type]
     when "Student"
-      @student = checkStudent
+      checkStudent
+      @student = Student.find_by_uin(session[:student_uin])
       @applies = @student.applies.order(:created_at)
     when "Instructor"
       @instructor = Instructor.find_by_uin(session[:instructor_uin])
@@ -41,7 +40,8 @@ class AppliesController < ApplicationController
   end
 
   def create
-    @student = checkStudent
+    checkStudent
+    @student = Student.find_by_uin(session[:student_uin])
     @apply = @student.applies.new(apply_params)
     if @apply.save
       flash[:notice] = "Apply was successfully saved."

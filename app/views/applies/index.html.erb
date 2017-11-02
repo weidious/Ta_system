@@ -11,8 +11,10 @@
     <th>Accept Adjust</th>
     <th>Created At</th>
     <th>Last modified</th>
+    <% if editable %>
     <th></th>
     <th></th>
+    <% end %>
   </tr>
   
   <% @applies.each do |apply| %>
@@ -24,8 +26,10 @@
       <td><%= booleanCaption(apply.acceptAdjust) %></td>
       <td><%= apply.created_at %></td>
       <td><%= apply.updated_at %></td>
-      <td><%= link_to 'View&Edit', edit_apply_path(apply) %></td>
-      <td><%= link_to 'Delete', apply_path(apply), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
+      <% if editable %>
+        <td><%= link_to 'View&Edit', edit_apply_path(apply) %></td>
+        <td><%= link_to 'Delete', apply_path(apply), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
+      <% end %>
     </tr>
   <% end %>
 

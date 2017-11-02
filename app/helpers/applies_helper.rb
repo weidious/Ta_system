@@ -15,4 +15,12 @@ module AppliesHelper
             'No'
         end
     end
+    
+    def editable
+        if session[:user_type] == "Student"
+            true
+        else
+            false
+        end
+    end
 end
