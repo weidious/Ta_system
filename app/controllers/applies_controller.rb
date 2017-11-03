@@ -13,7 +13,11 @@ class AppliesController < ApplicationController
     when "Student"
       checkStudent
       @student = Student.find_by_uin(session[:student_uin])
-      @applies = @student.applies.order(:created_at)
+      if @student
+        @applies = @student.applies.order(:created_at)
+      else
+        @applies = []
+      end
     when "Instructor"
       @instructor = Instructor.find_by_uin(session[:instructor_uin])
       if @instructor
@@ -23,6 +27,10 @@ class AppliesController < ApplicationController
       end
     when "Admin"
       @applies = Apply.all
+    end
+    
+    if session[:user_type]=="Students"
+      checkStudent
     end
   end
 
