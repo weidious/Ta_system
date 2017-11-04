@@ -1,4 +1,4 @@
-<%= form_for(@apply) do |f| %>
+<%= form_for([@student, @apply]) do |f| %>
     <% if @apply.errors.any? %>
         <div id="error_explanation">
           <h2>
@@ -16,42 +16,42 @@
         <td><%= f.label :course_id %></td>
         <td class="required">
           <%#= f.select :course_id  do %>
-            <%# @courses.each do |cs| -%>
-              <%#= content_tag(:option, cs.subject + cs.num.to_s + '-' + cs.section.to_s + '  ' + cs.title , value: cs.id) %>
-            <%# end %>
+          <%# @courses.each do |cs| -%>
+          <%#= content_tag(:option, cs.subject + cs.num.to_s + '-' + cs.section.to_s + '  ' + cs.title , value: cs.id) %>
+          <%# end %>
           <%# end %>
           <%= f.select :course_id, courses_for_select %><%# see in app/helpers/courses_helper.rb %>
           <%#= f.collection_select :course_id, @courses, :id, :caption %>
         </td>
       </tr>
-      
+
       <tr>
         <td><%= f.label :appType %></td>
         <td class="required"><%= f.select :appType, appTypes_for_select %></td>
         <%# => appTypes_for_select = [["TA", 1], ["Senor Grader", 2], ["Grader", 3]] %>
         <%# => see in app/helpers/applies_helper.rb %>
       </tr>
-      
+
       <tr>
         <td><%= f.label :priority %></td>
         <td class="required"><%= f.text_field :priority %></td>
       </tr>
-      
+
       <tr>
         <td><%= f.label :positive %></td>
         <td class="required"><%= f.select :positive, booleans_for_select %></td>
       </tr>
-      
+
       <tr>
         <td><%= f.label :acceptAdjust %></td>
         <td class="required"><%= f.select :acceptAdjust, booleans_for_select %></td>
       </tr>
-      
+
       <tr>
         <td><%= f.label :takenBefore %></td>
         <td class="required"><%= f.select :takenBefore, booleans_for_select %></td>
       </tr>
-      
+
       <tr>
         <td><%= f.label :grade %></td>
         <td class="required"><%= f.text_field :grade %></td>

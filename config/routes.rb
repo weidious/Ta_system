@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   post 'welcome/login'
 
 
-  resources :students
+  resources :students do
+    resources :applies
+  end
+
   resources :instructors
   resources :courses
-  resources :applies
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

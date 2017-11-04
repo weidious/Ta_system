@@ -11,4 +11,15 @@ module ApplicationHelper
         end
     end
 
+
+    def index_apply_path
+        @student = Student.find_by_uin(session[:student_uin])
+        if @student
+            student_applies_path(@student)
+        else
+            flash[:error] = "Please fill in your basic information!"
+            students_basic_info_path
+        end
+    end
+
 end
