@@ -16,8 +16,9 @@
     <!--     <%#= f.label :subject %>-->
     <!--     <%#= f.text_field :subject %>-->
     <!--</div>-->
-    
-    <table>
+    <div class="col-md-6">
+        
+    <table class="table table-condensed">
       <tr>
          <td><%= f.label :subject %></td>
          <td class="required"><%= f.text_field :subject %></td>
@@ -34,8 +35,8 @@
       </tr>
     
       <tr>
-         <td><%= f.label :title %></td>
-          <td class="required"><%= f.text_field :title %></td>
+         <td><%= f.label :title, style:'display: inline-block' %></td>
+          <td class="required" ><%= f.text_field :title, style:'display: inline-block' %></td>
       </tr>
     
       <tr>
@@ -44,33 +45,24 @@
       </tr>
     </table>
     
+    </div>
+    
+    <div class="col-md-12">
     <table>
-      <tr>
+      <tr id="ls_ta"  count="0">
          <td><%= f.label :ta_candidate_1, 'Prefered TAs' %></td>
-          <td><%= f.select :ta_candidate_1, students_for_select, include_blank: true %></td>
-          <td><%= f.select :ta_candidate_2, students_for_select, include_blank: true %></td>
-          <td><%= f.select :ta_candidate_3, students_for_select, include_blank: true %></td>
-          <td><%= f.select :ta_candidate_4, students_for_select, include_blank: true %></td>
-          <td><%= f.select :ta_candidate_5, students_for_select, include_blank: true %></td>
+         
       </tr>
-      
-      <tr>
-         <td><%= f.label :sgrader_candidate_1 %></td>
-          <td><%= f.select :sgrader_candidate_1, students_for_select, include_blank: true %></td>
-          <td><%= f.select :sgrader_candidate_2, students_for_select, include_blank: true %></td>
-          <td><%= f.select :sgrader_candidate_3, students_for_select, include_blank: true %></td>
-          <td><%= f.select :sgrader_candidate_4, students_for_select, include_blank: true %></td>
-          <td><%= f.select :sgrader_candidate_5, students_for_select, include_blank: true %></td>
+      <tr id="ls_grader" count="0">
+         <td><%= f.label :grader_candidate_1, 'Prefered Grader' %></td>
+     
       </tr>
-      
-      <tr>
-         <td><%= f.label :grader_candidate_1 %></td>
-          <td><%= f.select :grader_candidate_1, students_for_select, include_blank: true %></td>
-          <td><%= f.select :grader_candidate_2, students_for_select, include_blank: true %></td>
-          <td><%= f.select :grader_candidate_3, students_for_select, include_blank: true %></td>
-          <td><%= f.select :grader_candidate_4, students_for_select, include_blank: true %></td>
-          <td><%= f.select :grader_candidate_5, students_for_select, include_blank: true %></td>
+      <tr id="ls_sgrader" count="0">
+         <td><%= f.label :sgrader_candidate_1, 'Prefered Senior Grader' %></td>
+        
       </tr>
+     
     </table>
+    </div>
     <%= f.submit %>
 <% end %>
