@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'admin/index'
+  get 'admin', to: 'admin#index'
+  get 'admin/courses'
+  get 'admin/instructors'
+  get 'admin/applies'
+
   get 'applies/index'
 
   root 'welcome#index'
