@@ -1,0 +1,29 @@
+<% content_for :body do %>
+    <h3> All Offers </h3>
+    <table class="table table-hover table-bordered">
+      <tr>
+        <th>Course</th>
+        <th>Type</th>
+        <th>Student</th>
+        <th>StudentUIN</th>
+        <th>Student Accepted</th>
+        <th>Instructor Accepted</th>
+        <th>Created At</th>
+        <th>Last modified</th>
+      </tr>
+
+      <% @offers.each do |offer| %>
+          <tr>
+            <td><%= offer.course.caption %></td>
+            <td><%= offer.app_type %></td>
+            <td><%= offer.student_id %></td>
+            <td><%= offer.student_id %></td>
+            <td><%= offer.student_accepted %></td>
+            <td><%= offer.instructor_accepted %></td>
+            <td><%= offer.created_at %></td>
+            <td><%= offer.updated_at %></td>
+          </tr>
+      <% end %>
+
+    </table>
+<% end %>

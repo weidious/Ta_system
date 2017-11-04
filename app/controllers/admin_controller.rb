@@ -19,4 +19,8 @@ class AdminController < ApplicationController
     def applies
         @applies = Apply.all
     end
+    
+    def offers
+        @offers = Offer.all
+    end
 end

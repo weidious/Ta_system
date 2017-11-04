@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'admin/courses'
   get 'admin/instructors'
   get 'admin/applies'
+  get 'admin/offers'
 
   get 'applies/index'
 
