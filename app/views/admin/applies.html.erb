@@ -1,9 +1,5 @@
 <% content_for :body do %>
     <h3> All Applications </h3>
-
-
-    <%= link_to "new apply", new_student_apply_path(@student) %>
-
     <table class="table table-hover table-bordered">
       <tr>
         <th>Student</th>
@@ -12,8 +8,6 @@
         <th>Accept Adjust</th>
         <th>Created At</th>
         <th>Last modified</th>
-        <th> edit</th>
-        <th>delete</th>
       </tr>
 
       <% @applies.each do |apply| %>
@@ -25,8 +19,6 @@
             <td><%= booleanCaption(apply.acceptAdjust) %></td>
             <td><%= apply.created_at %></td>
             <td><%= apply.updated_at %></td>
-            <td><%= link_to "edit",  edit_student_apply_path(@student,apply)%></td>
-            <td><%= link_to "delete", student_apply_path(@student,apply), method: :delete, data: {confirm: "Are you sure to delete?"}%></td>
           </tr>
       <% end %>
 

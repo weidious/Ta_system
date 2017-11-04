@@ -1,0 +1,41 @@
+<%= form_for([@course, @offer]) do |f| %>
+    <% if @offer.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@offer.errors.count, "error") %> prohibited this course from being saved:
+          </h2>
+          <ul>
+            <% @offer.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <table>
+      <!--<tr>-->
+      <!--  <td><%#= f.label :course_id %></td>-->
+      <!--  <td class="required"><%#= f.select :course_id, courses_for_select %></td>-->
+      <!--</tr>-->
+
+      <tr>
+        <td><%= f.label :app_type %></td>
+        <td class="required"><%= f.select :app_type, app_types_for_select %></td>
+      </tr>
+      
+      <tr>
+        <td><%= f.label :student_id %></td>
+        <td class="required"><%= f.select :student_id, students_for_select, include_blank: true %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :student_accepted %></td>
+        <td class="required"><%= f.select :student_accepted, booleans_for_select, include_blank: true %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :instructor_accepted %></td>
+        <td class="required"><%= f.select :instructor_accepted, booleans_for_select, include_blank: true %></td>
+      </tr>
+    </table>
+    <%= f.submit%>
+<% end %>

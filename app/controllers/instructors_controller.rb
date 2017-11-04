@@ -4,6 +4,8 @@ class InstructorsController < ApplicationController
     @instructors = Instructor.all.order(:id)
     if session[:user_type] == "Instructor"
         @instructors = Instructor.where(uin: session[:instructor_uin])
+    elsif session[:user_type] == "Student"
+        @instructors = []
     end
   end
   

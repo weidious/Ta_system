@@ -1,37 +1,8 @@
 require 'time'
 class AppliesController < ApplicationController
-  
-  def checkStudent
-    if !Student.exists?(uin: session[:student_uin])
-      flash[:error] =  "You haven't input your personal information yet."
-      redirect_to controller: 'students', action: 'basic_info'
-    end
-  end
-  
   def index
-    case session[:user_type]
-    when "Student"
-      checkStudent
-      @student = Student.find_by_uin(session[:student_uin])
-      if @student
-        @applies = @student.applies.order(:created_at)
-      else
-        @applies = []
-      end
-    when "Instructor"
-      @instructor = Instructor.find_by_uin(session[:instructor_uin])
-      if @instructor
-        @applies = @instructor.applies
-      else
-        @applies = []
-      end
-    when "Admin"
-      @applies = Apply.all
-    end
-    
-    if session[:user_type]=="Students"
-      checkStudent
-    end
+    @student = Student.find(params[:student_id])
+    @applies = @student.applies
   end
 
   def show
@@ -39,21 +10,21 @@ class AppliesController < ApplicationController
   end
 
   def new
-    checkStudent
-    @apply = Apply.new
+    @student = Student.find(params[:student_id])
+    @apply = @student.applies.new
   end
 
   def edit
+    @student = Student.find(params[:student_id])
     @apply = Apply.find(params[:id])
   end
 
   def create
-    checkStudent
-    @student = Student.find_by_uin(session[:student_uin])
+    @student = Student.find(params[:student_id])
     @apply = @student.applies.new(apply_params)
     if @apply.save
       flash[:notice] = "Apply was successfully saved."
-      redirect_to applies_path
+      redirect_to student_applies_path
     else
       flash[:error] =  @apply.errors.messages
       render 'new'
@@ -61,10 +32,11 @@ class AppliesController < ApplicationController
   end
 
   def update
+    @student = Student.find(params[:student_id])
     @apply = Apply.find(params[:id])
     if @apply.update(apply_params)
       flash[:notice] = "Course was successfully updated."
-      redirect_to applies_path
+      redirect_to student_applies_path
     else
       flash[:error] =  @apply.errors.messages
       render 'edit'
@@ -72,9 +44,10 @@ class AppliesController < ApplicationController
   end
 
   def destroy
+    @student = Student.find(params[:student_id])
     @apply = Apply.find(params[:id])
     @apply.destroy
-    redirect_to applies_path
+    redirect_to student_applies_path
   end
 
   private

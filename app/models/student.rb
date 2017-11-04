@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-    has_one :offer
+    has_one :offer, dependent: :nullify
     has_many :applies
     has_many :courses, through: :applies
     validates :uin, presence: true
