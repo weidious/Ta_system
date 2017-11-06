@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'admin/applies'
   get 'admin/offers'
   get 'admin/ta_matching'
+  #get 'offers/send_email'
+  #get 'courses/:course_id/offers/:id/send_email'
 
   get 'applies/index'
 
@@ -25,7 +27,9 @@ Rails.application.routes.draw do
 
   resources :instructors
   resources :courses do
-    resources :offers
+    resources :offers do
+      get 'send_email'
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

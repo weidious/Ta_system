@@ -44,6 +44,15 @@ class OffersController < ApplicationController
         @offer.destroy
         redirect_to course_offers_path
     end
+
+    def send_email
+      flash[:notice] = params[:offer_id]
+      @offer = Offer.find(params[:offer_id])
+      @user = @offer.student
+      flash[:notice] = @user.email
+      OfferMailer.welcome_email(@offer).deliver_later
+      redirect_to admin_offers_path
+    end
     
 private
     def offer_params
