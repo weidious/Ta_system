@@ -11,4 +11,12 @@ class Course < ApplicationRecord
     subject + ' ' + num.to_s + '-' + section.to_s + '  ' + title
   end
   
+  after_create :generate_offers
+  
+  def generate_offers
+    self.offers.create( {app_type: "ta", status: "available"} )
+    self.offers.create( {app_type: "grader", status: "available"} )
+    self.offers.create( {app_type: "senior_grader", status: "available"} )
+  end
+  
 end
