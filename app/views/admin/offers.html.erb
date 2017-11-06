@@ -10,18 +10,21 @@
         <th>Instructor Accepted</th>
         <th>Created At</th>
         <th>Last modified</th>
+        <th colspan=2>Actions</th>
       </tr>
 
       <% @offers.each do |offer| %>
           <tr>
             <td><%= offer.course.caption %></td>
             <td><%= offer.app_type %></td>
-            <td><%= offer.student_id %></td>
-            <td><%= offer.student_id %></td>
+            <td><%= offeredStudentName(offer) %></td>
+            <td><%= offeredStudentUIN(offer) %></td>
             <td><%= offer.student_accepted %></td>
             <td><%= offer.instructor_accepted %></td>
             <td><%= offer.created_at %></td>
             <td><%= offer.updated_at %></td>
+            <td><%= link_to "edit",  edit_course_offer_path(offer.course, offer)%></td>
+            <td><%= link_to "delete", course_offer_path(offer.course, offer), method: :delete, data: {confirm: "Are you sure to delete?"}%></td>
           </tr>
       <% end %>
 
