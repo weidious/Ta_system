@@ -20,6 +20,9 @@ class CoursesController < ApplicationController
     
     def new
         @course = Course.new
+        @course.offers.new( {app_type: "ta", status: "available"} )
+        @course.offers.new( {app_type: "grader", status: "available"} )
+        @course.offers.new( {app_type: "senior_grader", status: "available"} )
     end
     
     
@@ -56,6 +59,7 @@ class CoursesController < ApplicationController
         else
           flash[:error] =  'Failed to save. ' #@course.errors.messages
           render 'new'
+
         end
     end
 
