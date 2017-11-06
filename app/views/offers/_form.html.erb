@@ -19,7 +19,8 @@
 
       <tr>
         <td><%= f.label :app_type %></td>
-        <td class="required"><%= f.select :app_type, app_types_for_select %></td>
+        <!--<td class="required"><%#= f.select :app_type, app_types_for_select %></td>-->
+        <td class="required"><%= f.select :app_type, Offer.app_types.keys.to_a %></td>
       </tr>
       
       <tr>
