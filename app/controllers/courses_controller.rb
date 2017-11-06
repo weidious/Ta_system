@@ -20,11 +20,7 @@ class CoursesController < ApplicationController
     
     def new
         @course = Course.new
-        @course.offers.new( {app_type: "ta", status: "available"} )
-        @course.offers.new( {app_type: "grader", status: "available"} )
-        @course.offers.new( {app_type: "senior_grader", status: "available"} )
     end
-    
     
     def edit
         @course = Course.find(params[:id])
@@ -52,12 +48,14 @@ class CoursesController < ApplicationController
         flash.keep
         if @course.save
           flash[:notice] = "Course was successfully saved."
+          puts "Course was successfully saved"
           @course.offers.create( {app_type: "ta", status: "available"} )
           @course.offers.create( {app_type: "grader", status: "available"} )
           @course.offers.create( {app_type: "senior_grader", status: "available"} )
           redirect_to courses_path
         else
           flash[:error] =  'Failed to save. ' #@course.errors.messages
+          puts "Course was failed to save"
           render 'new'
 
         end
