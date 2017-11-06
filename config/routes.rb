@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'admin/instructors'
   get 'admin/applies'
   get 'admin/offers'
+  get 'admin/ta_matching'
 
   get 'applies/index'
 

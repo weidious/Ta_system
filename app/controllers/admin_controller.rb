@@ -23,4 +23,13 @@ class AdminController < ApplicationController
     def offers
         @offers = Offer.all
     end
+    
+    def ta_matching
+       @offers = Offer.all
+       @students = Student.all
+       @offers.each do |offer|
+          offer.update(student: @students.sample) 
+       end
+       redirect_to admin_offers_path
+    end
 end
