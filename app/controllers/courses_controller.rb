@@ -59,9 +59,6 @@ class CoursesController < ApplicationController
 
         end
     end
-    
-    def after_create
-      
 
     def update
       @course = Course.find(params[:id])
