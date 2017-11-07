@@ -30,7 +30,7 @@ class OffersController < ApplicationController
     def update
         @course = Course.find(params[:course_id])
         @offer = Offer.find(params[:id])
-        if @offer.update(@newparams)
+        if @offer.update(offer_params)
           flash[:notice] = "Offer was successfully updated."
           redirect_to course_offers_path
         else
