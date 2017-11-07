@@ -25,15 +25,16 @@ class AdminController < ApplicationController
     end
     
     def offers
-        @offers = Offer.all
+        @offers = Offer.all.order(:course_id)
     end
     
     def ta_matching
        @offers = Offer.all
        @students = Student.all
        @offers.each do |offer|
-          offer.update(student: @students.sample) 
+          offer.update(student: @students.sample, status: :unsent) 
        end
-       redirect_to admin_offers_path
+       redirect_back(fallback_location: root_path)
+       #redirect_to admin_offers_path
     end
 end

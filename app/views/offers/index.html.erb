@@ -14,6 +14,7 @@
         <th>Instructor accepted</th>
         <th>Created At</th>
         <th>Last modified</th>
+        <th>Status</th>
         <th>edit</th>
         <th>delete</th>
       </tr>
@@ -28,6 +29,7 @@
             <td><%= offer.instructor_accepted %></td>
             <td><%= offer.created_at %></td>
             <td><%= offer.updated_at %></td>
+            <td><%= offer.status%></td>
             <td><%= link_to "edit",  edit_course_offer_path(@course,offer)%></td>
             <td><%= link_to "delete", course_offer_path(@course,offer), method: :delete, data: {confirm: "Are you sure to delete?"}%></td>
           </tr>

@@ -3,6 +3,6 @@ class Offer < ApplicationRecord
   belongs_to :student, optional:true
   
   enum app_type: [ :ta, :grader, :senior_grader ]
-  enum status: [ :available, :pending, :rejected, :accepted ]
+  enum status: [ :available, :unsent, :sent, :rejected, :accepted ]
   
 end

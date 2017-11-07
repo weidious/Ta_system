@@ -14,9 +14,15 @@ class Course < ApplicationRecord
   after_create :generate_offers
   
   def generate_offers
-    self.offers.create( {app_type: "ta", status: "available"} )
-    self.offers.create( {app_type: "grader", status: "available"} )
-    self.offers.create( {app_type: "senior_grader", status: "available"} )
+    self.num_ta.times do
+      self.offers.create( {app_type: "ta", status: "available"} )
+    end
+    self.num_sgrader.times do
+      self.offers.create( {app_type: "senior_grader", status: "available"} )
+    end
+    self.num_grader.times do
+      self.offers.create( {app_type: "grader", status: "available"} )
+    end
   end
   
 end

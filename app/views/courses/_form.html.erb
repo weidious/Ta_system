@@ -12,10 +12,6 @@
       </div>
     <% end %>
     
-    <!--<div class="form-group">-->
-    <!--     <%#= f.label :subject %>-->
-    <!--     <%#= f.text_field :subject %>-->
-    <!--</div>-->
     <div class="col-md-6">
         
     <table class="table table-condensed">
@@ -37,6 +33,21 @@
       <tr>
          <td><%= f.label :title, style:'display: inline-block' %></td>
           <td class="required" ><%= f.text_field :title, style:'display: inline-block' %></td>
+      </tr>
+      
+      <tr>
+         <td><%= f.label :num_ta %></td>
+          <td class="required" ><%= f.number_field :num_ta %></td>
+      </tr>
+      
+      <tr>
+         <td><%= f.label :num_sgrader %></td>
+          <td class="required" ><%= f.number_field :num_sgrader %></td>
+      </tr>
+      
+      <tr>
+         <td><%= f.label :num_grader %></td>
+          <td class="required" ><%= f.number_field :num_grader %></td>
       </tr>
     
       <tr>

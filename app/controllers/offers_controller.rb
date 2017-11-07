@@ -17,6 +17,7 @@ class OffersController < ApplicationController
     def create
         @course = Course.find(params[:course_id])
         @offer = @course.offers.new(offer_params)
+        @offer.status = :available
         if @offer.save
           flash[:notice] = "Offer was successfully saved."
           redirect_to course_offers_path
@@ -29,7 +30,7 @@ class OffersController < ApplicationController
     def update
         @course = Course.find(params[:course_id])
         @offer = Offer.find(params[:id])
-        if @offer.update(offer_params)
+        if @offer.update(@newparams)
           flash[:notice] = "Offer was successfully updated."
           redirect_to course_offers_path
         else
@@ -51,6 +52,7 @@ class OffersController < ApplicationController
       @user = @offer.student
       flash[:notice] = @user.email
       OfferMailer.welcome_email(@offer).deliver_later
+      @offer.status = 'sent'
       redirect_to admin_offers_path
     end
     
