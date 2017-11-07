@@ -1,0 +1,24 @@
+<% content_for :body do %>
+<div class = "table">
+  <h1>Courses you teach in this semester</h1>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>No.</th>
+        <th>Sec</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+   
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.subject %></td>
+        <td><%= course.num %></td>
+        <td><%= course.section %></td>
+        <td><%= course.title %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<% end %>

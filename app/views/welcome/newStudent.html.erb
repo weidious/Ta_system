@@ -1,0 +1,42 @@
+<h1>Create your student profile.</h1>
+<p class="alert"><%= flash[:error] %></p>
+<%= form_for :student, url: {action: "createStudent"} do |f|  %>
+    <table>
+      <tr>
+        <td><%= f.label :level %></td>
+        <td class="required"><%= f.select :level, [["Master Non-Thesis",1], ["Thesis Master",2], ["PhD",3]] %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :date_enrolled %></td>
+        <td class="required"><%= f.date_field :date_enrolled%></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :first_name %></td>
+        <td class="required"><%= f.text_field :first_name %></td>
+        <td><%= f.label :middle_name %></td>
+        <td><%= f.text_field :middle_name %></td>
+        <td><%= f.label :last_name %></td>
+        <td class="required"> <%= f.text_field :last_name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :email %></td>
+        <td class="required"><%= f.text_field :email %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :phone %></td>
+        <td><%= f.text_field :phone %></td>
+      </tr>
+
+      <tr>
+        <td> <%= f.label :advisor_email %></td>
+        <td> <%= f.text_field :advisor_email %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :perferences %></td>
+        <td><%= f.text_area  :perferences %></td>
+      </tr>
+    </table>
+    <%= f.submit %>
+<% end %>

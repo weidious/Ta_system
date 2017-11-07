@@ -16,6 +16,10 @@ class AdminController < ApplicationController
         redirect_to courses_path
     end
     
+    def students
+        redirect_to students_path
+    end
+    
     def applies
         @applies = Apply.all
     end

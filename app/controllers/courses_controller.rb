@@ -1,16 +1,7 @@
 class CoursesController < ApplicationController
 
     def index
-        if session[:user_type] == "Instructor"
-          @instructor = Instructor.find_by_uin(session[:instructor_uin])
-          if @instructor
-            @courses = @instructor.courses.order(:num)
-          else
-            @courses = []
-          end
-        else
-          @courses = Course.all.order(:num)
-        end
+        @courses = Course.all.order(:num)
     end
     
     
@@ -48,15 +39,10 @@ class CoursesController < ApplicationController
         flash.keep
         if @course.save
           flash[:notice] = "Course was successfully saved."
-          #@course.offers.create( {app_type: "ta", status: "available"} )
-          #@course.offers.create( {app_type: "grader", status: "available"} )
-          #@course.offers.create( {app_type: "senior_grader", status: "available"} )
           redirect_to courses_path
         else
           flash[:error] =  'Failed to save. ' #@course.errors.messages
-          puts "Course was failed to save"
           render 'new'
-
         end
     end
 

@@ -1,17 +1,14 @@
     <ul class="nav nav-pills flex-column">
       <li class="nav-item">
-        <a class="nav-link"><%= link_to "Home", :controller => 'students', :action => 'index' %></a>
+        <a class="nav-link"><%= link_to "Home", student_dashboard_path(currentStudent) %></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"><%= link_to "Basic Info", :controller => 'students', :action => 'basic_info' %></a>
+        <a class="nav-link"><%= link_to "Basic Info", student_basic_info_path(currentStudent) %></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"><%= link_to "Check Application Status", :controller => 'students', :action => 'checkStatus' %></a>
+        <a class="nav-link"><%= link_to "Applies", student_applies_path(currentStudent) %></a>
       </li>
       <li class="nav-item">
-      <a class="nav-link"><%= link_to "Applies", index_apply_path %></a>
+        <a class="nav-link"><%= link_to "Check Application Status", student_checkStatus_path(currentStudent) %></a>
       </li>
-      <!--<li class="nav-item">-->
-      <!--<a class="nav-link"><%#= link_to "New Apply", new_apply_path %></a>-->
-      <!--</li>-->
     </ul>

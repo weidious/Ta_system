@@ -11,7 +11,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>UIN</th>
-        <th>Action</th>
+        <!--<th>Action</th>-->
       </tr>
     </thead>
   
@@ -22,8 +22,8 @@
       <td><%= instructor.last_name %></td>
       <td><%= instructor.email %></td>
       <td><%= instructor.uin %></td>
-      <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
-      <td><%= link_to 'Delete', instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
+      <!--<td><%#= link_to 'Edit', edit_instructor_path(instructor) %></td>-->
+      <!--<td><%#= link_to 'Delete', instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>-->
     </tr>
     <% end %>
   </table>

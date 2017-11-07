@@ -4,28 +4,36 @@ Rails.application.routes.draw do
   get 'admin', to: 'admin#index'
   get 'admin/courses'
   get 'admin/instructors'
+  get 'admin/students'
   get 'admin/applies'
   get 'admin/offers'
   get 'admin/ta_matching'
-  #get 'offers/send_email'
-  #get 'courses/:course_id/offers/:id/send_email'
 
-  get 'applies/index'
+  #get 'applies/index'
+  
+  #get 'students/basic_info'
+  #get 'students/checkStatus'
 
   root 'welcome#index'
   get 'welcome/index'
-
-  get 'students/basic_info'
-  get 'students/checkStatus'
-
   post 'welcome/login'
-
+  get 'welcome/newStudent'
+  post 'welcome/createStudent'
 
   resources :students do
     resources :applies
+    get 'dashboard'
+    get 'basic_info'
+    get 'checkStatus'
   end
 
-  resources :instructors
+  resources :instructors do
+    get 'dashboard'
+    get 'courses'
+    get 'applies'
+  end
+  
+  
   resources :courses do
     resources :offers do
       get 'send_email'

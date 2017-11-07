@@ -1,5 +1,26 @@
 <% content_for :body do %>
-<p>Hello, Rails!</p>
-<p>Home page of students.</p>
+<h1>All student</h1>
+<table class="table table-bordered">
+ <tr>
+    <th>Name</th>
+    <th>UIN</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Date Enrolled</th>
+    <th>Details</th>
+    <th>Edit</th>
+  </tr>
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= student.fullname %></td>
+      <td><%= student.uin %></td>
+      <td><%= student.email %></td>
+      <td><%= student.phone %></td>
+      <td><%= student.date_enrolled %></td>
+      <td><%= link_to 'Show', student_path(student) %></td>
+      <td><%= link_to 'Edit', edit_student_path(student) %></td>
+    </tr>
+  <% end %>
+</table>
 <% end %>
 

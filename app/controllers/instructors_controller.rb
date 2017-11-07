@@ -1,12 +1,7 @@
 class InstructorsController < ApplicationController
   
   def index
-    @instructors = Instructor.all.order(:id)
-    if session[:user_type] == "Instructor"
-        @instructors = Instructor.where(uin: session[:instructor_uin])
-    elsif session[:user_type] == "Student"
-        @instructors = []
-    end
+    @instructors = Instructor.all.order(:last_name)
   end
   
   def show
@@ -49,6 +44,20 @@ class InstructorsController < ApplicationController
         flash[:error] =  @instructor.errors.messages
         render 'edit'
     end
+  end
+  
+  def dashboard
+    @instructor = Instructor.find(params[:instructor_id])
+  end
+  
+  def courses
+    @instructor = Instructor.find(params[:instructor_id])
+    @courses = @instructor.courses.order(:num)
+  end
+  
+  def applies
+    @instructor = Instructor.find(params[:instructor_id])
+    @applies = @instructor.applies
   end
 
   

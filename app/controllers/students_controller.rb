@@ -1,6 +1,8 @@
 require 'date'
 class StudentsController < ApplicationController
 
+  http_basic_authenticate_with name: "admin", password: "admin", only: :index
+
   def index
     @students = Student.all
   end
@@ -14,7 +16,7 @@ class StudentsController < ApplicationController
   end
 
   def basic_info
-    @student = Student.find_by_uin(session[:student_uin])
+    @student = Student.find(params[:student_id])
     if(@student)
       redirect_to edit_student_path(@student)
     else
@@ -27,16 +29,12 @@ class StudentsController < ApplicationController
   end
 
   def create
-    if session[:student_uin]
-      # fetch info -> vie
-    end
-    #render plain: params[:student].inspect
     @student = Student.new(student_params)
     @student.uin = session[:student_uin]
     @student.can_ta = true
     if @student.save
         flash[:notice] = "Basic information created successfully."
-        redirect_to students_basic_info_path
+        redirect_to student_basic_info_path(@student)
     else
         flash[:error] = @student.errors.messages
         render 'new'
@@ -47,7 +45,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     if @student.update(student_params)
       flash[:notice] = "Basic information was successfully updated."
-      redirect_to students_basic_info_path
+      redirect_to student_basic_info_path(@student)
     else
       flash[:error] =  @student.errors.messages
       render 'edit'
@@ -56,6 +54,10 @@ class StudentsController < ApplicationController
   
   def show
     @student=Student.find(params[:id])
+  end
+  
+  def dashboard
+    @student = Student.find(params[:student_id])
   end
   
 private
