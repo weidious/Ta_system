@@ -1,9 +1,9 @@
 <% content_for :body do %>
 <%= render 'form' %>
-
+<hr>
 <div style="margin:20px">
   <button type="button" class="btn btn-success">TA Applicants</button>
-  <button type="button" class="btn btn-info">Grader </button>
+  <button type="button" class="btn btn-info">Grader Applicants</button>
   <button type="button" class="btn btn-warning">Senior Grader Applicants</button>
 </div>
 
@@ -14,7 +14,7 @@
     <th>Date Enrolled</th>
     <!--<th>Grade</th>-->
     <th>Details</th>
-    <th>Action</th>
+    <th>Assign Job</th>
   </tr>
   
     <% @ta_candidates.each do |student| %>
@@ -24,12 +24,12 @@
       <td><%= student.date_enrolled %></td>
       <td><%= link_to 'Show', student_path(student) %></td>
       <td>
-          <select>
-            <option selected></option>
-            <option>TA</option>
-            <option>Grader</option>
-            <option>Senior Grader</option>
-          </select>
+        <form>
+             <label class="radio-inline"><input type="radio" name="role" value="none" checked="checked"> None </label>
+             <label class="radio-inline"><input type="radio" name="role" value="ta"> TA </label>
+             <label class="radio-inline"><input type="radio" name="role" value="grader">Grader </label>
+             <label class="radio-inline"><input type="radio" name="role" value="sgrader"> Senior Grader </label>
+        </form>
       </td>
     </tr>
     <% end %>
@@ -38,15 +38,16 @@
       <tr class="bg-info">
       <td><%= student.fullname %></td>
       <td><%= student.uin %></td>
+        <td style="display:none;" ><%= student.id %></td>
       <td><%= student.date_enrolled %></td>
       <td><%= link_to 'Show', student_path(student) %></td>
       <td>
-          <select>
-            <option selected></option>
-            <option>TA</option>
-            <option>Grader</option>
-            <option>Senior Grader</option>
-          </select>
+        <form>
+             <label class="radio-inline"><input type="radio" name="role" value="none" checked="checked"> None </label>
+             <label class="radio-inline"><input type="radio" name="role" value="ta"> TA </label>
+             <label class="radio-inline"><input type="radio" name="role" value="grader">Grader </label>
+             <label class="radio-inline"><input type="radio" name="role" value="sgrader"> Senior Grader </label>
+        </form>
       </td>
     </tr>
     <% end %>
@@ -56,35 +57,36 @@
       <tr class="bg-warning">
       <td><%= student.fullname %></td>
       <td><%= student.uin %></td>
+        <td style="display:none;" ><%= student.id %></td>
       <td><%= student.date_enrolled %></td>
       <td><%= link_to 'Show', student_path(student) %></td>
       <td>
-          <select>
-            <option selected></option>
-            <option>TA</option>
-            <option>Grader</option>
-            <option>Senior Grader</option>
-          </select>
+        <form>
+             <label class="radio-inline"><input type="radio" name="role" value="none" checked="checked"> None </label>
+             <label class="radio-inline"><input type="radio" name="role" value="ta"> TA </label>
+             <label class="radio-inline"><input type="radio" name="role" value="grader">Grader </label>
+             <label class="radio-inline"><input type="radio" name="role" value="sgrader"> Senior Grader </label>
+        </form>
       </td>
     </tr>
     <% end %>
-  @x = @my_array_of_stuff.select {|v| v["single-key"]["object-identifier"] > 3}
-  
+
   <% @students.select {|student| 
     !(@ta_candidates.include? student or @grader_candidates.include? student or @sgrader_candidates.include? student)
     }.each do |student| %>
 
       <td><%= student.fullname %></td>
       <td><%= student.uin %></td>
+        <td style="display:none;" ><%= student.id %></td>
       <td><%= student.date_enrolled %></td>
       <td><%= link_to 'Show', student_path(student) %></td>
       <td>
-          <select>
-            <option selected></option>
-            <option>TA</option>
-            <option>Grader</option>
-            <option>Senior Grader</option>
-          </select>
+        <form>
+             <label class="radio-inline"><input type="radio" name="role" value="none" checked="checked"> None </label>
+             <label class="radio-inline"><input type="radio" name="role" value="ta"> TA </label>
+             <label class="radio-inline"><input type="radio" name="role" value="grader">Grader </label>
+             <label class="radio-inline"><input type="radio" name="role" value="sgrader"> Senior Grader </label>
+        </form>
       </td>
     </tr>
   <% end %>
