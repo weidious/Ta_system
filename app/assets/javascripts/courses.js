@@ -1,6 +1,8 @@
 
-console.log($("#tab_all_stu")[0].rows.length);
 
+var form_id = String("edit_course_" + $("#span_course_id").text());
+var course_form = $("#" + form_id);
+//console.log(course_form);
 
 var add_role = function(typ, uin, name) {
   var topls;
@@ -15,9 +17,7 @@ var add_role = function(typ, uin, name) {
     topls = $("#ls_sgrader");
     color = 'btn-warning';
   } else return false;
-  
 //  console.log("ta: " + uin  + "  " + $("#ls_ta").find("td[name=" + uin + "]").length);
-  
 //     if ($("#ls_ta").find("td[name=" + uin + "]").length) {
 //       alert("Already assigned as TA");
 // //     return false;
@@ -55,11 +55,12 @@ $("#tab_all_stu tr").each(function() {
   $this.change(function() {
       $this = $(this);
       var typ = $this.find("input[name='role']:checked").val();
-      console.log($this.find("input[name='role']")[0].parentNode.parentNode.parentNode.parentNode.cells[1].innerHTML);
+    //  console.log($this.find("input[name='role']")[0].parentNode.parentNode.parentNode.parentNode.cells[1].innerHTML);
       
       var name = $this.find("input[name='role']")[0].parentNode.parentNode.parentNode.parentNode.cells[0].textContent;
-      
       var uin = $this.find("input[name='role']")[0].parentNode.parentNode.parentNode.parentNode.cells[1].innerHTML;
+      var id = $this.find("input[name='role']")[0].parentNode.parentNode.parentNode.parentNode.cells[2].innerHTML;
+      console.log(id);
       remove_role(uin);
       var ok = add_role(typ, uin, name);
       if (!ok) {
@@ -67,4 +68,9 @@ $("#tab_all_stu tr").each(function() {
         $this.find("input[value='none']").prop("checked", true);
       }
     });
+});
+
+
+course_form.submit(function(){
+  console.log("submit");
 });
