@@ -60,21 +60,67 @@
     
     </div>
     
+<div style="display:none;" >
+    <%= f.select :ta_candidate_1, students_for_select, include_blank: true %> </p>
+    <%= f.select :ta_candidate_2, students_for_select, include_blank: true %> </p>
+    <%= f.select :ta_candidate_3, students_for_select, include_blank: true %> </p>
+    <%= f.select :ta_candidate_4, students_for_select, include_blank: true %> </p>
+    <%= f.select :ta_candidate_5, students_for_select, include_blank: true %> </p>
+      <br>
+    <%= f.select :grader_candidate_1, students_for_select, include_blank: true %> </p>
+    <%= f.select :grader_candidate_2, students_for_select, include_blank: true %> </p>
+    <%= f.select :grader_candidate_3, students_for_select, include_blank: true %> </p>
+    <%= f.select :grader_candidate_4, students_for_select, include_blank: true %> </p>
+    <%= f.select :grader_candidate_5, students_for_select, include_blank: true %> </p>
+    <br>
+    <%= f.select :sgrader_candidate_1, students_for_select, include_blank: true %> </p>
+    <%= f.select :sgrader_candidate_2, students_for_select, include_blank: true %> </p>
+    <%= f.select :sgrader_candidate_3, students_for_select, include_blank: true %> </p>
+    <%= f.select :sgrader_candidate_4, students_for_select, include_blank: true %> </p>
+    <%= f.select :sgrader_candidate_5, students_for_select, include_blank: true %> </p>
+            <button type="button" onclick="fill_candidate_blanks()">test</button>
+</div>
     <div class="col-md-12">
     <table>
+
       <tr id="ls_ta"  count="0">
-         <td><%= f.label :num_ta, 'TA Candidates:' %></td>
-         
+         <td>TA Candidates:</td>
+             <td>    
+                 <button type="button" class="btn btn-default btn-sm" onclick="reset_ta_cand()">reset</button>
+             </td>
+  <% @ta_candidates.each do |student| %>
+      <td name="<%= student.id%>">
+          <button type="button" class="btn btn-success"> <%= student.fullname %> </button>
+      </td>
+  <% end %>
       </tr>
+      
       <tr id="ls_grader" count="0">
-         <td><%= f.label :grader_candidate_1, 'Grader Candidates:' %></td>
-     
+         <td>Grader Candidates:</td>
+             <td>    
+                 <button type="button" class="btn btn-default btn-sm" onclick="reset_grader_cand()">reset</button>
+             </td>
+<% @grader_candidates.each do |student| %>
+      <td name="<%= student.id%>">
+          <button type="button" class="btn btn-info"> <%= student.fullname %> </button>
+      </td>
+  <% end %>
       </tr>
+      
       <tr id="ls_sgrader" count="0">
-         <td><%= f.label :sgrader_candidate_1, 'Senior Grader Candidates:' %></td>
+         <td>Senior Grader :</td>
+             <td>    
+                 <button type="button" class="btn btn-default btn-sm" onclick="reset_sgrader_cand()">reset</button>
+             </td>         
+  <% @sgrader_candidates.each do |student| %>
+      <td name="<%= student.id%>">
+          <button type="button" class="btn btn-warning"> <%= student.fullname %> </button>
+      </td>
+  <% end %>
       </tr>
      
     </table>
     </div>
+    <br>
     <%= f.submit %>
 <% end %>

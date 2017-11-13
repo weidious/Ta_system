@@ -17,7 +17,7 @@
     <th>Assign Job</th>
   </tr>
   
-    <% @ta_candidates.each do |student| %>
+    <% @ta_applicants.each do |student| %>
       <tr class="bg-success">
       <td><%= student.fullname %></td>
       <td><%= student.uin %></td>
@@ -35,7 +35,7 @@
     </tr>
     <% end %>
     
-  <% @grader_candidates.each do |student| %>
+  <% @grader_applicants.each do |student| %>
       <tr class="bg-info">
       <td><%= student.fullname %></td>
       <td><%= student.uin %></td>
@@ -54,7 +54,7 @@
     <% end %>
     
     
-  <% @sgrader_candidates.each do |student| %>
+  <% @sgrader_applicants.each do |student| %>
       <tr class="bg-warning">
       <td><%= student.fullname %></td>
       <td><%= student.uin %></td>
@@ -73,7 +73,7 @@
     <% end %>
 
   <% @students.select {|student| 
-    !(@ta_candidates.include? student or @grader_candidates.include? student or @sgrader_candidates.include? student)
+    !(@ta_applicants.include? student or @grader_applicants.include? student or @sgrader_applicants.include? student)
     }.each do |student| %>
 
       <td><%= student.fullname %></td>
