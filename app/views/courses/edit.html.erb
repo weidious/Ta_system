@@ -17,45 +17,18 @@
     <th>Assign Job</th>
   </tr>
   
-    <% @ta_applicants.each do |student| %>
+  <% @students.each do |student| %>
+  
+    <% if @ta_applicants.include? student.id %>
       <tr class="bg-success">
-      <td><%= student.fullname %></td>
-      <td><%= student.uin %></td>
-        <td style="display:none;" ><%= student.id %></td>
-      <td><%= student.date_enrolled %></td>
-      <td><%= link_to 'Show', student_path(student) %></td>
-      <td>
-        <form>
-             <label class="radio-inline"><input type="radio" name="role" value="none" checked="checked"> None </label>
-             <label class="radio-inline"><input type="radio" name="role" value="ta"> TA </label>
-             <label class="radio-inline"><input type="radio" name="role" value="grader">Grader </label>
-             <label class="radio-inline"><input type="radio" name="role" value="sgrader"> Senior Grader </label>
-        </form>
-      </td>
-    </tr>
-    <% end %>
-    
-  <% @grader_applicants.each do |student| %>
+    <% elsif @grader_applicants.include? student.id %>
       <tr class="bg-info">
-      <td><%= student.fullname %></td>
-      <td><%= student.uin %></td>
-        <td style="display:none;" ><%= student.id %></td>
-      <td><%= student.date_enrolled %></td>
-      <td><%= link_to 'Show', student_path(student) %></td>
-      <td>
-        <form>
-             <label class="radio-inline"><input type="radio" name="role" value="none" checked="checked"> None </label>
-             <label class="radio-inline"><input type="radio" name="role" value="ta"> TA </label>
-             <label class="radio-inline"><input type="radio" name="role" value="grader">Grader </label>
-             <label class="radio-inline"><input type="radio" name="role" value="sgrader"> Senior Grader </label>
-        </form>
-      </td>
-    </tr>
-    <% end %>
-    
-    
-  <% @sgrader_applicants.each do |student| %>
+    <% elsif @grader_applicants.include? student.id %>
       <tr class="bg-warning">
+  <% else %>
+      <tr>
+  <% end %>
+  
       <td><%= student.fullname %></td>
       <td><%= student.uin %></td>
         <td style="display:none;" ><%= student.id %></td>
@@ -72,25 +45,6 @@
     </tr>
     <% end %>
 
-  <% @students.select {|student| 
-    !(@ta_applicants.include? student or @grader_applicants.include? student or @sgrader_applicants.include? student)
-    }.each do |student| %>
-
-      <td><%= student.fullname %></td>
-      <td><%= student.uin %></td>
-        <td style="display:none;" ><%= student.id %></td>
-      <td><%= student.date_enrolled %></td>
-      <td><%= link_to 'Show', student_path(student) %></td>
-      <td>
-        <form>
-             <label class="radio-inline"><input type="radio" name="role" value="none" checked="checked"> None </label>
-             <label class="radio-inline"><input type="radio" name="role" value="ta"> TA </label>
-             <label class="radio-inline"><input type="radio" name="role" value="grader">Grader </label>
-             <label class="radio-inline"><input type="radio" name="role" value="sgrader"> Senior Grader </label>
-        </form>
-      </td>
-    </tr>
-  <% end %>
 </table>
 <%= link_to 'Back', courses_path %>
 <% end %>

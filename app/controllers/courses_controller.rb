@@ -17,9 +17,9 @@ class CoursesController < ApplicationController
         @course = Course.find(params[:id])
         @instructors = Instructor.all
       
-      @ta_applicants = Apply.where(course:@course, appType:1);
-      @grader_applicants = Apply.where(course:@course, appType:2);
-      @sgrader_applicants = Apply.where(course:@course, appType:3);
+      @ta_applicants = Apply.where(course:@course, appType:1).pluck(:student_id);
+      @grader_applicants = Apply.where(course:@course, appType:2).pluck(:student_id);
+      @sgrader_applicants = Apply.where(course:@course, appType:3).pluck(:student_id);
       
       @ta_candidates = find_candidate_ta(@course)
       @grader_candidates = find_candidate_grader(@course)
