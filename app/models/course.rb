@@ -11,6 +11,18 @@ class Course < ApplicationRecord
     subject + ' ' + num.to_s + '-' + section.to_s + '  ' + title
   end
   
+  def ta_candidate_ids
+    [ta_candidate_1, ta_candidate_2, ta_candidate_3, ta_candidate_4, ta_candidate_5].compact
+  end
+  
+  def sgrader_candidate_ids
+    [sgrader_candidate_1, sgrader_candidate_2, sgrader_candidate_3, sgrader_candidate_4, sgrader_candidate_5].compact
+  end
+  
+  def grader_candidate_ids
+    [grader_candidate_1, grader_candidate_2, grader_candidate_3, grader_candidate_4, grader_candidate_5].compact
+  end
+  
   after_create :generate_offers
   
   def generate_offers
