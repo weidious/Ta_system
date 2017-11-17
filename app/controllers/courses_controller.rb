@@ -17,17 +17,17 @@ class CoursesController < ApplicationController
         @course = Course.find(params[:id])
         @instructors = Instructor.all
       
-      @ta_applicants = Apply.where(course:@course, appType:1).pluck(:student_id);
-      @grader_applicants = Apply.where(course:@course, appType:2).pluck(:student_id);
-      @sgrader_applicants = Apply.where(course:@course, appType:3).pluck(:student_id);
-      
-      @ta_candidates = Student.where(id: @course.ta_candidate_ids).sort_by { |u| @course.ta_candidate_ids.index u.id }
-      @sgrader_candidates = Student.where(id: @course.sgrader_candidate_ids).sort_by { |u| @course.sgrader_candidate_ids.index u.id }
-      @grader_candidates = Student.where(id: @course.grader_candidate_ids).sort_by { |u| @course.grader_candidate_ids.index u.id }
+        @ta_applicants = Apply.where(course:@course, appType:1).pluck(:student_id);
+        @grader_applicants = Apply.where(course:@course, appType:2).pluck(:student_id);
+        @sgrader_applicants = Apply.where(course:@course, appType:3).pluck(:student_id);
         
-      #@candidates = (Apply.where(course_id: @course.id).collect {|apply| apply.student }).uniq
-      @candidates = @course.students.uniq
-      @students = Student.all
+        @ta_candidates = Student.where(id: @course.ta_candidate_ids).sort_by { |u| @course.ta_candidate_ids.index u.id }
+        @sgrader_candidates = Student.where(id: @course.sgrader_candidate_ids).sort_by { |u| @course.sgrader_candidate_ids.index u.id }
+        @grader_candidates = Student.where(id: @course.grader_candidate_ids).sort_by { |u| @course.grader_candidate_ids.index u.id }
+          
+        #@candidates = (Apply.where(course_id: @course.id).collect {|apply| apply.student }).uniq
+        @candidates = @course.students.uniq
+        @students = Student.all
     end
     
     

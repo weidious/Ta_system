@@ -27,7 +27,7 @@
 
       <tr>
         <td><%= f.label :appType %></td>
-        <td class="required"><%= f.select :appType, appTypes_for_select %></td>
+        <td class="required"><%= f.select :appType, Apply.appTypes.keys.to_a %></td>
         <%# => appTypes_for_select = [["TA", 1], ["Senor Grader", 2], ["Grader", 3]] %>
         <%# => see in app/helpers/applies_helper.rb %>
       </tr>
