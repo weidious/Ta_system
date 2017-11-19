@@ -26,6 +26,16 @@ class Course < ApplicationRecord
   after_create :generate_offers
   
   def generate_offers
+    if self.num_ta.nil?
+      self.num_ta = 1
+    end
+    if self.num_sgrader.nil?
+      self.num_sgrader = 0
+    end
+    if self.num_grader.nil?
+      self.num_grader = 0
+    end
+    
     self.num_ta.times do
       self.offers.create( {app_type: "ta", status: "available"} )
     end
