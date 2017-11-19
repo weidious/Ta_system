@@ -6,26 +6,34 @@ class WelcomeController < ApplicationController
   def login
     #verify the user first in the next step
     #session[:student_uin] = params[:uin]
-    
-    session[:user_type] = params[:usertype]
-    
-    case session[:user_type]
-    when "Student"
-      session[:student_uin] = params[:uin]
-      if Student.find_by_uin(params[:uin])
-        redirect_to student_dashboard_path(Student.find_by_uin(params[:uin]))
+
+
+    @netID = params[:netID]
+    @password = params[:password]
+    @result = `python cas.py #{@netID} #{@password}`
+    puts @result
+    if @result == "successful\n"
+      session[:user_type] = params[:usertype]
+      case session[:user_type]
+      when "Student"
+        session[:student_uin] = params[:uin]
+        if Student.find_by_uin(params[:uin])
+          redirect_to student_dashboard_path(Student.find_by_uin(params[:uin]))
+        else
+          redirect_to welcome_newStudent_path
+        end
+      # when "Admin"
+      #   session[:admin_uin] = params[:uin]
+      #   redirect_to admin_index_path
+      when "Instructor"
+        if Instructor.find_by_uin(params[:uin])
+          session[:instructor_uin] = params[:uin]
+          redirect_to instructor_dashboard_path(Instructor.find_by_uin(params[:uin]))
+        else
+          flash[:error] = "Login failed. UIN is not registered as an instructor."
+          redirect_to welcome_index_path
+        end
       else
-        redirect_to welcome_newStudent_path
-      end
-    # when "Admin"
-    #   session[:admin_uin] = params[:uin]
-    #   redirect_to admin_index_path
-    when "Instructor"
-      if Instructor.find_by_uin(params[:uin])
-        session[:instructor_uin] = params[:uin]
-        redirect_to instructor_dashboard_path(Instructor.find_by_uin(params[:uin]))
-      else
-        flash[:error] = "Login failed. UIN is not registered as an instructor."
         redirect_to welcome_index_path
       end
     else

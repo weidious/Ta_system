@@ -8,6 +8,14 @@
           <td><%= text_field_tag(:uin) %></td>
         </tr>
         <tr>
+          <th><%= label_tag(:netID, "netID:") %></th>
+          <td><%= text_field_tag(:netID) %></td>
+        </tr>
+        <tr>
+          <th><%= label_tag(:password, "password:") %></th>
+          <td><%= password_field_tag(:password) %></td>
+        </tr>
+        <tr>
           <th><%= label_tag(:q, "User Type:") %></th>
           <td class="required"><%= select_tag(:usertype, options_for_select([ "Student", "Instructor" ], "Student")) %></td>
         </tr>
