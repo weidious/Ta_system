@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'admin/offers'
   get 'admin/ta_matching'
 
+
+  get 'offer_decision/decide'
+
   #get 'applies/index'
   
   #get 'students/basic_info'
