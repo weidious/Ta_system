@@ -1,0 +1,2 @@
+module OfferDecisionHelper
+end
