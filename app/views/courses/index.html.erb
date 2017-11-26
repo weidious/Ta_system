@@ -1,6 +1,9 @@
 <% content_for :body do %>
 <div class = "table">
   <h1>All courses</h1>
+  
+<p><%= link_to 'Download CSV list', courses_path(format: :csv) %></p>
+
   <%= link_to 'Add a new course', new_course_path %>
   <table class="table table-hover table-bordered">
     <thead>

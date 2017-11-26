@@ -1,5 +1,8 @@
 <% content_for :body do %>
 <h1>All student</h1>
+
+<p><%= link_to 'Download CSV list', students_path(format: :csv) %></p>
+
 <table class="table table-bordered">
  <tr>
     <th>Name</th>

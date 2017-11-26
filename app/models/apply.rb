@@ -11,6 +11,16 @@ class Apply < ApplicationRecord
   
   enum appType: [ :ta, :senior_grader, :grader ]
   
+  def self.to_csv
+    attributes = %w{id email name}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      all.each do |user|
+        csv << attributes.map{ |attr| user.send(attr) }
+      end
+    end
+  end
+  
   # def self.appTypeEnum(i)
   #   case i
   #   when 1
