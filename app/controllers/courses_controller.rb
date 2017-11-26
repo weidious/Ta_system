@@ -36,11 +36,10 @@ class CoursesController < ApplicationController
       @ta_candidates = Student.where(id: @course.ta_candidate_ids)
       @sgrader_candidates = Student.where(id: @course.sgrader_candidate_ids)
       @grader_candidates = Student.where(id: @course.grader_candidate_ids)
-      @job = {"2" => "none"}
     end
     
     def updateCandidates
-      flash[:notice] = params
+      flash[:notice] = params[:job]
       redirect_to courses_path
     end
     
