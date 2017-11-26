@@ -37,6 +37,11 @@
         <td><%= f.label :uin %></td>
         <td class="required"><%= f.number_field :uin, in: 100000000..999999999 %></td>
       </tr>
+      
+      <tr>
+        <td><%= f.label :netID %></td>
+        <td class="required"><%= f.text_field :netID %></td>
+      </tr>
     </table>
     <%= f.submit %>
 <% end %>

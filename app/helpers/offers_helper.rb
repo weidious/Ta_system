@@ -20,5 +20,13 @@ module OffersHelper
             ""
         end
     end
+    
+    def offeredStudentNetID(offer)
+        if offer.student
+            offer.student.netID
+        else
+            ""
+        end
+    end
   
 end

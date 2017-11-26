@@ -23,13 +23,14 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'welcome/index'
   post 'welcome/login'
+  get 'welcome/logout'
   get 'welcome/newStudent'
   post 'welcome/createStudent'
 
   resources :students do
     resources :applies
     get 'dashboard'
-    get 'basic_info'
+    #get 'basic_info'
     get 'checkStatus'
   end
 

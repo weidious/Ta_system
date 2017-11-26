@@ -3,6 +3,10 @@
 <%= form_for :student, url: {action: "createStudent"} do |f|  %>
     <table>
       <tr>
+        <td><%= f.label :uin %></td>
+        <td class="required"><%= f.number_field :uin %></td>
+      </tr>
+      <tr>
         <td><%= f.label :level %></td>
         <td class="required"><%= f.select :level, [["Master Non-Thesis",1], ["Thesis Master",2], ["PhD",3]] %></td>
       </tr>

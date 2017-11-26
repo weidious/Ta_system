@@ -4,10 +4,6 @@ module InstructorsHelper
     end
     
     def currentInstructor
-        if (session[:user_type] == "Instructor")
-            Instructor.find_by_uin(session[:instructor_uin])
-        else
-            nil
-        end
+            Instructor.find_by_netID(session[:netID])
     end
 end
