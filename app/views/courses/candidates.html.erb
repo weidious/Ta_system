@@ -16,10 +16,10 @@
         <td><%= student.uin %></td>
         <td><%= student.date_enrolled %></td>
         <td>
-            <%= radio_button_tag "job[#{student.id}]", nil, :checked => candidate_type(student)=="none" %>
+            <%= radio_button_tag "job[#{student.id}]", nil, candidate_type(student)=="none" %>
             <%= label_tag "job[#{student.id}]", 'none' %>
             <% Apply.appTypes.keys.each do |type| %>
-                <%= radio_button_tag "job[#{student.id}]", type, :checked => candidate_type(student)==type %>
+                <%= radio_button_tag "job[#{student.id}]", type, candidate_type(student)==type %>
                 <%= label_tag "job[#{student.id}]", type %>
             <% end %>
         </td>

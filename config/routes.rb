@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
 
   get 'offer_decision/decide'
+  post 'offer_decision/accept'
+  post 'offer_decision/reject'
+  get 'offer_decision/thankyou'
 
   #get 'applies/index'
   
@@ -41,6 +44,8 @@ Rails.application.routes.draw do
     resources :offers do
       get 'send_email'
     end
+    get 'candidates'
+    post 'updateCandidates'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -11,6 +11,7 @@
         <th>Instructor</th>
         <th></th>
         <th></th>
+        <th></th>
         <th>Offers</th>
       </tr>
     </thead>
@@ -28,6 +29,7 @@
         <% end %>
   
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Candidates', course_candidates_path(course) %></td>
         <td><%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
         <td><%= link_to 'offers', course_offers_path(course) %></td>
       </tr>
