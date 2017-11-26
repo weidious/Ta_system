@@ -9,6 +9,9 @@ class Student < ApplicationRecord
     validates :last_name, presence: true
     validates :email, presence: true, length: {maximum: 31}
     validates_email_format_of :email, :message => 'email address is not looking good'
+  
+  enum level: [ :MCS, :MSCS, :PHD ]
+    
     
     def fullname
         first_name + " " + (middle_name || " ") + " " + last_name

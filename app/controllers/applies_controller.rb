@@ -12,6 +12,8 @@ class AppliesController < ApplicationController
   def new
     @student = Student.find(params[:student_id])
     @apply = @student.applies.new
+    @courses = Course.all
+    
   end
 
   def edit

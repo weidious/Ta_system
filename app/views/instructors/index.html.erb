@@ -2,7 +2,10 @@
   <h1>All instructors</h1>
   <!--<p>Find me in app/views/instructor/index.html.erb</p>-->
   
-  <%= link_to 'New instructor', new_instructor_path %>
+<p><%= link_to 'Download CSV list', instructors_path(format: :csv) %></p>
+
+<p><%= link_to 'New instructor', new_instructor_path %></p>
+  
   <table class="table table-bordered">
     <thead>
       <tr>

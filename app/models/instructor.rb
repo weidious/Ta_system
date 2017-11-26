@@ -7,7 +7,9 @@ class Instructor < ApplicationRecord
     validates :netID, presence: true
     validates :uin, presence: true
     validates_inclusion_of :uin, in: 100000000..9999999999
-    
+
+
+  
     def fullname
         first_name + " " + (middle_name || "") + " " + last_name
     end
