@@ -1,5 +1,5 @@
 
-<%= fields_for "apply[]", apply do |f| %>
+<%= fields_for @apply do |f| %>
     <% if @apply.errors.any? %>
         <div id="error_explanation">
           <h2>
