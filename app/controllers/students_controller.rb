@@ -47,7 +47,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     if @student.update(student_params)
       flash[:notice] = "Basic information was successfully updated."
-      redirect_to student_basic_info_path(@student)
+      redirect_to edit_student_path(@student)
     else
       flash[:error] =  @student.errors.messages
       render 'edit'
