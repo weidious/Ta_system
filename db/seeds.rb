@@ -347,28 +347,26 @@ Instructor.create(first_name:"Tiffani", middle_name:"L.", last_name:"Williams", 
 #     instructor_id: list_inst.sample.id)
 # Course.create(subject: "CSCE", num: 691, section: 600, title: "Research",
 #     instructor_id: list_inst.sample.id)
-    
-
 
 @all_courses = Course.all
 
 @list_ta_apply = []
 (1..5).each { |i|
-    app = Apply.create(course:@all_courses.sample, student:list_student.sample, appType:1, priority:i,
+    app = Apply.create(course:@all_courses.sample, student:list_student.sample, appType:"ta", priority:i,
     acceptAdjust:true, takenBefore:true, grade:"A")
     @list_ta_apply.push(app)
 }
 
 @list_grader_apply = []
 (1..3).each { |i|
-    app = Apply.create(course:@all_courses.sample, student:list_student.sample, appType:2, priority:i,
+    app = Apply.create(course:@all_courses.sample, student:list_student.sample, appType:"grader", priority:i,
     acceptAdjust:true, takenBefore:false)
     @list_grader_apply.push(app)
 }
 
 @list_sgrader_apply = []
 (1..3).each { |i|
-    app = Apply.create(course:@all_courses.sample, student:list_student.sample, appType:3, priority:i,
+    app = Apply.create(course:@all_courses.sample, student:list_student.sample, appType:"senior_grader", priority:i,
     acceptAdjust:false, takenBefore:true, grade:"B")
     @list_sgrader_apply.push(app)
 }
@@ -391,6 +389,5 @@ puts("DEBUG>>> course_with_candidates ")
 for attribute in @course_with_candidates.attributes.keys
     puts(attribute.to_s + " => " + @course_with_candidates.attributes[attribute].to_s)
 end
-
 
 

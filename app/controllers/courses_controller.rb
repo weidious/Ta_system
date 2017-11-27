@@ -21,13 +21,56 @@ class CoursesController < ApplicationController
         @grader_applicants = Apply.where(course:@course, appType:2).pluck(:student_id);
         @sgrader_applicants = Apply.where(course:@course, appType:3).pluck(:student_id);
         
-        @ta_candidates = Student.where(id: @course.ta_candidate_ids).sort_by { |u| @course.ta_candidate_ids.index u.id }
-        @sgrader_candidates = Student.where(id: @course.sgrader_candidate_ids).sort_by { |u| @course.sgrader_candidate_ids.index u.id }
-        @grader_candidates = Student.where(id: @course.grader_candidate_ids).sort_by { |u| @course.grader_candidate_ids.index u.id }
+        @ta_candidates = Student.where(id: @course.ta_candidate_ids)#.sort_by { |u| @course.ta_candidate_ids.index u.id }
+        @sgrader_candidates = Student.where(id: @course.sgrader_candidate_ids)#.sort_by { |u| @course.sgrader_candidate_ids.index u.id }
+        @grader_candidates = Student.where(id: @course.grader_candidate_ids)#.sort_by { |u| @course.grader_candidate_ids.index u.id }
           
         #@candidates = (Apply.where(course_id: @course.id).collect {|apply| apply.student }).uniq
         @candidates = @course.students.uniq
         @students = Student.all
+    end
+    
+    def candidate_type(student)
+        if @ta_candidates.include?student
+            "ta"
+        elsif @sgrader_candidates.include?student
+            "senior_grader"
+        elsif @grader_candidates.include?student
+            "grader"
+        else
+            "none"
+        end
+    end
+    
+    def candidates
+      @course = Course.find(params[:course_id])
+      @students = Student.all
+      @ta_candidates = Student.where(id: @course.ta_candidate_ids)
+      @sgrader_candidates = Student.where(id: @course.sgrader_candidate_ids)
+      @grader_candidates = Student.where(id: @course.grader_candidate_ids)
+      @job = {}
+      @students.each do |student|
+        @job[student.id] = candidate_type(student)
+      end
+    end
+    
+    def updateCandidates
+      #flash[:notice] = params[:job]
+      @course = Course.find(params[:course_id])
+      @ta_candidate_ids = params[:job].select{|key, value| value == "ta" }.keys
+      @sgrader_candidate_ids = params[:job].select{|key, value| value == "senior_grader" }.keys
+      @grader_candidate_ids = params[:job].select{|key, value| value == "grader" }.keys
+      @course.update_ta_candidates(@ta_candidate_ids)
+      @course.update_sgrader_candidates(@sgrader_candidate_ids)
+      @course.update_grader_candidates(@grader_candidate_ids)
+      if @course.save
+        flash[:notice] = "Prefered TA updated successfully"
+        #redirect_to courses_path
+        redirect_to course_candidates_path(@course)
+      else
+        flash[:error] = "Updated prefered TA failed."
+        redirect_to course_candidates_path(@course)
+      end
     end
     
     

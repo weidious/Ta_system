@@ -12,12 +12,12 @@
 
 <body>
 <div class="container">
-  <p class="alert"><%= flash[:error] %></p>
   <div class="table-responsive">
     <%= form_tag({controller: "welcome", action: "login", method: "post"}, {:class=>"form-signin"}) do %>
+        <p class="alert"><%= flash[:error] %></p>
         <h2 class="form-signin-heading">Please sign in</h2>
-        <%= label_tag(:uin, "UIN:", {:class=>"sr-only"}) %>
-        <%= text_field_tag :uin, nil, class: "form-control", placeholder: "UIN" %>
+        <%#= label_tag(:uin, "UIN:", {:class=>"sr-only"}) %>
+        <%#= text_field_tag :uin, nil, class: "form-control", placeholder: "UIN" %>
         <%= label_tag(:netID, "netID:", {:class=>"sr-only"}) %>
         <%= text_field_tag :netID, nil, class: "form-control" , placeholder: "netID" %>
         <%= label_tag(:password, "password:", {:class=>"sr-only"}) %>
@@ -26,8 +26,8 @@
         <%= select_tag(:usertype, options_for_select([ "Student", "Instructor" ], "Student")) %>
         <p>UIN must be 9 digits. Or everything will be disabled after login.</p>
         <%= submit_tag("Log In", {:class=>"btn btn-lg btn-primary btn-block"}) %>
+        <%= link_to 'Administrator login', admin_index_path, {:class=>"btn btn-lg btn-block"} %>
     <% end %>
-    <%= link_to 'Administrator login', admin_index_path %>
   </div>
 
 </div>

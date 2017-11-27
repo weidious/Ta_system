@@ -1,51 +1,51 @@
 <% content_for :body do %>
 <%= render 'form' %>
-<hr>
-<div style="margin:20px">
-  <button type="button" class="btn btn-success">TA Applicants</button>
-  <button type="button" class="btn btn-info">Grader Applicants</button>
-  <button type="button" class="btn btn-warning">Senior Grader Applicants</button>
-</div>
+<!--<hr>-->
+<!--<div style="margin:20px">-->
+<!--  <button type="button" class="btn btn-success">TA Applicants</button>-->
+<!--  <button type="button" class="btn btn-info">Grader Applicants</button>-->
+<!--  <button type="button" class="btn btn-warning">Senior Grader Applicants</button>-->
+<!--</div>-->
 
-<table class="table table-bordered table-hover" id="tab_all_stu">
-  <tr>
-    <th>Name</th>
-    <th>UIN</th>
-    <th>Date Enrolled</th>
+<!--<table class="table table-bordered table-hover" id="tab_all_stu">-->
+<!--  <tr>-->
+<!--    <th>Name</th>-->
+<!--    <th>UIN</th>-->
+<!--    <th>Date Enrolled</th>-->
     <!--<th>Grade</th>-->
-    <th>Details</th>
-    <th>Assign Job</th>
-  </tr>
+<!--    <th>Details</th>-->
+<!--    <th>Assign Job</th>-->
+<!--  </tr>-->
   
-  <% @students.each do |student| %>
+<!--  <%# @students.each do |student| %>-->
   
-    <% if @ta_applicants.include? student.id %>
-      <tr class="bg-success">
-    <% elsif @grader_applicants.include? student.id %>
-      <tr class="bg-info">
-    <% elsif @grader_applicants.include? student.id %>
-      <tr class="bg-warning">
-  <% else %>
-      <tr>
-  <% end %>
+<!--    <%# if @ta_applicants.include? student.id %>-->
+<!--      <tr class="bg-success">-->
+<!--    <%# elsif @grader_applicants.include? student.id %>-->
+<!--      <tr class="bg-info">-->
+<!--    <%# elsif @grader_applicants.include? student.id %>-->
+<!--      <tr class="bg-warning">-->
+<!--  <%# else %>-->
+<!--      <tr>-->
+<!--  <%# end %>-->
   
-      <td><%= student.fullname %></td>
-      <td><%= student.uin %></td>
-        <td style="display:none;" ><%= student.id %></td>
-      <td><%= student.date_enrolled %></td>
-      <td><%= link_to 'Show', student_path(student) %></td>
-      <td>
-        <form>
-             <label class="radio-inline"><input type="radio" name="role" value="none" checked="checked"> None </label>
-             <label class="radio-inline"><input type="radio" name="role" value="ta"> TA </label>
-             <label class="radio-inline"><input type="radio" name="role" value="grader">Grader </label>
-             <label class="radio-inline"><input type="radio" name="role" value="sgrader"> Senior Grader </label>
-        </form>
-      </td>
-    </tr>
-    <% end %>
+<!--      <td><%#= student.fullname %></td>-->
+<!--      <td><%#= student.uin %></td>-->
+<!--        <td style="display:none;" ><%#= student.id %></td>-->
+<!--      <td><%#= student.date_enrolled %></td>-->
+<!--      <td><%#= link_to 'Show', student_path(student) %></td>-->
+<!--      <td>-->
+<!--        <form>-->
+<!--             <label class="radio-inline"><input type="radio" name="role" value="none" checked="checked"> None </label>-->
+<!--             <label class="radio-inline"><input type="radio" name="role" value="ta"> TA </label>-->
+<!--             <label class="radio-inline"><input type="radio" name="role" value="grader">Grader </label>-->
+<!--             <label class="radio-inline"><input type="radio" name="role" value="sgrader"> Senior Grader </label>-->
+<!--        </form>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <%# end %>-->
 
-</table>
+<!--</table>-->
 <%= link_to 'Back', courses_path %>
 <% end %>
 

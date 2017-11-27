@@ -23,6 +23,30 @@ class Course < ApplicationRecord
     [grader_candidate_1, grader_candidate_2, grader_candidate_3, grader_candidate_4, grader_candidate_5].compact
   end
   
+  def update_ta_candidates(ids)
+    self.ta_candidate_1 = ids[0]
+    self.ta_candidate_2 = ids[1]
+    self.ta_candidate_3 = ids[2]
+    self.ta_candidate_4 = ids[3]
+    self.ta_candidate_5 = ids[4]
+  end
+  
+  def update_sgrader_candidates(ids)
+    self.sgrader_candidate_1 = ids[0]
+    self.sgrader_candidate_2 = ids[1]
+    self.sgrader_candidate_3 = ids[2]
+    self.sgrader_candidate_4 = ids[3]
+    self.sgrader_candidate_5 = ids[4]
+  end
+  
+  def update_grader_candidates(ids)
+    self.grader_candidate_1 = ids[0]
+    self.grader_candidate_2 = ids[1]
+    self.grader_candidate_3 = ids[2]
+    self.grader_candidate_4 = ids[3]
+    self.grader_candidate_5 = ids[4]
+  end
+  
   after_create :generate_offers
   
   def generate_offers

@@ -1,0 +1,5 @@
+<%- headers = ['Subject', 'Num', 'Section', 'Title', 'Instructor Name', 'UIN', 'TA Num', 'Grader Num', 'Senior Grader'] -%>
+<%= CSV.generate_line headers %>
+<%- @courses.each do |obj| -%>
+<%= CSV.generate_line([obj.subject, obj.num, obj.section, obj.title, obj.instructor.fullname, obj.instructor.uin, obj.num_ta, obj.num_grader, obj.num_sgrader]).html_safe -%>
+<%- end -%>

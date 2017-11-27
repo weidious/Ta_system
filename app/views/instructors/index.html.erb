@@ -2,7 +2,10 @@
   <h1>All instructors</h1>
   <!--<p>Find me in app/views/instructor/index.html.erb</p>-->
   
-  <%= link_to 'New instructor', new_instructor_path %>
+<p><%= link_to 'Download CSV list', instructors_path(format: :csv) %></p>
+
+<p><%= link_to 'New instructor', new_instructor_path %></p>
+  
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -11,6 +14,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>UIN</th>
+        <th>NetID</th>
         <!--<th>Action</th>-->
       </tr>
     </thead>
@@ -22,8 +26,9 @@
       <td><%= instructor.last_name %></td>
       <td><%= instructor.email %></td>
       <td><%= instructor.uin %></td>
-      <!--<td><%#= link_to 'Edit', edit_instructor_path(instructor) %></td>-->
-      <!--<td><%#= link_to 'Delete', instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>-->
+      <td><%= instructor.netID %></td>
+      <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+      <td><%= link_to 'Delete', instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
     </tr>
     <% end %>
   </table>

@@ -14,21 +14,23 @@ class WelcomeController < ApplicationController
     puts @result
     if @result == "successful\n"
       session[:user_type] = params[:usertype]
+      session[:netID] = params[:netID]
       case session[:user_type]
       when "Student"
-        session[:student_uin] = params[:uin]
-        if Student.find_by_uin(params[:uin])
-          redirect_to student_dashboard_path(Student.find_by_uin(params[:uin]))
+        #session[:student_uin] = params[:uin]
+        #if Student.find_by_uin(params[:uin])
+        if Student.find_by_netID(params[:netID])
+          #redirect_to student_dashboard_path(Student.find_by_uin(params[:uin]))
+          redirect_to student_dashboard_path(Student.find_by_netID(params[:netID]))
         else
           redirect_to welcome_newStudent_path
         end
-      # when "Admin"
-      #   session[:admin_uin] = params[:uin]
-      #   redirect_to admin_index_path
       when "Instructor"
-        if Instructor.find_by_uin(params[:uin])
-          session[:instructor_uin] = params[:uin]
-          redirect_to instructor_dashboard_path(Instructor.find_by_uin(params[:uin]))
+        #if Instructor.find_by_uin(params[:uin])
+        if Instructor.find_by_netID(params[:netID])
+          #session[:instructor_uin] = params[:uin]
+          #redirect_to instructor_dashboard_path(Instructor.find_by_uin(params[:uin]))
+          redirect_to instructor_dashboard_path(Instructor.find_by_netID(params[:netID]))
         else
           flash[:error] = "Login failed. UIN is not registered as an instructor."
           redirect_to welcome_index_path
@@ -37,8 +39,15 @@ class WelcomeController < ApplicationController
         redirect_to welcome_index_path
       end
     else
+      flash[:error] = "Login failed. Net ID or password error."
       redirect_to welcome_index_path
     end
+  end
+  
+  def logout
+    reset_session
+    session.clear
+    redirect_to welcome_index_path
   end
     
   def newStudent
@@ -48,6 +57,7 @@ class WelcomeController < ApplicationController
   
   def createStudent
     @student = Student.new(params.require(:student).permit(
+        :uin,
         :level,
         :date_enrolled,
         :first_name, 
@@ -57,7 +67,8 @@ class WelcomeController < ApplicationController
         :advisor_email,
         :phone,
         :perferences))
-    @student.uin = session[:student_uin]
+    #@student.uin = session[:student_uin]
+    @student.netID = session[:netID]
     @student.can_ta = true
     if @student.save
         flash[:notice] = "Student created successfully."

@@ -1,9 +1,13 @@
 <% content_for :body do %>
 <h1>All student</h1>
+
+<p><%= link_to 'Download CSV list', students_path(format: :csv) %></p>
+
 <table class="table table-bordered">
  <tr>
     <th>Name</th>
     <th>UIN</th>
+    <th>NetID</th>
     <th>Email</th>
     <th>Phone</th>
     <th>Date Enrolled</th>
@@ -14,11 +18,13 @@
     <tr>
       <td><%= student.fullname %></td>
       <td><%= student.uin %></td>
+      <td><%= student.netID %></td>
       <td><%= student.email %></td>
       <td><%= student.phone %></td>
       <td><%= student.date_enrolled %></td>
       <td><%= link_to 'Show', student_path(student) %></td>
       <td><%= link_to 'Edit', edit_student_path(student) %></td>
+      <td><%= link_to 'Delete', student_path(student), method: :delete, data: { confirm: 'Are your sure to delete?' } %></td>
     </tr>
   <% end %>
 </table>

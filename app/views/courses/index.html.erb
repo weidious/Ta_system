@@ -1,6 +1,9 @@
 <% content_for :body do %>
 <div class = "table">
   <h1>All courses</h1>
+  
+<p><%= link_to 'Download CSV list', courses_path(format: :csv) %></p>
+
   <%= link_to 'Add a new course', new_course_path %>
   <table class="table table-hover table-bordered">
     <thead>
@@ -9,6 +12,7 @@
         <th>No.</th>
         <th>Title</th>
         <th>Instructor</th>
+        <th></th>
         <th></th>
         <th></th>
         <th>Offers</th>
@@ -28,6 +32,7 @@
         <% end %>
   
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Candidates', course_candidates_path(course) %></td>
         <td><%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
         <td><%= link_to 'offers', course_offers_path(course) %></td>
       </tr>
