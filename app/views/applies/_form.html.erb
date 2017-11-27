@@ -1,5 +1,4 @@
-
-<%= fields_for @apply do |f| %>
+<%= form_for([@student, @apply]) do |f| %>
     <% if @apply.errors.any? %>
         <div id="error_explanation">
           <h2>
@@ -58,4 +57,5 @@
         <td class="required"><%= f.text_field :grade %></td>
       </tr>
     </table>
+    <%= f.submit%>
 <% end %>
