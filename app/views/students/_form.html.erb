@@ -17,7 +17,7 @@
     <table>
       <tr>
         <td><%= f.label :level %></td>
-        <td class="required"><%= f.select :level, options_for_select([["Master Non-Thesis",1], ["Thesis Master",2], ["PhD",3]], @student.level) %></td>
+        <td class="required"><%= f.select :level, options_for_select([["Master Non-Thesis", "MCS"], ["Thesis Master", "MSCS"], ["PhD", "PHD"]], @student.level) %></td>
       </tr>
       <tr>
         <td><%= f.label :date_enrolled %></td>
