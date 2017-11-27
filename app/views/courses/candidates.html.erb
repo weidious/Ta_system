@@ -1,4 +1,24 @@
 <% content_for :body do %>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th width=150>TA: </th>
+        <% @ta_candidates.each do |ta| %>
+        <th><%= ta.fullname %></th>
+        <% end %>
+    </tr>
+    <tr>
+        <th>Senior Grader: </th>
+        <% @sgrader_candidates.each do |sg| %>
+        <th><%= sg.fullname %></th>
+        <% end %>
+    </tr>
+    <tr>
+        <th>Grader: </th>
+        <% @grader_candidates.each do |grader| %>
+        <th><%= grader.fullname %></th>
+        <% end %>
+    </tr>
+</table>
 <%= form_tag course_updateCandidates_path(@course), method: "post" do %>
 <table class="table table-bordered table-hover" id="tab_all_stu">
     
@@ -16,10 +36,10 @@
         <td><%= student.uin %></td>
         <td><%= student.date_enrolled %></td>
         <td>
-            <%= radio_button_tag "job[#{student.id}]", nil, candidate_type(student)=="none" %>
+            <%= radio_button_tag "job[#{student.id}]", "none", @job[student.id]=="none" %>
             <%= label_tag "job[#{student.id}]", 'none' %>
             <% Apply.appTypes.keys.each do |type| %>
-                <%= radio_button_tag "job[#{student.id}]", type, candidate_type(student)==type %>
+                <%= radio_button_tag "job[#{student.id}]", type, @job[student.id]==type %>
                 <%= label_tag "job[#{student.id}]", type %>
             <% end %>
         </td>

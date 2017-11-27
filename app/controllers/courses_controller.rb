@@ -30,17 +30,47 @@ class CoursesController < ApplicationController
         @students = Student.all
     end
     
+    def candidate_type(student)
+        if @ta_candidates.include?student
+            "ta"
+        elsif @sgrader_candidates.include?student
+            "senior_grader"
+        elsif @grader_candidates.include?student
+            "grader"
+        else
+            "none"
+        end
+    end
+    
     def candidates
       @course = Course.find(params[:course_id])
       @students = Student.all
       @ta_candidates = Student.where(id: @course.ta_candidate_ids)
       @sgrader_candidates = Student.where(id: @course.sgrader_candidate_ids)
       @grader_candidates = Student.where(id: @course.grader_candidate_ids)
+      @job = {}
+      @students.each do |student|
+        @job[student.id] = candidate_type(student)
+      end
     end
     
     def updateCandidates
-      flash[:notice] = params[:job]
-      redirect_to courses_path
+      #flash[:notice] = params[:job]
+      @course = Course.find(params[:course_id])
+      @ta_candidate_ids = params[:job].select{|key, value| value == "ta" }.keys
+      @sgrader_candidate_ids = params[:job].select{|key, value| value == "senior_grader" }.keys
+      @grader_candidate_ids = params[:job].select{|key, value| value == "grader" }.keys
+      @course.update_ta_candidates(@ta_candidate_ids)
+      @course.update_sgrader_candidates(@sgrader_candidate_ids)
+      @course.update_grader_candidates(@grader_candidate_ids)
+      if @course.save
+        flash[:notice] = "Prefered TA updated successfully"
+        #redirect_to courses_path
+        redirect_to course_candidates_path(@course)
+      else
+        flash[:error] = "Updated prefered TA failed."
+        redirect_to course_candidates_path(@course)
+      end
     end
     
     

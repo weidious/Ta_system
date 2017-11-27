@@ -16,8 +16,8 @@
   <div class="table-responsive">
     <%= form_tag({controller: "welcome", action: "login", method: "post"}, {:class=>"form-signin"}) do %>
         <h2 class="form-signin-heading">Please sign in</h2>
-        <%= label_tag(:uin, "UIN:", {:class=>"sr-only"}) %>
-        <%= text_field_tag :uin, nil, class: "form-control", placeholder: "UIN" %>
+        <%#= label_tag(:uin, "UIN:", {:class=>"sr-only"}) %>
+        <%#= text_field_tag :uin, nil, class: "form-control", placeholder: "UIN" %>
         <%= label_tag(:netID, "netID:", {:class=>"sr-only"}) %>
         <%= text_field_tag :netID, nil, class: "form-control" , placeholder: "netID" %>
         <%= label_tag(:password, "password:", {:class=>"sr-only"}) %>
