@@ -1,10 +1,10 @@
 <% content_for :body do %>
     <h3> All Offers </h3>
     
-<p><a href="offers.csv" target="_blank">Download All</a> </p>
+<a href="offers.csv" target="_blank" class="btn btn-primary">Download All</a>
 
 
-    <%= link_to "Run TA matching", admin_ta_matching_path %>
+    <%= link_to "Run TA matching", admin_ta_matching_path , {:class => "btn btn-primary"}%>
     <table class="table table-hover table-bordered">
       <tr>
         <th>Course</th>

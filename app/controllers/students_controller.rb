@@ -12,7 +12,30 @@ class StudentsController < ApplicationController
   # end
 
   def checkStatus
-    @students = Student.all
+    @student = Student.find(params[:student_id])
+    @offer = @student.offer
+    @offerPending = false
+    @offerConfirmed = false
+    if @offer
+      @offerConfirmed = true
+      case @offer.status
+      when "sent"
+        if @offer.student_accepted == false
+          @status = "Rejected by student"
+        elsif @offer.student_accepted == true
+          @status =  "Accepted by student. Under review."
+        else
+          @offerPending = true
+          @offerConfirmed = false
+        end
+      when "rejected"
+        @status = "Rejected, final decision."
+      when "accepted"
+        @status = "Approved, final decision."
+      else
+        
+      end
+    end
   end
 
   # def basic_info
@@ -66,7 +89,55 @@ class StudentsController < ApplicationController
   
   def dashboard
     @student = Student.find(params[:student_id])
+    if @student.offer
+      @notification = "You have pending TA decisions."
+    else
+      @notification = "No activities."
+    end
   end
+  
+  def applyall
+    @student = Student.find(params[:student_id])
+    @applications = @student.applies
+    @courses = Course.all
+    @applyTypes = {}
+    @applications.each do |apply|
+        @applyTypes[apply.course.id] = apply.appType
+    end
+  end
+
+  def updateApplyall
+    @student = Student.find(params[:student_id])
+    courseid2tp = params[:course]
+    courseid2grade = params[:course_grade]
+    #@prev_app = Apply.where(student_id: params[:student_id])
+    @prev_app = @student.applies
+    ids = []
+    Apply.where(student_id:params[:student_id]).destroy_all
+    courseid2tp.each {|cid,type|
+      # puts("course_id:" + k.to_s + "  type:" + v.to_s + "  grade:" + courseid2grade[k])
+      if (type != "none")
+        taken = false
+        grade = "Not Taken"
+        if (courseid2grade[cid] != "Not Taken")
+          taken = true
+          grade = courseid2grade[cid]
+        end
+        napp = @student.applies.new(course_id:cid, student:@student, appType:type, priority:1,
+                  acceptAdjust:true, takenBefore:taken, grade:grade, positive:true)
+        ids << napp.save
+      end
+    }
+    
+    if puts(ids.include? false)
+        flash[:error] = "Updated prefered TA failed."
+        redirect_to student_applyall_path(@student.id)
+    else
+        flash[:notice] = "Prefered TA updated successfully"
+        redirect_to student_applyall_path(@student.id)
+    end
+  end
+  
   
 private
     def student_params

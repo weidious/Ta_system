@@ -18,7 +18,7 @@
         <td><%= course.num %></td>
         <td><%= course.section %></td>
         <td><%= course.title %></td>
-        <td><%= link_to 'Choose TAs', edit_course_path(course) %></td>
+        <td><%= link_to 'Choose TAs', course_candidates_path(course) %></td>
       </tr>
     <% end %>
   </table>

@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     get 'dashboard'
     #get 'basic_info'
     get 'checkStatus'
+    get 'applyall'
+    post 'updateApplyall'
   end
 
   resources :instructors do
@@ -44,6 +46,8 @@ Rails.application.routes.draw do
   resources :courses do
     resources :offers do
       get 'send_email'
+      post 'student_accept'
+      post 'student_reject'
     end
     get 'candidates'
     post 'updateCandidates'
