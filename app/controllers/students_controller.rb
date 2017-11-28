@@ -12,7 +12,30 @@ class StudentsController < ApplicationController
   # end
 
   def checkStatus
-    @students = Student.all
+    @student = Student.find(params[:student_id])
+    @offer = @student.offer
+    @offerPending = false
+    @offerConfirmed = false
+    if @offer
+      @offerConfirmed = true
+      case @offer.status
+      when "sent"
+        if @offer.student_accepted == false
+          @status = "Rejected by student"
+        elsif @offer.student_accepted == true
+          @status =  "Accepted by student. Under review."
+        else
+          @offerPending = true
+          @offerConfirmed = false
+        end
+      when "rejected"
+        @status = "Rejected, final decision."
+      when "accepted"
+        @status = "Approved, final decision."
+      else
+        
+      end
+    end
   end
 
   # def basic_info
@@ -66,6 +89,11 @@ class StudentsController < ApplicationController
   
   def dashboard
     @student = Student.find(params[:student_id])
+    if @student.offer
+      @notification = "You have pending TA decisions."
+    else
+      @notification = "No activities."
+    end
   end
   
   def applyall

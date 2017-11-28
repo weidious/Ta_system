@@ -53,11 +53,38 @@ class OffersController < ApplicationController
       flash[:notice] = @user.email
       OfferMailer.welcome_email(@offer).deliver_later
       @offer.status = 'sent'
+      @offer.save
       redirect_to admin_offers_path
+    end
+    
+    def student_accept
+        @offer = Offer.find(params[:offer_id])
+        if (@offer.status == "sent") && (@offer.student_accepted == nil)
+            @offer.student_accepted = true
+            if @offer.instructor_accepted == true
+                @offer.status = "accepted"
+            elsif @offer.instructor_accepted == false
+                @offer.status = "rejected"
+            end
+        end
+        @offer.save
+        redirect_to student_checkStatus_path(@offer.student)
+    end
+    
+    def student_reject
+        @offer = Offer.find(params[:offer_id])
+        if (@offer.status == "sent") && (@offer.student_accepted == nil)
+            @offer.student_accepted = false
+            if @offer.instructor_accepted != nil
+                @offer.status = "rejected"
+            end
+        end
+        @offer.save
+        redirect_to student_checkStatus_path(@offer.student)
     end
     
 private
     def offer_params
-        params.require(:offer).permit(:course_id, :student_id, :app_type, :student_accepted, :instructor_accepted)
+        params.require(:offer).permit(:course_id, :student_id, :app_type, :student_accepted, :instructor_accepted, :status)
     end
 end

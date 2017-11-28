@@ -1,4 +1,45 @@
 <% content_for :body do %>
 <p>Your pending offer.</p>
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>Course</th>
+        <th>Type</th>
+        <th>Instructor</th>
+        <th colspan="2">Actions</th>
+    </tr>
+    <% if @offerPending %>
+    <tr>
+        <td><%= @offer.course.caption %></td>
+        <td><%= @offer.app_type %></td>
+        <% if @offer.course.instructor %>
+            <td><%= @offer.course.instructor.fullname %></td>
+        <% else %>
+            <td class="btn-warning">TBA</td>
+        <% end %>
+        <td><%= button_to "Accept",  course_offer_student_accept_path(@offer.course, @offer) %></th>
+        <td><%= button_to "Reject",  course_offer_student_reject_path(@offer.course, @offer) %></th>
+    </tr>
+    <% end %>
+</table>
 <p>Your confirmed offer.</p>
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>Course</th>
+        <th>Type</th>
+        <th>Instructor</th>
+        <th>Status</th>
+    </tr>
+    <% if @offerConfirmed %>
+    <tr>
+        <td><%= @offer.course.caption %></td>
+        <td><%= @offer.app_type %></td>
+        <% if @offer.course.instructor %>
+            <td><%= @offer.course.instructor.fullname %></td>
+        <% else %>
+            <td class="btn-warning">TBA</td>
+        <% end %>
+        <td><%= @status %></td>
+    </tr>
+    <% end %>
+</table>
 <% end %>
