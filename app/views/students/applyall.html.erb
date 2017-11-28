@@ -13,7 +13,6 @@
 
       <% @applications.each do |apply| %>
           <tr>
-            <!--<td><%#= apply.course.subject %> <%#= apply.course.num %>-<%#= apply.course.section %> <%#= apply.course.title %> </td>-->
             <td><%= apply.course.caption %></td>
             <td><%= apply.appType %></td>
             <td><%= apply.grade %></td>
@@ -39,7 +38,7 @@
       <tr>
         <td><%= course.caption %></td>
         <td>
-            <%= radio_button_tag "course[#{course.id}]", "none", @applyTypes[course.id] =="none" %>
+            <%= radio_button_tag "course[#{course.id}]", "none", @applyTypes[course.id] == "none" %>
             <%= label_tag "course[#{course.id}]", 'none' %>
             <% Apply.appTypes.keys.each do |type| %>
                 <%= radio_button_tag "course[#{course.id}]", type, @applyTypes[course.id] == type %>

@@ -11,7 +11,7 @@ class OfferMailer < ApplicationMailer
     @student = offer.student
     @encryptNetID = encrypt('taobupt')
     @encryptPosition = encrypt('grader')
-    @url  = 'https://pacific-wildwood-55984.herokuapp.com'
+    @url  = 'https://csce606-ta-system.herokuapp.com'
     mail(to: @student.email, subject: 'Welcome to TAMU TA Application System')
   end
 end

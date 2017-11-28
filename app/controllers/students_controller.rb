@@ -130,10 +130,10 @@ class StudentsController < ApplicationController
     }
     
     if puts(ids.include? false)
-        flash[:error] = "Updated prefered TA failed."
+        flash[:error] = "Updated Applications failed."
         redirect_to student_applyall_path(@student.id)
     else
-        flash[:notice] = "Prefered TA updated successfully"
+        flash[:notice] = "Updated Applications successfully"
         redirect_to student_applyall_path(@student.id)
     end
   end
