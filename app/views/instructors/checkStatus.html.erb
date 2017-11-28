@@ -1,0 +1,51 @@
+<% content_for :body do %>
+    <p>Your pending offer.</p>
+    <table class="table table-hover table-bordered">
+      <tr>
+        <th>Course</th>
+        <th>Type</th>
+        <th>Instructor</th>
+        <th colspan="2">Actions</th>
+      </tr>
+
+      <% @offers.each do |offer| %>
+          <% if !offer.instructor_accepted or !offer.instructor_accepted %>
+              <tr>
+                <td><%= offer.course.caption %></td>
+                <td><%= offer.app_type %></td>
+                <% if offer.student %>
+                    <td><%= offer.student.first_name %> <%= offer.student.last_name %></td>
+                <% else %>
+                    <td class="btn-warning">TBA</td>
+                <% end %>
+                <td><%= button_to "Accept",  course_offer_instructor_accept_path(offer.course, offer) %></td>
+                <td><%= button_to "Reject",  course_offer_instructor_accept_path(offer.course, offer) %></td>
+              </tr>
+          <% end %>
+      <% end %>
+    </table>
+
+    <p>Your processed offer.</p>
+    <table class="table table-hover table-bordered">
+      <tr>
+        <th>Course</th>
+        <th>Type</th>
+        <th>Instructor</th>
+        <th>Status</th>
+      </tr>
+      <% @offers.each do |offer| %>
+          <% if offer.instructor_accepted or offer.instructor_accepted %>
+              <tr>
+                <td><%= offer.course.caption %></td>
+                <td><%= offer.app_type %></td>
+                <% if offer.student %>
+                    <td><%= offer.student.first_name %> <%= offer.student.last_name %></td>
+                <% else %>
+                    <td class="btn-warning">TBA</td>
+                <% end %>
+                <td><%= offer.status %></td>
+              </tr>
+          <% end %>
+      <% end %>
+    </table>
+<% end %>

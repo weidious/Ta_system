@@ -40,6 +40,9 @@ Rails.application.routes.draw do
     get 'dashboard'
     get 'courses'
     get 'applies'
+    get 'checkStatus'
+    get 'acceptOffer'
+    get 'rejectOffer'
   end
   
   
@@ -48,6 +51,8 @@ Rails.application.routes.draw do
       get 'send_email'
       post 'student_accept'
       post 'student_reject'
+      post 'instructor_accept'
+      post 'instructor_reject'
     end
     get 'candidates'
     post 'updateCandidates'
