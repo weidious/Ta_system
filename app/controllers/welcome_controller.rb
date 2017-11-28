@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
 
     @netID = params[:netID]
     @password = params[:password]
-    @result = `python cas.py #{@netID} #{@password}`
+    @result = `python cas.py "#{@netID}" "#{@password}"`
     puts @result
     if @result == "successful\n"
       session[:user_type] = params[:usertype]
