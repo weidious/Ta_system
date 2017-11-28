@@ -39,6 +39,7 @@ class WelcomeController < ApplicationController
         redirect_to welcome_index_path
       end
     else
+      flash[:notice] =  @result
       flash[:error] = "Login failed. Net ID or password error."
       redirect_to welcome_index_path
     end
