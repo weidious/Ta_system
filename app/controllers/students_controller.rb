@@ -98,7 +98,8 @@ class StudentsController < ApplicationController
   
   def applyall
     @student = Student.find(params[:student_id])
-    @prev_app = Apply.where(student_id:params[:student_id])
+    #@prev_app = Apply.where(student_id: params[:student_id])
+    @prev_app = @student.applies
     @courses = Course.all
     @appty = {}
     @prev_app.each do |app|
@@ -110,33 +111,22 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:student_id])
     courseid2tp = params[:course]
     courseid2grade = params[:course_grade]
-    @prev_app = Apply.where(student_id:params[:student_id])
-    puts(@prev_app.length)
+    #@prev_app = Apply.where(student_id: params[:student_id])
+    @prev_app = @student.applies
     ids = []
-        # Apply.where(student_id:params[:student_id]).destroy_all
-    courseid2tp.each {|cid,typ|
+    Apply.where(student_id:params[:student_id]).destroy_all
+    courseid2tp.each {|cid,type|
       # puts("course_id:" + k.to_s + "  type:" + v.to_s + "  grade:" + courseid2grade[k])
-      if (typ == "none")
-        Apply.where(student_id:params[:student_id], course_id:cid).destroy_all
-      else
+      if (type != "none")
         taken = false
         grade = "Not Taken"
         if (courseid2grade[cid] != "Not Taken")
           taken = true
           grade = courseid2grade[cid]
         end
-        fd = @prev_app.where(course_id:cid, student:@student.id)
-        if (fd.first)
-          puts("old")
-          napp = fd.first
-          ids << napp.update(appType:typ, priority:1,
+        napp = @student.applies.new(course_id:cid, student:@student, appType:type, priority:1,
                   acceptAdjust:true, takenBefore:taken, grade:grade, positive:true)
-        else
-          napp = @student.applies.new(course_id:cid, student:@student, appType:typ, priority:1,
-                  acceptAdjust:true, takenBefore:taken, grade:grade, positive:true)
-          ids << napp.save
-        end
-        
+        ids << napp.save
       end
     }
     
