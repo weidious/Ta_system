@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     get 'dashboard'
     #get 'basic_info'
     get 'checkStatus'
+    get 'applyall'
+    post 'updateApplyall'
   end
 
   resources :instructors do
