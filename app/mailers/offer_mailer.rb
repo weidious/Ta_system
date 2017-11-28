@@ -12,6 +12,6 @@ class OfferMailer < ApplicationMailer
     @encryptNetID = encrypt('taobupt')
     @encryptPosition = encrypt('grader')
     @url  = 'http://localhost:3000/offer_decision/decide?netId=%s&position=%s' % [@encryptNetID,@encryptPosition]
-    mail(to: @student.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @student.email, subject: 'Welcome to TAMU TA Application System')
   end
 end
