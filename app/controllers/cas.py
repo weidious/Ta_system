@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import os.path
+import sys
 
 def cas_login( NetID, password):
     URL = 'https://cas.tamu.edu/cas/login'
@@ -35,4 +36,4 @@ def cas_login( NetID, password):
         return error
     else:
         return 'successful'
-print(cas_login('taobupt','Wt%209209'))
+print(cas_login(sys.argv[1],sys.argv[2]))
