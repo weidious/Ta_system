@@ -6,9 +6,11 @@ class WelcomeController < ApplicationController
   def login
     #verify the user first in the next step
     #session[:student_uin] = params[:uin]
+
+
     @netID = params[:netID]
     @password = params[:password]
-    @result = `python cas.py "#{@netID}" "#{@password}"`
+    @result = `python cas.py #{@netID} #{@password}`
     puts @result
     if @result == "successful\n"
       session[:user_type] = params[:usertype]
