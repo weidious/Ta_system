@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   resources :courses do
     resources :offers do
       get 'send_email'
+      post 'student_accept'
+      post 'student_reject'
     end
     get 'candidates'
     post 'updateCandidates'
