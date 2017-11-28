@@ -83,6 +83,32 @@ class OffersController < ApplicationController
         redirect_to student_checkStatus_path(@offer.student)
     end
     
+    def instructor_accept
+        @offer = Offer.find(params[:offer_id])
+        if (@offer.status == "sent") && (@offer.instructor_accepted == nil)
+            @offer.instructor_accepted = true
+            if @offer.student_accepted == true
+                @offer.status = "accepted"
+            elsif @offer.student_accepted == false
+                @offer.status = "rejected"
+            end
+        end
+        @offer.save
+        #redirect_to student_checkStatus_path(@offer.student)
+    end
+    
+    def instructor_reject
+        @offer = Offer.find(params[:offer_id])
+        if (@offer.status == "sent") && (@offer.instructor_accepted == nil)
+            @offer.instructor_accepted = false
+            if @offer.student_accepted != nil
+                @offer.status = "rejected"
+            end
+        end
+        @offer.save
+        #redirect_to student_checkStatus_path(@offer.student)
+    end
+    
 private
     def offer_params
         params.require(:offer).permit(:course_id, :student_id, :app_type, :student_accepted, :instructor_accepted, :status)
