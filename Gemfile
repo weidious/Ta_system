@@ -74,6 +74,9 @@ gem 'simplecov', :require => false, :group => :test
 
 # Added email format validation check. --ZY
 gem 'validates_email_format_of'
+gem 'bootstrap-table-rails'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem 'factory_bot_rails'
