@@ -5,16 +5,19 @@
 
 
     <%= link_to "Run TA matching", admin_ta_matching_path , {:class => "btn btn-primary"}%>
-    <table class="table table-hover table-bordered">
+    <table class=" table table-striped" data-sort-name="name" data-sort-order="desc">   
       <tr>
-        <th>Course</th>
-        <th>Type</th>
-        <th>Student</th>
-        <th>StudentUIN</th>
-        <th>Student Accepted</th>
-        <th>Instructor Accepted</th>
-        <th>Created At</th>
-        <th>Last modified</th>
+        <th data-field="title" data-sortable="true">Course</th>
+        <th data-field="appType" data-sortable="true">Type</th>
+        <th data-field="student_id" data-sortable="true">Student</th>
+        <th data-field="uin" data-sortable="true">StudentUIN</th>
+        <th >Student Accepted</th>
+        <th data-field="instructor_id" data-sortable="true">Instructor Accepted</th>
+        <th data-field="created_at" data-sortable="true">Created At</th>
+        <th data-field="updated_at" data-sortable="true">Last modified</th>
+
+     
+    
         <th colspan=3>Status</th>
         <th colspan=3>Actions</th>
       </tr>

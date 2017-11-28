@@ -69,7 +69,7 @@ gem 'coffee-script-source', '1.8.0'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
-
+gem 'jquery-turbolinks'
 gem 'simplecov', :require => false, :group => :test
 
 # Added email format validation check. --ZY
