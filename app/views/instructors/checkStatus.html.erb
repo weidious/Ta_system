@@ -9,7 +9,7 @@
       </tr>
 
       <% @offers.each do |offer| %>
-          <% if !offer.instructor_accepted or !offer.instructor_accepted %>
+          <% if offer.status == "sent" and (!offer.instructor_accepted or !offer.instructor_accepted) %>
               <tr>
                 <td><%= offer.course.caption %></td>
                 <td><%= offer.app_type %></td>

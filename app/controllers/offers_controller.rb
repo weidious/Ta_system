@@ -84,12 +84,15 @@ class OffersController < ApplicationController
     end
 
     def instructor_accept
+
         @offer = Offer.find(params[:offer_id])
+        if (@offer.status == "sent") && (@offer.instructor_accepted == nil)
         @offer.instructor_accepted = true
         if @offer.student_accepted == true
             @offer.status = "accepted"
         elsif @offer.student_accepted == false
             @offer.status = "rejected"
+        end
         end
         @offer.save
         redirect_to instructor_checkStatus_path(@offer.course.instructor)
@@ -97,9 +100,11 @@ class OffersController < ApplicationController
 
     def instructor_reject
         @offer = Offer.find(params[:offer_id])
+        if (@offer.status == "sent") && (@offer.instructor_accepted == nil)
         @offer.instructor_accepted = false
         if @offer.student_accepted != nil
             @offer.status = "rejected"
+        end
         end
         @offer.save
         redirect_to instructor_checkStatus_path(@offer.course.instructor)
