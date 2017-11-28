@@ -98,12 +98,11 @@ class StudentsController < ApplicationController
   
   def applyall
     @student = Student.find(params[:student_id])
-    #@prev_app = Apply.where(student_id: params[:student_id])
-    @prev_app = @student.applies
+    @applications = @student.applies
     @courses = Course.all
-    @appty = {}
-    @prev_app.each do |app|
-        @appty[app.course.id] = app.appType
+    @applyTypes = {}
+    @applications.each do |apply|
+        @applyTypes[apply.course.id] = apply.appType
     end
   end
 

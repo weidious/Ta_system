@@ -11,7 +11,7 @@
         <th>Last modified</th>
       </tr>
 
-      <% @prev_app.each do |apply| %>
+      <% @applications.each do |apply| %>
           <tr>
             <!--<td><%#= apply.course.subject %> <%#= apply.course.num %>-<%#= apply.course.section %> <%#= apply.course.title %> </td>-->
             <td><%= apply.course.caption %></td>
@@ -27,10 +27,7 @@
     <table class="table table-hover table-bordered">
     <thead>
       <tr>
-        <th>Subject</th>
-        <th>No.</th>
-        <th>Sec</th>
-        <th>Title</th>
+        <th>Course</th>
         <th>Apply</th>
         <td>Grade</td>
       </tr>
@@ -40,15 +37,12 @@
 
     <% @courses.each do |course| %>
       <tr>
-        <td><%= course.subject %></td>
-        <td><%= course.num %></td>
-        <td><%= course.section %></td>
-        <td><%= course.title %></td>
+        <td><%= course.caption %></td>
         <td>
-            <%= radio_button_tag "course[#{course.id}]", "none", @appty[course.id] =="none" %>
+            <%= radio_button_tag "course[#{course.id}]", "none", @applyTypes[course.id] =="none" %>
             <%= label_tag "course[#{course.id}]", 'none' %>
             <% Apply.appTypes.keys.each do |type| %>
-                <%= radio_button_tag "course[#{course.id}]", type, @appty[course.id] == type %>
+                <%= radio_button_tag "course[#{course.id}]", type, @applyTypes[course.id] == type %>
                 <%= label_tag "course[#{course.id}]", type %>
             <% end %>
         </td>
