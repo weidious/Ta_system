@@ -19,11 +19,9 @@ class WelcomeController < ApplicationController
       when "Student"
         #session[:student_uin] = params[:uin]
         #if Student.find_by_uin(params[:uin])
-        #if Student.find_by_netID(params[:netID])
-        if !Student.where(netID: params[:netID]).blank?
+        if Student.find_by_netID(params[:netID])
           #redirect_to student_dashboard_path(Student.find_by_uin(params[:uin]))
-          #redirect_to student_dashboard_path(Student.find_by_netID(params[:netID]))
-          redirect_to student_dashboard_path(Student.where(netID: params[:netID]))
+          redirect_to student_dashboard_path(Student.find_by_netID(params[:netID]))
         else
           redirect_to welcome_newStudent_path
         end
