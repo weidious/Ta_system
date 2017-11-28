@@ -3,6 +3,8 @@ class AppliesController < ApplicationController
   def index
     @student = Student.find(params[:student_id])
     @applies = @student.applies
+    #@sort = params[:sort]
+    #@applies = @applies.order(@sort)
   end
 
   def show
