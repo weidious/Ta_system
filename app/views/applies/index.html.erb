@@ -3,6 +3,8 @@
     <p><%= link_to "new apply", new_student_apply_path(@student) %> </p>
 
     <p><%= link_to "Batch Apply", student_applyall_path(@student) %></p>
+    <%= link_to "new apply", new_student_apply_path(@student), {:class => "btn btn-primary"} %>
+    <br>
 
     <table class="table table-hover table-bordered">
       <tr>
