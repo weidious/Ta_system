@@ -2,9 +2,9 @@
   <h1>All instructors</h1>
   <!--<p>Find me in app/views/instructor/index.html.erb</p>-->
   
-<p><%= link_to 'Download CSV list', instructors_path(format: :csv) %></p>
+<%= link_to 'Download CSV list', instructors_path(format: :csv), {:class => "btn btn-primary"} %>
 
-<p><%= link_to 'New instructor', new_instructor_path %></p>
+<%= link_to 'New instructor', new_instructor_path , {:class => "btn btn-primary"}%>
   
   <table class="table table-bordered">
     <thead>

@@ -43,5 +43,5 @@
         <td class="required"><%= f.select :status, Offer.statuses.keys.to_a %></td>
       </tr>
     </table>
-    <%= f.submit%>
+    <%= f.submit :class=>"btn btn-success"%>
 <% end %>

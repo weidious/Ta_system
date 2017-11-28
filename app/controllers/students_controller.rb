@@ -96,6 +96,60 @@ class StudentsController < ApplicationController
     end
   end
   
+  def applyall
+    @student = Student.find(params[:student_id])
+    @prev_app = Apply.where(student_id:params[:student_id])
+    @courses = Course.all
+    @appty = {}
+    @prev_app.each do |app|
+        @appty[app.course.id] = app.appType
+    end
+  end
+
+  def updateApplyall
+    @student = Student.find(params[:student_id])
+    courseid2tp = params[:course]
+    courseid2grade = params[:course_grade]
+    @prev_app = Apply.where(student_id:params[:student_id])
+    puts(@prev_app.length)
+    ids = []
+        # Apply.where(student_id:params[:student_id]).destroy_all
+    courseid2tp.each {|cid,typ|
+      # puts("course_id:" + k.to_s + "  type:" + v.to_s + "  grade:" + courseid2grade[k])
+      if (typ == "none")
+        Apply.where(student_id:params[:student_id], course_id:cid).destroy_all
+      else
+        taken = false
+        grade = "Not Taken"
+        if (courseid2grade[cid] != "Not Taken")
+          taken = true
+          grade = courseid2grade[cid]
+        end
+        fd = @prev_app.where(course_id:cid, student:@student.id)
+        if (fd.first)
+          puts("old")
+          napp = fd.first
+          ids << napp.update(appType:typ, priority:1,
+                  acceptAdjust:true, takenBefore:taken, grade:grade, positive:true)
+        else
+          napp = @student.applies.new(course_id:cid, student:@student, appType:typ, priority:1,
+                  acceptAdjust:true, takenBefore:taken, grade:grade, positive:true)
+          ids << napp.save
+        end
+        
+      end
+    }
+    
+    if puts(ids.include? false)
+        flash[:error] = "Updated prefered TA failed."
+        redirect_to student_applyall_path(@student.id)
+    else
+        flash[:notice] = "Prefered TA updated successfully"
+        redirect_to student_applyall_path(@student.id)
+    end
+  end
+  
+  
 private
     def student_params
       params.require(:student).permit(
