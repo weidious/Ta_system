@@ -1,14 +1,14 @@
 <% content_for :body do %>
     <h3> All Applications </h3>
     <p><a href="applies.csv" target="_blank" class="btn btn-primary">Download All Applications</a> </p>
-    <table class="table table-hover table-bordered">
+    <table class=" table table-striped sortable" data-sort-name="name" data-sort-order="desc">
       <tr>
-        <th>Student</th>
-        <th>Course</th>
-        <th>Type</th>
-        <th>Accept Adjust</th>
-        <th>Created At</th>
-        <th>Last modified</th>
+        <th data-field="student_id" data-sortable="true">Student</th>
+        <th data-field="course_id" data-sortable="true">Course</th>
+        <th data-field="appType" data-sortable="true">Type</th>
+        <th data-field="acceptAdjust" data-sortable="true">Accept Adjust</th>
+        <th data-field="created_at" data-sortable="true">Created At</th>
+        <th data-field="updated_at" data-sortable="true">Last modified</th>
       </tr>
 
       <% @applies.each do |apply| %>

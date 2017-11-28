@@ -67,13 +67,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'coffee-script-source', '1.8.0'
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
-
+gem 'bootstrap-sass'
 gem 'jquery-rails'
-
+gem 'jquery-turbolinks'
 gem 'simplecov', :require => false, :group => :test
 
 # Added email format validation check. --ZY
 gem 'validates_email_format_of'
+gem 'bootstrap-table-rails'
 
 group :development, :test do
   gem 'factory_bot_rails'
