@@ -1,21 +1,21 @@
 <% content_for :body do %>
 <table class="table table-bordered table-hover">
     <tr>
-        <th width=150>TA: </th>
+        <th style="width: 30px">TA: </th>
         <% @ta_candidates.each do |ta| %>
-        <th><%= ta.fullname %></th>
+        <td style="width: 20px"><%= ta.fullname %></td>
         <% end %>
     </tr>
     <tr>
-        <th>Senior Grader: </th>
+        <th  style="width: 30px">Senior Grader: </th>
         <% @sgrader_candidates.each do |sg| %>
-        <th><%= sg.fullname %></th>
+        <td style="width: 30px"><%= sg.fullname %></td>
         <% end %>
     </tr>
     <tr>
-        <th>Grader: </th>
+        <th style="width: 30px">Grader: </th>
         <% @grader_candidates.each do |grader| %>
-        <th><%= grader.fullname %></th>
+        <td style="width: 30px"><%= grader.fullname %></td>
         <% end %>
     </tr>
 </table>
