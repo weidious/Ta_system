@@ -1,5 +1,6 @@
 class Instructor < ApplicationRecord
     has_many :courses, dependent: :nullify
+    has_many :offers, through: :courses
     has_many :applies, through: :courses
     validates :first_name, presence: true, length: { minimum: 3, maximum: 127}
     validates :last_name, presence: true, length: { minimum: 3, maximum: 127}

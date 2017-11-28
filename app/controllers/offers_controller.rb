@@ -3,7 +3,7 @@ class OffersController < ApplicationController
         @course = Course.find(params[:course_id])
         @offers = @course.offers
     end
-    
+
     def new
         @course = Course.find(params[:course_id])
         @offer = @course.offers.new
@@ -19,11 +19,11 @@ class OffersController < ApplicationController
         @offer = @course.offers.new(offer_params)
         @offer.status = :available
         if @offer.save
-          flash[:notice] = "Offer was successfully saved."
-          redirect_to course_offers_path
+            flash[:notice] = "Offer was successfully saved."
+            redirect_to course_offers_path
         else
-          flash[:error] =  @offer.errors.messages
-          render 'new'
+            flash[:error] =  @offer.errors.messages
+            render 'new'
         end
     end
 
@@ -31,11 +31,11 @@ class OffersController < ApplicationController
         @course = Course.find(params[:course_id])
         @offer = Offer.find(params[:id])
         if @offer.update(offer_params)
-          flash[:notice] = "Offer was successfully updated."
-          redirect_to course_offers_path
+            flash[:notice] = "Offer was successfully updated."
+            redirect_to course_offers_path
         else
-          flash[:error] =  @offer.errors.messages
-          render 'edit'
+            flash[:error] =  @offer.errors.messages
+            render 'edit'
         end
     end
 
@@ -47,16 +47,16 @@ class OffersController < ApplicationController
     end
 
     def send_email
-      flash[:notice] = params[:offer_id]
-      @offer = Offer.find(params[:offer_id])
-      @user = @offer.student
-      flash[:notice] = @user.email
-      OfferMailer.welcome_email(@offer).deliver_later
-      @offer.status = 'sent'
-      @offer.save
-      redirect_to admin_offers_path
+        flash[:notice] = params[:offer_id]
+        @offer = Offer.find(params[:offer_id])
+        @user = @offer.student
+        flash[:notice] = @user.email
+        OfferMailer.welcome_email(@offer).deliver_later
+        @offer.status = 'sent'
+        @offer.save
+        redirect_to admin_offers_path
     end
-    
+
     def student_accept
         @offer = Offer.find(params[:offer_id])
         if (@offer.status == "sent") && (@offer.student_accepted == nil)
@@ -70,7 +70,7 @@ class OffersController < ApplicationController
         @offer.save
         redirect_to student_checkStatus_path(@offer.student)
     end
-    
+
     def student_reject
         @offer = Offer.find(params[:offer_id])
         if (@offer.status == "sent") && (@offer.student_accepted == nil)
@@ -82,34 +82,30 @@ class OffersController < ApplicationController
         @offer.save
         redirect_to student_checkStatus_path(@offer.student)
     end
-    
+
     def instructor_accept
         @offer = Offer.find(params[:offer_id])
-        if (@offer.status == "sent") && (@offer.instructor_accepted == nil)
-            @offer.instructor_accepted = true
-            if @offer.student_accepted == true
-                @offer.status = "accepted"
-            elsif @offer.student_accepted == false
-                @offer.status = "rejected"
-            end
+        @offer.instructor_accepted = true
+        if @offer.student_accepted == true
+            @offer.status = "accepted"
+        elsif @offer.student_accepted == false
+            @offer.status = "rejected"
         end
         @offer.save
-        #redirect_to student_checkStatus_path(@offer.student)
+        redirect_to instructor_checkStatus_path(@offer.course.instructor)
     end
-    
+
     def instructor_reject
         @offer = Offer.find(params[:offer_id])
-        if (@offer.status == "sent") && (@offer.instructor_accepted == nil)
-            @offer.instructor_accepted = false
-            if @offer.student_accepted != nil
-                @offer.status = "rejected"
-            end
+        @offer.instructor_accepted = false
+        if @offer.student_accepted != nil
+            @offer.status = "rejected"
         end
         @offer.save
-        #redirect_to student_checkStatus_path(@offer.student)
+        redirect_to instructor_checkStatus_path(@offer.course.instructor)
     end
-    
-private
+
+    private
     def offer_params
         params.require(:offer).permit(:course_id, :student_id, :app_type, :student_accepted, :instructor_accepted, :status)
     end
