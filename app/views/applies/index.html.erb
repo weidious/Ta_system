@@ -1,6 +1,7 @@
 <% content_for :body do %>
     <h3> All Applications </h3>
-    <%= link_to "new apply", new_student_apply_path(@student) %>
+    <%= link_to "new apply", new_student_apply_path(@student), {:class => "btn btn-primary"} %>
+    <br>
 
     <table class="table table-hover table-bordered">
       <tr>
