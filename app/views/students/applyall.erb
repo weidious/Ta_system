@@ -1,0 +1,66 @@
+<% content_for :body do %>
+
+  <p><%= @student.fullname %></p>
+  <hr>
+  <p>Applied:</p>
+    <table class="table table-hover table-bordered">
+      <tr>
+        <th>Course</th>
+        <th>Type</th>
+        <th>Grade</th>
+        <th>Last modified</th>
+      </tr>
+
+      <% @prev_app.each do |apply| %>
+          <tr>
+            <!--<td><%#= apply.course.subject %> <%#= apply.course.num %>-<%#= apply.course.section %> <%#= apply.course.title %> </td>-->
+            <td><%= apply.course.caption %></td>
+            <td><%= apply.appType %></td>
+            <td><%= apply.grade %></td>
+            <td><%= apply.updated_at %></td>
+          </tr>
+      <% end %>
+    
+    
+    </table>
+    <hr>
+    <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>No.</th>
+        <th>Sec</th>
+        <th>Title</th>
+        <th>Apply</th>
+        <td>Grade</td>
+      </tr>
+    </thead>
+
+<%= form_tag student_updateApplyall_path(@student), method: "post" do %>
+
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.subject %></td>
+        <td><%= course.num %></td>
+        <td><%= course.section %></td>
+        <td><%= course.title %></td>
+        <td>
+            <%= radio_button_tag "course[#{course.id}]", "none", @appty[course.id] =="none" %>
+            <%= label_tag "course[#{course.id}]", 'none' %>
+            <% Apply.appTypes.keys.each do |type| %>
+                <%= radio_button_tag "course[#{course.id}]", type, @appty[course.id] == type %>
+                <%= label_tag "course[#{course.id}]", type %>
+            <% end %>
+        </td>
+        <td>
+          <%= select_tag "course_grade[#{course.id}]", options_for_select(["Not Taken", "A", "B", "Others"]) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+<p><%= submit_tag "Update" %></p>
+<% end %>
+<hr>
+<%= link_to 'Back', courses_path %>
+<% end %>
