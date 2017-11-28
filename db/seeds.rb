@@ -79,14 +79,15 @@ Instructor.create(first_name:"Tiffani", middle_name:"L.", last_name:"Williams", 
  File.open(File.dirname(__FILE__) + "/courses_seeds_scripts/Under_courses.txt", "r") do |f|
     f.each_line do |line|
    	    list = line.split()
-   	    courses = Course.create(subject: list[0], num: list[1], section: 600, title: list[2..list.length()].join(" "),
+   	    courses = Course.create(subject: list[0], num: list[1],num_ta: 1,num_grader: 0,num_sgrader:0,
+            section: 600, title: list[2..list.length()].join(" "),
         instructor_id: list_inst.sample.id)
     end
  end
  File.open(File.dirname(__FILE__) + "/courses_seeds_scripts/Grad_courses.txt", "r") do |f|
     f.each_line do |line|
         list = line.split()
-        courses = Course.create(subject: list[0], num: list[1], section: 600, title: list[2..list.length()].join(" "),
+        courses = Course.create(subject: list[0], num: list[1], num_ta: 1,num_grader: 0,num_sgrader:0, section: 600, title: list[2..list.length()].join(" "),
         instructor_id: list_inst.sample.id)
     end
  end
