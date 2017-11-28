@@ -77,7 +77,6 @@ list_student = []
 
 
 @all_courses = Course.all
-puts(@all_courses.length)
 
 @list_ta_apply = []
 (1..5).each { |i|
