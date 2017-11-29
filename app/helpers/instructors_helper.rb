@@ -6,4 +6,12 @@ module InstructorsHelper
     def currentInstructor
             Instructor.find_by_netID(session[:netID])
     end
+
+    def offerPending(offer)
+        offer.status == "sent" and (!offer.instructor_accepted or !offer.instructor_accepted)
+    end
+
+    def offerProcessed(offer)
+        offer.instructor_accepted or offer.instructor_accepted
+    end
 end
