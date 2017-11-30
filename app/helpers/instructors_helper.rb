@@ -8,10 +8,10 @@ module InstructorsHelper
     end
 
     def offerPending(offer)
-        offer.status == "sent" and (!offer.instructor_accepted or !offer.instructor_accepted)
+        offer.status == "sent" and (!offer.instructor_accepted or !offer.student_accepted)
     end
 
     def offerProcessed(offer)
-        offer.instructor_accepted or offer.instructor_accepted
+        offer.instructor_accepted or offer.student_accepted
     end
 end

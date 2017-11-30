@@ -12,4 +12,11 @@ require 'rails_helper'
 # end
 RSpec.describe CoursesHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "#courses_for_select" do
+    it "returns courses" do
+      expect(helper.courses_for_select).to eq(Course.all.collect {|cs| [ cs.caption, cs.id ] })
+    end
+  end
+
 end

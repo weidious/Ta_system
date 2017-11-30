@@ -12,4 +12,21 @@ require 'rails_helper'
 # end
 RSpec.describe AppliesHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "#booleans_for_select" do
+    it "returns yes no" do
+      expect(helper.booleans_for_select).to eq([["Yes", true], ["No", false]])
+    end
+  end
+
+  describe "#booleanCaption" do
+    it "returns yes" do
+      b = 1
+      expect(helper.booleanCaption(b)).to eq("Yes")
+    end
+    it "returns no" do
+      b = nil
+      expect(helper.booleanCaption(b)).to eq("No")
+    end
+  end
 end
