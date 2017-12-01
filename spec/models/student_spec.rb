@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Student do
 	before :each do
-		@student = Student.new(uin: 123456789, first_name: "First", middle_name: "Middle", last_name: "Last", level: 2, email: "abc@mail.com", phone: "1234567890", assigned: true, advisor_email: "cba@liam.moc", can_ta: false, can_grader: false, can_sgrader: false, perferences: "")
+		@student = Student.new(uin: 123456789, first_name: "First", middle_name: "Middle", last_name: "Last", level: "MCS", email: "abc@mail.com", netID:"abc", phone: "1234567890", assigned: true, advisor_email: "cba@liam.moc", can_ta: false, can_grader: false, can_sgrader: false, perferences: "")
 	end
 	
 	it "should be valid" do
